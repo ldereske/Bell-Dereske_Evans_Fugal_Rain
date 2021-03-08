@@ -1,0 +1,3 @@
+	Kingdom	Phylum	Class	Order	Family	Genus	Species
+Classified	17701	15969	15313	14713	11901	8630	4692
+Unclassified	594	2326	2982	3582	6394	9665	13603

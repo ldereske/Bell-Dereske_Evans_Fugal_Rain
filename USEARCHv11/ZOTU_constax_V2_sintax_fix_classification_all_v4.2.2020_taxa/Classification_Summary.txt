@@ -1,0 +1,2546 @@
+Classification	RDP	UTAX	SINTAX	Consensus
+	0	2647	0	0
+0.8000	0	0	0	4
+0.8100	0	0	0	2
+0.8200	0	0	0	3
+0.8300	0	0	0	1
+0.8600	0	0	0	5
+0.8700	0	0	0	1
+0.8800	0	0	0	3
+0.9000	0	0	0	3
+0.9100	0	0	0	5
+0.9200	0	0	0	2
+0.9300	0	0	0	1
+0.9400	0	0	0	1
+0.9500	0	0	0	3
+0.9600	0	0	0	2
+0.9700	0	0	0	4
+0.9800	0	0	0	6
+0.9900	0	0	0	34
+1.0000	0	0	0	408
+Alveolata	91	5	11	91
+Amoebozoa	0	1	1	1
+Arthropoda	0	0	0	3
+Cercozoa	0	0	0	5
+Ciliophora	0	0	0	2
+Fungi	15341	12656	15678	15820
+Heterolobosa	7	7	0	11
+Insecta	0	0	0	1
+Metazoa	7	4	2	6
+Mortierellomycota	0	0	0	1
+Protista	124	0	11	127
+Rhizaria	9	0	1	5
+Stramenopila	4	3	0	4
+Unidentified	1586	2039	1634	594
+Viridiplantae	1126	1104	1128	1136
+Anthophyta	943	942	967	973
+Arthropoda	7	0	0	3
+Ascomycota	8571	6479	8986	9230
+Basidiobolomycota	1	1	1	1
+Basidiomycota	5049	4573	5225	5317
+Blastocladiomycota	5	5	0	5
+Bryophyta	4	4	12	5
+Bryopsida	0	0	0	8
+Cercozoa	9	0	1	5
+Chlorophyta	146	105	142	148
+Chytridiomycota	20	12	21	25
+Ciliophora	88	5	6	88
+Colpodea	0	0	0	2
+Entomophthoromycota	1	1	0	1
+Glomeromycota	0	0	59	59
+Heterolobosa_phy_incertae_sedis	0	5	0	5
+Incertae_sedis	7	0	1	7
+Insecta	0	0	0	3
+Lepidoptera	0	0	0	1
+Mortierellomycetes	0	0	0	1
+Mortierellomycota	6	3	6	6
+Mucoromycota	66	61	66	66
+Ochrophyta	4	3	0	4
+Olpidiomycota	2	2	0	2
+Porifera	0	0	2	2
+Rozellomycota	1	1	0	1
+Spizellomycetes	0	0	0	1
+Streptophyta	8	0	0	0
+Unidentified	3357	6264	2971	2326
+Agaricomycetes	2902	2455	2946	2994
+Agaricostilbomycetes	60	41	58	69
+Arthoniomycetes	9	6	0	9
+Atractiellomycetes	6	3	4	6
+Basidiobolomycetes	1	1	1	1
+Blastocladiomycetes	5	5	0	5
+Bryopsida	4	4	12	5
+Calcarea	0	0	2	2
+Chlamydomonas	4	0	0	4
+Chloromonas	1	0	0	1
+Chlorophyceae	8	6	1	8
+Chlorosarcinopsis	3	0	0	3
+Classiculales	0	0	0	1
+Classiculomycetes	7	0	0	6
+Coenochloris	6	0	0	6
+Colpodea	59	0	0	57
+Colpodida	0	0	0	2
+Crambidae	0	0	0	1
+Cystobasidiomycetes	128	64	86	137
+Dacrymycetes	1	2	3	3
+Dothideomycetes	4767	2840	5105	5303
+Entomophthoromycetes	1	1	0	1
+Eudicotyledonae	46	48	67	71
+Eurotiomycetes	317	237	368	393
+Eustigmatophyceae	2	1	0	2
+Exobasidiomycetes	201	195	177	214
+Geminibasidiomycetes	1	0	1	1
+Glomeromycetes	0	0	59	59
+Gs18	2	2	0	2
+Heterolobosea	7	5	0	11
+Incertae_sedis	1	0	1	2
+Insecta	7	0	0	3
+Laboulbeniomycetes	7	1	0	7
+Lecanoromycetes	259	189	283	313
+Leotiomycetes	277	202	282	318
+Lepidoptera	0	0	0	3
+Litostomatea	0	0	1	1
+Malasseziomycetes	14	12	1	14
+Microbotryomycetes	309	259	352	356
+Monocotyledonae	889	883	889	899
+Mortierellales	0	0	0	1
+Mortierellomycetes	6	3	6	6
+Mucoromycetes	66	61	66	66
+Oligohymenophorea	3	2	3	3
+Orbiliomycetes	89	94	84	107
+Pezizomycetes	36	24	34	37
+Pezizomycotina_cls_incertae_sedis	0	5	0	0
+Phyllopharyngea	0	0	2	2
+Pseudostichococcus	1	0	0	1
+Pucciniomycetes	15	15	14	15
+Rhizophlyctidomycetes	6	5	6	6
+Rhizophydiomycetes	4	3	3	4
+Saccharomycetes	190	179	281	281
+Sordariomycetes	1668	1391	1774	1863
+Spiculogloeomycetes	31	26	0	31
+Spirotrichea	12	3	0	12
+Spizellomycetales	0	0	0	1
+Spizellomycetes	5	4	8	7
+Synurophyceae	2	0	0	2
+Taphrinomycetes	96	99	97	102
+Trebouxiophyceae	96	69	93	97
+Tremellomycetes	1168	996	1233	1257
+Ulvophyceae	1	0	1	1
+Unidentified	4378	7927	3950	2982
+Ustilaginomycetes	82	76	84	87
+Wallemiomycetes	29	22	28	31
+Acarosporales	1	1	1	1
+Acrospermales	6	27	0	29
+Agaricales	736	602	766	780
+Agaricomycetes_ord_incertae_sedis	0	24	0	3
+Agaricostilbales	53	38	57	66
+Alliaceae	1	0	1	1
+Amylocorticiales	4	7	0	7
+Asterales	9	8	11	11
+Atheliales	5	6	10	13
+Atractiellales	6	3	4	6
+Auriculariales	99	69	98	116
+Basidiobolales	1	1	1	1
+Blastocladiales	5	1	0	5
+Boletales	23	22	19	23
+Botryosphaeriales	49	51	71	79
+Brassicales	5	5	10	10
+Caliciales	125	107	135	135
+Candelariales	4	4	4	8
+Cantharellales	175	140	182	198
+Capnodiales	772	356	825	846
+Caryophyllales	2	1	3	3
+Chaetosphaeriales	6	6	8	8
+Chaetothyriales	157	41	189	213
+Chlamydomonadales	3	0	0	3
+Chlamydomonas_applanata	3	0	0	3
+Chlorellales	1	1	0	1
+Chloromonas_typhlos	1	0	0	1
+Chlorosarcinopsis_eremi	2	0	0	2
+Chlorosarcinopsis_sp_30363	1	0	0	1
+Chrysozymaceae	0	0	0	1
+Classiculaceae	0	0	0	1
+Classiculales	7	0	0	6
+Clathrinida	0	0	2	2
+Coenochloris_signiensis	3	0	0	3
+Coenochloris_sp_30959	3	0	0	3
+Colpodida	59	0	0	57
+Colpodidae	0	0	0	2
+Coniochaetales	12	10	12	12
+Corticiaceae	0	0	0	1
+Corticiales	50	33	19	65
+Coryneliales	10	9	9	10
+Crambidae	0	0	0	3
+Cryptococcus sp	0	0	0	1
+Cucurbitales	3	3	3	3
+Cystobasidiales	11	11	16	17
+Cystobasidiomycetes_ord_incertae_sedis	0	33	0	9
+Cystofilobasidiales	36	29	35	36
+Dacrymycetales	1	1	3	4
+Dendrothele	0	0	0	7
+Diaporthales	250	206	265	280
+Dothideales	291	106	297	308
+Dothideomycetes_ord_incertae_sedis	0	10	0	0
+Entomophthorales	1	1	0	1
+Entylomatales	35	32	15	35
+Erysiphales	16	16	16	16
+Erythrobasidiales	57	7	6	57
+Eurotiales	85	77	101	101
+Eustigmatales	2	1	0	2
+Exobasidiales	21	13	23	24
+Exogenida	0	0	2	2
+Fabales	15	15	19	19
+Fagales	3	1	2	3
+Filobasidiales	53	31	97	101
+Fitzroyomyces cyperacearum	0	0	0	1
+Funariales	1	1	0	1
+Geastrales	1	1	1	1
+Geminibasidiales	1	0	1	1
+Gloeophyllales	5	5	4	5
+Glomerales	0	0	59	59
+Glomerellales	71	54	66	80
+Golubeviales	15	4	0	14
+Gs02	1	0	0	1
+Gs18	2	0	0	2
+Helicobasidiales	1	1	0	1
+Helotiales	226	105	209	266
+Holtermanniales	4	4	0	4
+Hymenochaetales	266	249	199	289
+Hymenostomatida	1	0	0	1
+Hypnales	3	3	3	3
+Hypocreales	450	237	447	478
+Hysteriales	4	11	12	18
+Incertae_sedis	131	0	73	151
+Kriegeriales	3	3	0	3
+Lamiales	4	6	8	11
+Lecanorales	43	31	49	49
+Lecanoromycetes_ord_incertae_sedis	0	3	0	3
+Lepidoptera	7	0	0	3
+Leucosporidiales	7	6	7	7
+Lichenostigmatales	9	6	0	9
+Magnaporthales	15	25	7	31
+Malasseziales	14	11	1	14
+Malvales	1	2	2	2
+Microbotryales	23	22	23	23
+Microbotryomycetes_ord_incertae_sedis	0	30	0	3
+Microstromatales	62	65	62	64
+Microthamniales	0	2	0	2
+Microthyriales	1	0	0	1
+Mortierellaceae	0	0	0	1
+Mortierellales	6	3	6	6
+Mucorales	66	61	66	66
+Mycocaliciales	2	1	0	2
+Myriangiales	16	11	22	24
+Myrmecridiales	3	0	0	3
+Mytilinidiales	6	6	0	6
+Naohideales	3	0	0	0
+Oligohymenophorea_ord_incertae_sedis	0	1	0	0
+Onygenales	2	1	4	4
+Oocystales	3	13	0	15
+Ophiostomatales	1	0	0	1
+Orbiliales	88	84	80	102
+Ostropales	61	12	3	63
+Patellariales	8	8	0	9
+Petrophila	0	0	0	1
+Pezizales	36	24	34	37
+Pezizomycotina_ord_incertae_sedis	0	4	0	0
+Phaeomoniellales	46	14	56	56
+Phomatosporales	4	0	0	4
+Pisorisporiales	1	0	0	1
+Platygloeales	3	3	0	3
+Pleosporales	3353	1210	3632	3822
+Pleurotheciales	0	0	1	1
+Poales	886	881	884	898
+Polyporales	797	693	821	866
+Prasiolales	2	2	0	2
+Pseudostichococcus_monallantoides	1	0	0	1
+Pucciniales	11	11	13	11
+Pyxidiophorales	7	0	0	7
+Rhizophlyctidales	6	5	6	6
+Rhizophydiales	4	3	3	4
+Rhytismatales	12	4	12	13
+Rosales	2	2	3	3
+Russulales	292	212	329	356
+Saccharomycetales	190	135	281	281
+Schizopyrenida	7	5	0	11
+Sebacinales	22	8	27	27
+Sordariales	16	7	12	20
+Sphaeropleales	3	3	0	3
+Spiculogloeales	26	26	0	26
+Spizellomycetales	5	3	8	7
+Sporadotrichida	9	0	0	9
+Sporidiobolales	179	158	163	193
+Taphrinales	96	99	97	102
+Teloschistales	1	1	2	1
+Thelebolales	14	14	1	14
+Thelephorales	8	8	8	8
+Tilletiales	68	65	75	76
+Togniniales	0	0	4	4
+Trapeliales	1	1	1	1
+Trebouxiales	58	50	58	59
+Trechisporales	32	25	23	35
+Tremellales	998	809	976	1035
+Tremellodendropsidales	6	0	6	6
+Trentepohliales	1	0	1	1
+Trichosphaeriales	26	27	40	73
+Trichosporonales	12	12	12	12
+Tubeufiales	11	0	34	35
+Unidentified	5287	10123	5261	3582
+Urocystidales	4	7	3	7
+Urostylida	3	3	0	3
+Ustilaginales	76	68	81	80
+Vannellidae	0	0	1	1
+Venturiales	13	10	14	14
+Verrucariales	1	0	1	1
+Volvocales	2	2	0	2
+Wallemiales	29	22	28	31
+Xenospadicoidales	1	0	0	1
+Xylariales	711	453	703	774
+Acarosporaceae	1	1	1	1
+Acrospermaceae	6	0	0	6
+Acrospermales_fam_incertae_sedis	0	23	0	23
+Actinochloridaceae	1	0	0	1
+Agaricaceae	22	21	24	23
+Agaricales_fam_incertae_sedis	0	6	0	0
+Agaricomycetes_fam_incertae_sedis	0	22	0	5
+Agaricostilbaceae	2	1	0	2
+Ajellomycetaceae	0	0	1	1
+Akenomyces	0	0	0	1
+Allium	1	0	1	1
+Amanitaceae	4	4	7	7
+Amaranthaceae	1	0	2	2
+Amorosiaceae	7	0	0	7
+Amphisphaeriaceae	12	1	0	13
+Amylocorticiaceae	4	7	0	7
+Apiosporaceae	2	1	8	8
+Aporpiaceae	5	5	0	5
+Arthrodermataceae	1	0	1	1
+Ascobolaceae	3	1	4	4
+Aspergillaceae	69	60	77	84
+Asteraceae	9	6	11	11
+Atheliaceae	4	5	2	5
+Atractiellales_fam_incertae_sedis	0	2	0	0
+Aureobasidiaceae	158	32	191	196
+Auriculariaceae	16	16	16	16
+Auriscalpiaceae	15	15	29	15
+Baltazaria	0	0	0	1
+Bankeraceae	1	1	1	1
+Bartaliniaceae	2	0	0	2
+Basidiobolaceae	1	1	1	1
+Betulaceae	1	0	0	1
+Biatriosporaceae	5	2	0	5
+Bionectriaceae	0	1	0	1
+Bolbitiaceae	12	5	4	13
+Boletaceae	8	5	8	8
+Boletales_fam_incertae_sedis	0	3	0	0
+Bondarzewiaceae	0	0	1	1
+Botryobasidiaceae	12	11	12	12
+Botryosphaeriaceae	46	47	56	63
+Brassicaceae	5	4	10	10
+Buckleyzymaceae	10	8	0	10
+Bulleraceae	62	169	0	167
+Bulleribasidiaceae	455	415	409	512
+Camarosporidiellaceae	3	0	0	3
+Candelariaceae	4	0	4	8
+Cantharellales_fam_incertae_sedis	0	43	0	9
+Capnodiales_fam_incertae_sedis	0	1	0	0
+Catathelasmataceae	1	1	0	1
+Cephaloascaceae	1	1	0	1
+Ceratobasidiaceae	92	29	95	99
+Cerinomycetaceae	0	1	0	1
+Ceriporiopsis	0	0	0	2
+Ceriporiopsis subrufa	0	0	0	1
+Cerrenaceae	1	1	0	1
+Chaetomellaceae	0	0	4	4
+Chaetomiaceae	2	1	2	3
+Chaetosphaeriaceae	0	0	6	0
+Chaetosphaeriales_fam_incertae_sedis	0	6	0	0
+Chaetothyriales_fam_incertae_sedis	0	8	0	0
+Chionosphaeraceae	8	7	5	11
+Chlamydomonadaceae	2	0	0	2
+Chlorellaceae	1	1	0	1
+Chlorococcaceae	2	0	0	2
+Choanephoraceae	8	8	8	8
+Chrysozymaceae	29	25	12	31
+Cladosporiaceae	127	8	22	129
+Classiculaceae	7	0	0	6
+Clathrinidae	0	0	1	1
+Clavariaceae	7	6	6	10
+Clavicipitaceae	25	24	28	25
+Clavulinaceae	4	2	5	5
+Colpoda	0	0	0	2
+Colpodidae	59	0	0	57
+Coniochaetaceae	12	0	12	12
+Coniophoraceae	1	1	1	1
+Coniothyriaceae	43	46	0	49
+Cordycipitaceae	5	5	5	5
+Corticiaceae	37	17	16	41
+Cortinariaceae	4	4	5	5
+Coryneliaceae	9	9	9	9
+Crambidae	7	0	0	3
+Crepidotaceae	49	43	40	50
+Cronartiaceae	0	0	1	0
+Cryptococcaceae	17	15	10	16
+Cucurbitaceae	3	3	3	3
+Cucurbitariaceae	71	35	55	105
+Cuniculitremaceae	1	0	1	1
+Cunninghamellaceae	1	1	1	1
+Cyperaceae	0	0	1	1
+Cyphellaceae	0	2	0	2
+Cyphellophoraceae	13	0	23	23
+Cystobasidiaceae	11	10	16	16
+Cystofilobasidiaceae	8	8	8	8
+Dacrymycetaceae	1	0	3	3
+Debaryomycetaceae	5	3	4	5
+Dendrophoma	0	0	0	6
+Dendrothele nivosa	0	0	0	7
+Dermateaceae	21	9	3	24
+Diaporthaceae	61	18	60	65
+Diaporthales_fam_incertae_sedis	0	4	0	1
+Diatrypaceae	264	209	180	310
+Dictyosporiaceae	19	5	4	19
+Didymellaceae	401	4	419	424
+Didymosphaeriaceae	86	16	81	102
+Dipodascaceae	8	0	8	8
+Dissoconiaceae	54	40	54	54
+Dothideaceae	10	7	0	10
+Dothideomycetes_fam_incertae_sedis	0	10	0	0
+Dothioraceae	30	23	0	36
+Echinodiaceae	1	0	0	1
+Elsinoaceae	7	4	14	14
+Entodontaceae	2	0	0	2
+Entolomataceae	18	15	21	20
+Entomophthoraceae	1	0	0	1
+Entylomataceae	7	7	10	10
+Entylomatales_fam_incertae_sedis	0	25	0	0
+Erysiphaceae	16	16	16	16
+Erythrobasidiaceae	44	6	0	44
+Erythrobasidiales_fam_incertae_sedis	0	1	0	0
+Eustigmataceae	2	0	0	2
+Exidiaceae	51	29	46	60
+Exobasidiaceae	21	12	23	24
+Extremaceae	1	0	0	1
+Fabaceae	15	15	19	19
+Fenestellaceae	12	9	1	13
+Filobasidiaceae	45	27	92	93
+Fistulinaceae	3	3	0	3
+Fomitopsidaceae	119	95	132	144
+Funariaceae	1	1	0	1
+Ganodermataceae	29	24	31	35
+Geastraceae	1	1	1	1
+Geminibasidiaceae	1	0	1	1
+Gloeocystidiellaceae	21	21	0	21
+Gloeophyllaceae	5	5	4	5
+Glomeraceae	0	0	59	59
+Glomerellaceae	26	16	35	35
+Glomosporiaceae	1	4	0	4
+Gnomoniaceae	2	1	1	2
+Golubeviaceae	15	2	0	15
+Gomphillaceae	41	0	0	41
+Graphostromataceae	33	29	0	34
+Grifolaceae	3	3	0	3
+Halotthiaceae	6	2	0	6
+Helicobasidiaceae	1	0	0	1
+Helminthosphaeriaceae	6	0	0	6
+Helotiaceae	19	12	4	23
+Helotiales_fam_incertae_sedis	0	9	0	3
+Hericiaceae	4	0	1	4
+Herpotrichiellaceae	54	18	33	64
+Holostichidae	3	3	0	3
+Holtermanniales_fam_incertae_sedis	0	4	0	0
+Hyaloriaceae	7	7	8	9
+Hyaloscyphaceae	15	5	2	15
+Hydnaceae	1	0	0	1
+Hydnangiaceae	3	3	1	3
+Hydnodontaceae	20	12	22	23
+Hygrophoraceae	5	5	6	6
+Hymenochaetaceae	46	51	70	64
+Hymenochaetales_fam_incertae_sedis	0	29	0	0
+Hymenogastraceae	1	0	0	1
+Hyphodermataceae	47	46	58	58
+Hypocreaceae	16	7	16	16
+Hypocreales_fam_incertae_sedis	0	24	0	2
+Hysteriaceae	4	7	12	18
+Incertae_sedis	477	0	140	484
+Inocybaceae	7	4	5	7
+Irpicaceae	81	70	37	85
+Juglandaceae	2	0	2	2
+Kondoaceae	41	27	43	49
+Kriegeriaceae	3	2	0	3
+Lachnocladiaceae	39	38	37	46
+Lamiaceae	0	1	0	1
+Lasiosphaeriaceae	5	4	1	6
+Lecanoraceae	4	0	1	4
+Lecanoromycetes_fam_incertae_sedis	0	3	0	3
+Lentitheciaceae	68	38	42	74
+Leptosphaeriaceae	65	25	107	126
+Leucosporidiaceae	7	4	7	7
+Lindgomycetaceae	0	0	3	3
+Lophiostomataceae	66	2	54	72
+Lophiotremataceae	15	6	11	15
+Lycoperdaceae	26	32	40	39
+Lyophyllaceae	15	6	9	15
+Magnaporthaceae	15	14	7	21
+Malasseziaceae	14	10	1	14
+Malvaceae	1	2	2	2
+Marasmiaceae	9	6	6	9
+Marthamycetaceae	1	0	0	1
+Massariaceae	11	11	11	11
+Massarinaceae	25	8	15	25
+Melanconidaceae	0	0	5	5
+Melanommataceae	8	4	27	35
+Meripilaceae	28	16	19	31
+Meruliaceae	115	110	79	118
+Metschnikowiaceae	117	57	101	120
+Microbotryaceae	8	7	8	9
+Microbotryomycetes_fam_incertae_sedis	0	3	0	1
+Microdochiaceae	31	7	0	31
+Microstromataceae	4	5	0	4
+Microstromatales_fam_incertae_sedis	0	1	0	1
+Microthamniales_fam_incertae_sedis	0	2	0	2
+Moraceae	1	1	0	1
+Morchellaceae	1	1	0	1
+Mortierella	0	0	0	1
+Mortierellaceae	6	3	6	6
+Mrakiaceae	17	17	25	26
+Mrakiella	0	0	0	1
+Mucoraceae	49	46	51	51
+Mycocaliciaceae	2	0	0	2
+Mycosphaerellaceae	262	138	295	311
+Myrmecridiaceae	3	0	0	3
+Mytilinidiaceae	6	6	0	6
+Naohideaceae	3	0	0	1
+Nectriaceae	237	124	238	238
+Neodevriesiaceae	37	26	1	37
+Occultibambusaceae	1	0	0	1
+Oleaceae	4	3	4	4
+Omphalotaceae	4	4	6	5
+Onygenales_fam_incertae_sedis	0	1	0	1
+Oocystaceae	3	9	0	11
+Operculariidae	1	1	0	1
+Ophiocordycipitaceae	5	5	5	5
+Ophiostomataceae	1	0	0	1
+Orbiliaceae	85	79	77	100
+Orbiliales_fam_incertae_sedis	0	1	0	0
+Oxytrichidae	4	0	0	4
+Panaceae	1	1	0	1
+Parapterulicium	0	0	0	1
+Parapyrenochaeta	8	0	0	8
+Parmeliaceae	16	14	19	19
+Patellariaceae	3	1	0	3
+Patellariales_fam_incertae_sedis	0	6	0	4
+Paxillaceae	1	1	0	1
+Peniophoraceae	116	41	123	143
+Periconiaceae	52	68	62	123
+Petrophila	0	0	0	3
+Petrophila incerta	0	0	0	1
+Pezizaceae	3	0	1	3
+Pezizomycotina_fam_incertae_sedis	0	4	0	0
+Phaeococcomycetaceae	9	6	0	9
+Phaeomoniellaceae	21	6	7	21
+Phaeosphaeriaceae	415	115	218	512
+Phaffomycetaceae	6	7	6	7
+Phanerochaetaceae	91	84	83	104
+Phomatosporaceae	4	0	0	4
+Phrymaceae	0	2	0	2
+Phyllostictaceae	3	3	3	3
+Physalacriaceae	20	11	12	20
+Physciaceae	125	95	135	135
+Physodermataceae	1	1	0	1
+Phytolaccaceae	1	1	0	1
+Pichiaceae	1	1	0	1
+Piskurozymaceae	2	2	0	2
+Pisorisporiaceae	1	0	0	1
+Plantaginaceae	0	0	4	4
+Platygloeaceae	3	3	0	3
+Plectosphaerellaceae	45	25	31	45
+Pleomonodictydaceae	5	5	0	5
+Pleosporaceae	492	145	542	563
+Pleosporales_fam_incertae_sedis	0	19	0	8
+Pleurotaceae	36	23	35	38
+Pleurotheciaceae	0	0	1	1
+Pluteaceae	24	24	24	24
+Poaceae	886	244	883	895
+Podoscyphaceae	5	5	5	8
+Polyporaceae	67	62	58	79
+Polyporales_fam_incertae_sedis	0	3	0	0
+Porotheleaceae	3	3	0	3
+Powellomycetaceae	4	3	0	4
+Prasiolaceae	2	0	0	2
+Protomyces inouyei	0	0	0	1
+Protomycetaceae	9	8	0	8
+Psathyrellaceae	111	99	95	115
+Pseudeurotiaceae	14	7	1	14
+Pseudolophiotrema	3	0	0	3
+Pseudomassariaceae	1	0	0	1
+Pseudorobillarda	0	0	0	1
+Pterulaceae	3	1	0	2
+Pucciniaceae	10	11	12	11
+Punctulariaceae	2	2	0	2
+Pyronemataceae	4	1	3	4
+Pyxidiophoraceae	5	0	0	5
+Quambalariaceae	2	2	0	2
+Ramalinaceae	8	8	0	8
+Rhizophlyctidaceae	6	5	6	6
+Rhizophydiales_fam_incertae_sedis	0	3	0	0
+Rhizopodaceae	6	6	6	6
+Rhynchogastremataceae	111	48	95	112
+Rhytismataceae	11	1	11	13
+Rickenellaceae	4	3	0	4
+Ruineniaceae	1	1	1	1
+Russulaceae	5	5	6	6
+Rutstroemiaceae	2	0	3	4
+Saccharomycetaceae	12	12	96	96
+Saccharomycetales_fam_incertae_sedis	0	17	0	1
+Saccharomycodaceae	2	2	1	2
+Sarcoscyphaceae	1	0	0	1
+Sarcosomataceae	24	17	23	24
+Scenedesmaceae	3	2	0	3
+Schizoparmaceae	2	0	2	2
+Schizophyllaceae	11	0	12	12
+Schizoporaceae	162	109	51	159
+Schizothyriaceae	14	10	14	14
+Sclerodermataceae	1	1	1	1
+Sclerotiniaceae	68	8	75	75
+Sebacinaceae	10	1	7	12
+Serendipitaceae	5	0	3	6
+Serpulaceae	2	2	2	2
+Sirobasidiaceae	2	1	0	1
+Sordariaceae	0	1	0	1
+Spiculogloeaceae	26	26	0	26
+Sporidiobolaceae	177	139	161	189
+Sporocadaceae	21	14	19	21
+Sporormiaceae	23	2	18	23
+Stachybotryaceae	10	5	4	10
+Steccherinaceae	76	74	64	86
+Stereaceae	56	48	69	63
+Stictidaceae	17	12	0	20
+Strophariaceae	45	34	40	48
+Suillaceae	6	5	6	6
+Suttonomyces	0	0	0	1
+Symmetrosporaceae	29	21	11	31
+Sympoventuriaceae	3	1	3	4
+Taphrinaceae	87	70	97	93
+Tapinellaceae	1	1	0	1
+Teichosporaceae	31	26	33	33
+Teloschistaceae	1	1	2	1
+Teratosphaeriaceae	98	26	32	105
+Tetrahymenidae	1	0	0	1
+Tetraplosphaeriaceae	6	6	6	6
+Thelephoraceae	7	7	7	7
+Thyridariaceae	10	5	9	10
+Tilletiaceae	68	65	75	76
+Togniniaceae	0	0	4	4
+Torulaceae	2	0	0	2
+Trapeliaceae	1	1	1	1
+Trebouxiaceae	58	47	58	59
+Trechisporales_fam_incertae_sedis	0	12	0	1
+Tremellaceae	75	48	1	77
+Trentepohliaceae	1	0	1	1
+Trichocomaceae	6	5	17	16
+Tricholomataceae	161	135	120	182
+Trichomeriaceae	24	3	9	33
+Trichomonascaceae	1	1	0	2
+Trichosphaeriaceae	26	22	40	73
+Trichosporonaceae	12	12	12	12
+Trimorphomycetaceae	32	8	0	32
+Tubeufiaceae	11	0	34	35
+Tubulicrinaceae	9	9	0	9
+Tulasnellaceae	3	0	4	4
+Typhulaceae	17	10	13	21
+Unidentified	8130	12708	9948	6394
+Urocystidaceae	3	3	3	3
+Urticaceae	1	1	1	1
+Ustilaginaceae	75	54	81	80
+Ustilaginoidea	0	0	0	4
+Ustilentylomataceae	14	14	0	14
+Vahlkampfiidae	7	4	0	10
+Valsaceae	175	58	185	196
+Vannella	0	0	1	1
+Venturiaceae	7	4	6	9
+Verrucariaceae	0	0	1	1
+Vibrisseaceae	4	6	4	6
+Vuilleminiaceae	1	1	1	1
+Wallemiaceae	29	21	28	31
+Wrightoporiaceae	3	3	0	3
+Xenasmataceae	3	0	0	3
+Xenospadicoidaceae	1	0	0	1
+Xylariaceae	55	22	94	99
+Xylariales_fam_incertae_sedis	0	12	0	2
+Xylodon	0	0	0	4
+Xylodon radula	0	0	0	1
+Abortiporus	1	1	0	1
+Absconditella	1	1	0	1
+Acanthophysellum	2	0	0	2
+Acarospora	0	0	1	1
+Acericola	10	0	0	10
+Achroceratosphaeria	1	0	0	1
+Acremonium	23	22	1	23
+Acrospermum	1	0	0	1
+Actinochloris	1	0	0	1
+Acutodesmus	2	0	0	2
+Agaricus	15	15	19	15
+Agrocybe	5	0	0	5
+Akenomyces	1	0	0	0
+Akenomyces costatus	0	0	0	1
+Aleurodiscus	1	1	0	1
+Alfaria	1	1	0	1
+Allium_sativum	1	0	0	1
+Allovahlkampfia	7	0	0	7
+Alternaria	272	24	329	332
+Alternariaster	9	9	0	9
+Alutaceodontia	3	0	0	3
+Amanita	4	3	7	7
+Amaranthus	1	0	0	1
+Amarenomyces	1	0	0	1
+Ambrosia	6	5	3	6
+Amphinema	1	0	0	1
+Amphobotrys	5	5	0	5
+Amyloxenasma	3	3	0	3
+Angustimassarina	7	0	0	7
+Annulohypoxylon	1	0	0	1
+Anteholosticha	3	0	0	3
+Anthaenantiopsis	0	1	0	1
+Anthracocystis	2	0	3	4
+Antrodia	21	21	10	21
+Antrodiella	1	4	0	4
+Apatococcus	1	0	0	1
+Apenidiella	1	1	0	1
+Aphanobasidium	1	1	0	1
+Aporpium	1	1	0	1
+Apseudocercosporella	6	0	0	6
+Arabis	1	0	0	1
+Arachnopeziza	1	1	0	1
+Aristida	3	0	3	3
+Armoracia	0	3	0	0
+Arrhenia	4	2	3	4
+Arthrinium	2	1	8	8
+Arthrocatena	29	0	0	29
+Artomyces	8	8	8	8
+Ascobolus	3	0	0	3
+Aspergillus	25	20	27	39
+Athelia	1	1	0	1
+Atrocalyx	4	0	0	4
+Aurantiporus	3	3	0	3
+Aureobasidium	146	0	108	163
+Auricularia	16	7	16	16
+Australohydnum	1	1	0	1
+Australosphaerella	1	0	0	1
+Baeospora	4	4	0	4
+Ballistosporomyces	2	1	0	2
+Baltazaria	1	0	0	0
+Baltazaria galactina	0	0	0	1
+Bannoa	3	3	0	3
+Bannozyma	8	0	0	8
+Barbatosphaeria	18	0	3	18
+Bartalinia	2	0	0	2
+Basidiobolus	1	1	1	1
+Basidiodendron	3	3	0	3
+Basiseptospora	1	1	0	1
+Batrachochytrium	3	3	3	3
+Bensingtonia	4	2	0	4
+Betula	1	0	0	1
+Biatriospora	5	1	0	5
+Bipolaris	35	30	36	38
+Bjerkandera	56	55	0	56
+Blakeslea	5	4	0	5
+Blumeria	2	2	0	2
+Bolbitius	1	1	1	1
+Boletus	3	1	0	3
+Bondarzewia	0	0	1	1
+Botryobasidium	11	10	12	12
+Botryosphaeria	6	6	6	6
+Bovista	1	3	0	3
+Brevicellicium	4	4	0	4
+Brunneoporus	1	1	0	1
+Bryoria	1	0	0	1
+Buckleyzyma	10	8	0	10
+Bullera	13	13	0	13
+Bulleribasidium	24	24	17	24
+Bulleromyces	29	27	0	28
+Bulleromyces albus	0	0	0	1
+Burgoa	5	5	0	5
+Byssocorticium	0	0	1	1
+Byssomerulius	9	9	0	9
+Cabalodontia	5	0	0	5
+Caliciopsis	7	7	0	7
+Callistosporium	1	1	0	1
+Caloplaca	0	0	1	0
+Calvatia	9	13	0	15
+Calyptella	2	2	0	2
+Calyptosphaeria	1	0	0	1
+Camarosporidiella	3	0	0	3
+Camarosporioides	2	0	0	2
+Candelabrochaete	0	4	0	0
+Candelaria	4	0	0	4
+Candida	17	15	10	17
+Capnobotryella	5	1	0	5
+Capnocheirides	1	0	0	1
+Capronia	3	3	0	3
+Cardamine	3	0	3	3
+Cartilosoma	2	0	0	2
+Catenulomyces	3	0	0	3
+Catinella	1	1	0	1
+Celerioriella	2	0	0	2
+Cellypha	1	0	0	1
+Celosporium	7	0	0	7
+Cephaloascus	1	1	0	1
+Ceraceomyces	1	1	0	1
+Ceratobasidium	23	2	0	25
+Ceratorhiza	1	0	0	1
+Ceratostomella	0	2	0	2
+Cercospora	25	0	20	25
+Cerinomyces	0	1	0	1
+Ceriporia	42	33	30	46
+Ceriporiopsis	10	6	0	7
+Ceriporiopsis sp	0	0	0	2
+Chaetospermum	4	0	0	4
+Chaetosphaeronema	4	0	0	4
+Chalara	1	0	0	1
+Chloroidium	3	3	0	6
+Choanephora	2	2	0	2
+Chondrostereum	3	3	0	3
+Chrysosporium	1	1	0	1
+Chrysozyma	14	5	0	14
+Cinereomyces	2	0	0	2
+Cistella	8	0	0	8
+Cladophialophora	11	0	1	12
+Cladorrhinum	4	0	0	4
+Cladosporium	109	0	5	109
+Clavaria	3	2	4	4
+Claviceps	17	7	17	17
+Clavulina	4	0	0	4
+Climacodon	3	3	0	3
+Clitocella	1	1	0	1
+Clitocybe	7	3	0	7
+Clitopilus	5	0	6	6
+Colacogloea	3	1	9	13
+Colletotrichum	26	4	29	35
+Collybia	0	1	0	1
+Colpoda	59	0	0	57
+Colpoda sp	0	0	0	2
+Comoclathris	7	0	4	8
+Coniella	2	0	2	2
+Coniochaeta	12	0	12	12
+Coniophora	1	0	1	1
+Coniothyrium	42	0	0	42
+Conocybe	3	0	3	3
+Coprinellus	17	9	12	19
+Coprinopsis	40	24	29	44
+Cornuvesica	1	0	0	1
+Corticifraga	37	0	0	37
+Corticium	6	5	0	6
+Cortinarius	2	1	3	3
+Cotylidia	1	1	0	1
+Crepidotus	46	23	39	47
+Crocicreas	3	0	0	3
+Crustoderma	3	2	3	3
+Crustodontia	6	3	0	6
+Cryptococcus	44	10	0	43
+Cryptomarasmius	0	1	0	1
+Cryptosphaeria	3	0	0	3
+Cryptostroma	1	0	0	1
+Ctenomyces	1	0	0	1
+Cucumis	2	2	2	2
+Cucurbita	1	1	0	1
+Cunninghamella	1	1	1	1
+Curvibasidium	3	1	0	3
+Curvularia	81	37	82	96
+Cutaneotrichosporon	7	7	7	7
+Cyberlindnera	5	5	5	5
+Cyclaneusma	4	0	0	4
+Cylindrobasidium	6	3	0	6
+Cyphellophora	13	0	23	23
+Cystoagaricus	3	3	0	3
+Cystobasidium	9	8	7	9
+Cystodermella	2	2	0	2
+Cystofilobasidium	8	8	8	8
+Cytidia	0	1	0	1
+Cytospora	22	14	1	35
+Dacrymyces	0	0	1	1
+Dacryobolus	4	4	0	4
+Dactylella	7	7	0	7
+Daedaleopsis	9	9	0	9
+Daldinia	2	0	15	17
+Datronia	3	4	0	4
+Debaryomyces	1	1	1	1
+Deconica	1	0	0	1
+Delicatula	1	1	0	1
+Dematiopleospora	1	0	0	1
+Dendrophoma	6	6	0	0
+Dendrophoma cytisporoides	0	0	0	6
+Dendrothele	7	12	0	5
+Deniquelata	1	0	0	1
+Dentocorticium	1	1	0	1
+Desmazierella	1	0	0	1
+Desmodesmus	1	0	0	1
+Devriesia	7	1	0	7
+Diaporthe	57	3	56	61
+Diatrype	17	1	0	18
+Diatrypella	80	65	0	83
+Dichostereum	25	25	25	25
+Dichotomophthora	1	0	0	1
+Didymella	13	0	33	35
+Didymella glomerata	0	0	0	7
+Didymocyrtis	7	8	0	10
+Digitaria	1	1	0	1
+Dioszegia	166	42	181	180
+Diplodia	25	21	26	26
+Diplomitoporus	1	1	0	1
+Diplosphaera	2	0	0	2
+Dissoconium	34	27	0	34
+Donadinia	13	11	0	13
+Dothidea	1	0	0	1
+Dothiora	4	0	0	4
+Ductifera	3	3	0	3
+Duportella	3	0	0	3
+Echinodium	1	0	0	1
+Edenia	3	3	0	3
+Efibula	7	7	0	7
+Eichleriella	4	0	0	4
+Elmerina	4	4	0	4
+Endoconidioma	1	0	0	1
+Endoperplexa	0	1	0	1
+Endosporium	2	0	0	2
+Entoloma	10	5	12	12
+Entyloma	7	7	10	10
+Epicoccum	5	0	0	5
+Epulorhiza	2	0	0	2
+Erysiphe	5	1	5	5
+Erythranthe	0	2	0	2
+Erythrobasidium	41	0	0	41
+Euoidium	5	0	0	0
+Euoidium mutisiae	0	0	0	5
+Eustigmatos	2	0	0	2
+Eutypa	23	10	20	41
+Eutypella	46	2	0	48
+Exidia	19	7	0	19
+Exobasidium	21	10	23	24
+Exophiala	6	2	5	6
+Exserohilum	3	0	0	3
+Fenestella	12	1	1	13
+Fibricium	1	1	0	1
+Fibroporia	1	1	0	1
+Fibulobasidium	1	1	0	1
+Filobasidium	33	20	81	80
+Fitzroyomyces	8	0	0	7
+Flabellascoma	1	0	0	1
+Flammulina	7	5	8	7
+Flavodon	1	0	0	1
+Flavopunctelia	2	0	0	2
+Fomitiporella	4	0	0	4
+Fomitopsis	1	0	0	1
+Fonsecazyma	20	0	0	20
+Fraxinus	4	3	4	4
+Funalia	0	1	0	1
+Funaria	1	1	0	1
+Fusariella	1	0	0	1
+Fusarium	96	40	79	97
+Fuscoboletinus	1	1	0	1
+Fuscoporia	13	3	20	22
+Gaeumannomyces	7	5	7	7
+Galerina	4	0	3	4
+Galzinia	4	4	0	4
+Ganoderma	20	4	26	27
+Geastrum	1	1	1	1
+Geastrumia	1	1	0	1
+Geminibasidium	1	0	0	1
+Genolevuria	29	18	0	29
+Gerhardtia	1	0	0	1
+Gerronema	1	1	0	1
+Gibberella	22	19	0	22
+Gibellulopsis	4	0	0	4
+Gloeocystidiellum	21	21	0	21
+Gloeodontia	1	1	0	1
+Gloeophyllum	4	4	0	4
+Gloeoporus	6	6	0	6
+Gloiothele	5	1	0	5
+Glomosporium	0	1	0	1
+Goffeauzyma	1	0	0	1
+Golovinomyces	3	3	8	3
+Golubevia	15	1	0	15
+Gossypium	1	1	1	1
+Granulobasidium	2	2	0	2
+Graphostroma	33	14	0	33
+Grifola	3	3	0	3
+Gymnopilus	2	2	2	2
+Gymnopus	2	2	3	3
+Gymnosporangium	0	1	0	1
+Hannaella	118	60	99	128
+Hanseniaspora	2	1	1	2
+Hansfordia	26	0	0	26
+Hapalopilus	2	2	0	2
+Hastodontia	1	0	0	1
+Hebeloma	1	0	0	1
+Helicogloea	2	1	0	2
+Helicoma	2	0	0	2
+Helminthosporium	1	0	0	1
+Helvellosebacina	1	0	1	1
+Henningsomyces	0	2	0	2
+Hericium	1	0	0	1
+Heterocephalacria	2	0	0	2
+Heterochaete	5	0	0	5
+Heteroconium	1	0	0	1
+Heteroradulum	1	1	0	1
+Hirsutella	4	1	0	5
+Hohenbuehelia	22	11	15	22
+Holtermanniella	4	4	0	4
+Homophron	2	2	0	2
+Hormonema	12	0	0	12
+Houjia	1	0	0	1
+Humicola	1	0	0	1
+Hyalorbilia	12	3	0	12
+Hyaloscypha	1	0	1	1
+Hydnellum	1	1	1	1
+Hydnophlebia	1	0	1	1
+Hydnum	1	0	0	1
+Hygrocybe	0	0	2	2
+Hygrophorus	3	4	4	4
+Hymenochaete	2	1	5	5
+Hymenochaetopsis	10	0	4	11
+Hymenoscyphus	2	0	1	2
+Hyperphyscia	5	5	0	5
+Hyphoderma	47	41	58	58
+Hyphodermella	1	1	0	1
+Hyphodontia	29	24	0	29
+Hypholoma	5	2	3	5
+Hyphopichia	1	1	0	1
+Hyphozyma	7	7	0	7
+Hypochnicium	3	3	4	6
+Hypoxylon	19	10	21	23
+Hypsizygus	5	1	0	5
+Hysterobrevium	4	0	0	4
+Hysteropatella	5	3	0	6
+Idriella	11	0	0	11
+Inocybe	5	2	3	5
+Insolibasidium	3	3	0	3
+Irpex	2	0	0	2
+Itersonilia	6	6	0	6
+Juglans	2	0	0	2
+Junghuhnia	2	2	0	3
+Kalmanozyma	2	0	0	2
+Kalmusia	7	0	0	7
+Kazachstania	1	1	1	1
+Keissleriella	56	24	21	57
+Knufia	6	0	3	9
+Kockovaella	0	0	1	1
+Kondoa	35	20	16	39
+Kriegeria	3	1	0	3
+Kurtzmanomyces	6	5	0	6
+Kwoniella	17	8	10	17
+Laccaria	3	3	1	3
+Lachancea	5	5	5	5
+Lachnella	2	2	0	2
+Lacrymaria	1	1	0	1
+Lactarius	2	2	2	2
+Laetiporus	6	5	6	6
+Laetisaria	2	6	0	6
+Lambiella	1	0	0	1
+Lanzia	1	0	0	1
+Lapidomyces	17	0	0	17
+Laportea	1	1	0	1
+Lecania	8	7	0	8
+Lecanora	3	0	1	4
+Lectera	10	10	0	10
+Lentinellus	6	6	21	6
+Lentinus	5	2	3	5
+Lenzites	5	5	0	5
+Leohumicola	0	0	2	2
+Lepista	1	1	0	2
+Leptodontidium	1	0	0	1
+Leptoporus	2	2	0	2
+Leptosillia	4	4	0	4
+Leptosphaeria	4	4	0	4
+Leptospora	54	5	0	54
+Leptosporomyces	1	0	0	1
+Leucoagaricus	1	1	0	1
+Leucogyrophana	3	2	0	3
+Leucopaxillus	2	2	0	2
+Leucosporidium	6	4	7	7
+Limonomyces	16	0	0	16
+Lopadostoma	5	5	5	5
+Lopharia	5	1	0	5
+Lophiostoma	7	0	0	7
+Lophiotrema	11	6	0	11
+Lophium	6	6	0	6
+Lophodermium	3	0	0	3
+Lotus	12	12	12	12
+Loweomyces	1	1	0	1
+Lycoperdon	9	11	16	19
+Lyomyces	11	0	0	11
+Lyophyllum	2	1	1	2
+Macalpinomyces	9	0	0	9
+Macrophomina	1	1	0	1
+Malassezia	14	10	1	14
+Marasmius	6	6	4	6
+Marchandiobasidium	1	0	0	1
+Marchandiomyces	1	0	0	1
+Marthamyces	1	0	0	1
+Massaria	11	11	11	11
+Massariosphaeria	4	4	0	4
+Megacollybia	1	0	1	1
+Melanconiella	0	0	5	5
+Melanelixia	4	0	0	4
+Melanoleuca	2	1	2	2
+Melanoporia	2	2	0	2
+Merismodes	12	7	0	12
+Meristemomyces	2	0	0	2
+Merulius	24	24	0	24
+Metarhizium	8	7	5	8
+Metschnikowia	117	35	101	119
+Metuloidea	1	0	0	1
+Meyerozyma	3	0	3	3
+Microbotryum	4	2	4	4
+Microcyclospora	3	0	0	3
+Microdochium	20	5	0	20
+Microstroma	4	2	0	4
+Mitrophora	0	1	0	0
+Moesziomyces	5	5	5	5
+Mollisia	12	6	0	12
+Monilinia	0	2	0	2
+Montagnula	4	0	0	4
+Morchella	1	0	0	1
+Moristroma	5	0	0	5
+Mortierella	6	2	6	6
+Morus	1	1	0	1
+Mrakia	3	3	0	3
+Mrakiella	1	0	0	0
+Mrakiella aquatica	0	0	0	1
+Mucor	49	36	51	51
+Mucronella	3	3	0	3
+Muriphaeosphaeria	6	1	0	6
+Myceliophthora	1	0	0	1
+Mycena	56	43	34	66
+Mycoacia	14	10	0	14
+Mycocalicium	2	0	0	2
+Mycosphaerella	5	0	0	5
+Myrmecia	1	0	0	1
+Myrmecridium	3	0	0	3
+Myxarium	6	6	0	6
+Myxozyma	1	1	0	1
+Naganishia	9	3	9	9
+Nakazawaea	1	0	0	1
+Naohidea	3	0	0	3
+Nectria	3	3	0	3
+Nemania	0	0	2	2
+Nematoctonus	1	1	0	1
+Neoascochyta	82	4	36	82
+Neocamarosporium	2	0	0	2
+Neocatenulostroma	12	0	0	12
+Neocladophialophora	1	0	0	1
+Neocucurbitaria	15	6	0	15
+Neodendryphiella	5	3	0	8
+Neodevriesia	29	15	0	29
+Neofavolus	7	3	0	7
+Neofitzroyomyces	3	0	0	3
+Neofusicoccum	3	0	3	3
+Neopestalotiopsis	3	0	3	3
+Neophaeomoniella	1	0	0	1
+Neophaeothecoidea	0	1	0	1
+Neosetophoma	8	0	0	8
+Nigrograna	8	0	0	8
+Nigrospora	26	16	40	71
+Noosia	0	1	0	1
+Oberwinklerozyma	1	1	0	1
+Occultibambusa	1	0	0	1
+Occultifur	2	2	0	2
+Ochroconis	1	1	0	1
+Odonticium	1	1	0	1
+Omphalotus	2	2	2	2
+Oomyces	5	0	0	5
+Opercularia_al	1	0	0	1
+Ophiobolus	1	2	0	2
+Ophioceras	6	0	0	6
+Ophiosphaerella	27	0	0	27
+Orbilia	59	21	47	66
+Ossicaulis	2	2	0	2
+Ovicuculispora	0	1	0	1
+Oxyporus	2	2	0	2
+Panaeolus	3	3	0	3
+Pandora	1	0	0	1
+Panellus	5	2	0	5
+Panicum	138	188	23	203
+Panus	1	1	0	1
+Papiliotrema	111	42	95	112
+Parafenestella	14	0	0	14
+Paraophiobolus	11	5	0	11
+Paraphaeosphaeria	36	0	1	36
+Paraphoma	14	0	5	14
+Parapterulicium	1	0	0	0
+Parapterulicium sp	0	0	0	1
+Parapyrenochaeta_acaciae	8	0	0	8
+Parasola	2	2	2	2
+Parathyridaria	8	0	0	8
+Parmelia	7	0	7	7
+Parmotrema	1	0	1	1
+Passalora	2	0	0	2
+Patellaria	3	0	0	3
+Paulisebacina	1	0	0	1
+Paxillus	1	1	0	1
+Peltaster	15	0	0	15
+Penicillium	43	29	43	43
+Peniophora	107	34	68	126
+Peniophorella	22	11	23	23
+Perenniporia	2	2	0	2
+Periconia	52	29	62	102
+Perusta	14	0	0	14
+Pestalotiopsis	14	7	14	14
+Petrophila	7	0	0	3
+Petrophila incerta	0	0	0	3
+Phaeoacremonium	0	0	4	4
+Phaeobotryon	3	0	0	3
+Phaeococcomyces	9	6	0	9
+Phaeodactylium	0	19	0	19
+Phaeomarasmius	2	0	0	2
+Phaeomoniella	8	0	0	8
+Phaeophyscia	26	5	30	30
+Phaeoseptum	4	0	0	4
+Phaeosphaeria	73	1	1	73
+Phaeotheca	2	1	0	2
+Phaeothecoidiella	4	0	0	4
+Phaffia	1	0	0	1
+Phanerochaete	25	9	14	25
+Phellinopsis	4	4	0	4
+Phellinus	10	9	1	10
+Phialocephala	4	4	4	4
+Phialophora	3	3	0	3
+Phlebia	27	23	4	27
+Phlebiopsis	3	0	7	6
+Phleum	24	8	0	24
+Pholiota	20	9	4	20
+Phoma	2	0	0	2
+Phomatospora	4	0	0	4
+Phyllosticta	3	3	2	3
+Phyllotopsis	5	5	0	5
+Phyllozyma	26	26	0	26
+Physalacria	1	1	0	1
+Physcia	85	85	95	95
+Physciella	5	0	0	5
+Physisporinus	3	3	0	3
+Physoderma	1	1	0	1
+Phytolacca	1	1	0	1
+Piniphoma	7	6	0	7
+Piptoporus	7	0	0	7
+Piskurozyma	1	0	0	1
+Pisum	3	0	0	3
+Plantago	0	0	4	4
+Plectania	1	1	0	1
+Plectosphaerella	31	3	6	31
+Plenodomus	5	0	0	5
+Pleomonodictys	5	4	0	5
+Pleospora	6	0	0	6
+Pleurophoma	10	0	0	10
+Pleurotus	7	3	6	9
+Plicaturopsis	1	1	0	1
+Pluteus	24	20	24	24
+Podoscypha	0	0	1	0
+Podospora	1	0	0	1
+Polyporus	5	5	0	5
+Porodisculus	3	3	0	3
+Porotheleum	3	3	0	3
+Postia	12	17	0	17
+Powellomyces	4	0	0	4
+Praetumpfia	4	4	0	4
+Preussia	6	1	0	6
+Protomyces	8	7	0	7
+Psathyrella	46	39	43	46
+Pseudapiospora	1	0	0	1
+Pseudocercospora	7	3	7	7
+Pseudocoleophoma	6	0	0	6
+Pseudogymnoascus	1	0	0	1
+Pseudohalonectria	2	2	0	2
+Pseudolophiotrema_elymicola	3	0	0	3
+Pseudomicrostroma	48	0	0	48
+Pseudoomphalina	1	1	0	1
+Pseudoophiobolus	11	1	0	11
+Pseudopithomyces	8	0	0	8
+Pseudorobillarda	24	3	0	23
+Pseudorobillarda phragmitis	0	0	0	1
+Pseudosplanchnonema	4	0	0	4
+Pseudotrichia	1	0	0	1
+Pseudoveronaea	2	2	0	2
+Pseudozyma	5	0	0	5
+Pterula	1	0	0	1
+Puccinia	10	10	12	10
+Punctularia	2	2	0	2
+Pyrenochaeta	5	4	0	5
+Pyrenochaetopsis	20	1	0	20
+Pyrenopeziza	6	0	0	6
+Pyrenophora	13	0	0	13
+Pyxidiophora	5	0	0	5
+Quambalaria	2	2	0	2
+Rachicladosporium	10	2	6	12
+Radulidium	6	0	0	6
+Radulodon	1	1	0	1
+Ramichloridium	7	0	0	7
+Ramularia	70	44	95	95
+Resinicium	6	6	6	6
+Resupinatus	19	12	13	19
+Rhamphoria	6	0	0	6
+Rhinocladiella	11	0	1	11
+Rhizochaete	1	1	0	1
+Rhizoctonia	2	0	0	2
+Rhizomarasmius	4	0	0	4
+Rhizophlyctis	6	5	6	6
+Rhizopus	6	6	6	6
+Rhodonia	2	2	0	2
+Rhodosporidiobolus	33	19	45	45
+Rhodotorula	50	32	31	51
+Rhodotus	1	1	0	1
+Rhytidhysteron	0	0	1	1
+Rigidoporus	10	6	0	11
+Robillarda	3	1	0	3
+Roussoella	1	0	0	1
+Ruinenia	1	0	1	1
+Russula	3	1	4	4
+Saccharomyces	6	6	6	6
+Saitoella	1	1	0	1
+Saitozyma	32	6	0	32
+Sakaguchia	3	0	3	3
+Sampaiozyma	3	1	0	3
+Sarcinomyces	3	3	0	3
+Sarcodontia	5	5	0	5
+Sarcoporia	5	5	0	5
+Sarocladium	2	2	0	4
+Sawadaea	1	0	1	1
+Schizophyllum	11	0	12	12
+Schizoxylon	0	3	0	3
+Sclerencoelia	1	0	0	1
+Scleria	0	0	1	1
+Scleroderma	1	1	1	1
+Scleroramularia	5	5	0	5
+Sclerostagonospora	3	3	0	3
+Scopuloides	17	17	0	17
+Sebacina	3	0	2	3
+Seimatosporium	12	0	0	12
+Septoriella	23	0	0	23
+Serendipita	3	0	1	4
+Serpula	2	0	0	2
+Setomelanomma	5	0	0	5
+Setophaeosphaeria	9	9	0	9
+Setophoma	6	0	0	6
+Setoseptoria	1	1	0	1
+Sidera	4	0	0	4
+Sigarispora	14	0	0	14
+Simocybe	3	0	0	3
+Simplicillium	5	5	5	5
+Singerocybe	1	0	0	1
+Sirobasidium	1	0	0	1
+Sistotrema	39	23	4	45
+Sistotremastrum	12	6	0	12
+Skeletocutis	17	15	29	33
+Skvortzovia	5	5	0	5
+Solicoccozyma	1	1	0	1
+Spadicoides	6	0	0	6
+Spegazzinia	5	1	0	5
+Sphacelotheca	2	2	0	2
+Sphaerellopsis	5	2	0	5
+Sphagnurus	1	1	0	1
+Spongiochloris	1	0	0	1
+Sporidiobolus	1	1	0	1
+Sporisorium	5	0	0	5
+Sporobolomyces	74	10	71	78
+Sporormiella	3	0	0	3
+Stagonospora	19	2	10	19
+Stagonosporopsis	12	0	19	19
+Steccherinum	41	20	17	42
+Stemphylium	8	0	9	15
+Stenocarpella	4	1	0	4
+Sterellum	3	0	0	3
+Stereum	36	41	17	41
+Sterigmatomyces	1	1	0	1
+Strelitziana	6	5	0	6
+Striaticonidium	3	4	0	4
+Strickeria	2	2	0	2
+Stypella	1	1	0	2
+Suhomyces	2	0	0	2
+Suillus	5	4	5	5
+Suttonomyces	1	0	0	0
+Suttonomyces rosae	0	0	0	1
+Symmetrospora	29	12	11	31
+Sympodiomycopsis	1	1	0	1
+Synfenestella	0	8	0	8
+Talaromyces	2	1	13	13
+Taphrina	87	44	97	93
+Tapinella	1	1	0	1
+Teichospora	29	19	33	33
+Terana	2	0	0	2
+Tetracystis	1	0	0	1
+Tetrahymena	1	0	0	1
+Tetraplosphaeria	6	5	0	6
+Thanatephorus	9	0	0	9
+Thecaphora	1	3	0	3
+Thermomyces	4	0	4	4
+Therrya	5	0	0	5
+Thielavia	0	0	1	1
+Thyronectria	0	1	0	1
+Thyrostroma	3	0	0	3
+Tiarosporella	6	6	0	6
+Tilia	0	1	0	1
+Tilletia	68	62	75	76
+Tilletiopsis	25	25	0	25
+Tomentella	6	0	4	6
+Torula	2	0	0	2
+Toxicocladosporium	4	4	4	4
+Trametes	10	21	1	24
+Tranzscheliella	3	1	3	3
+Trebouxia	57	22	58	58
+Trechispora	16	4	17	18
+Tremella	2	1	0	2
+Trichaptum	12	7	7	12
+Tricharina	1	1	0	1
+Trichoderma	16	0	16	16
+Tricholoma	9	9	9	9
+Tricholomopsis	5	0	5	5
+Trichomerium	2	0	0	2
+Trichopeziza	4	0	0	4
+Trichosporon	5	5	5	5
+Tricladium	12	5	0	12
+Trifolium	0	0	3	3
+Triticum	0	1	0	1
+Trullula	0	2	0	2
+Tubaria	8	6	2	8
+Tubulicrinis	9	9	0	9
+Tulostoma	3	1	4	4
+Tylopilus	2	2	0	2
+Typhula	16	8	12	19
+Tyromyces	15	15	0	15
+Udeniomyces	7	7	5	7
+Udeniozyma	1	1	0	1
+Uncobasidium	1	0	0	1
+Unidentified	10623	14931	14433	9665
+Urnula	6	2	0	6
+Urocystis	3	3	0	3
+Usnea	1	0	1	1
+Ustilaginoidea	4	0	0	0
+Ustilaginoidea virens	0	0	0	4
+Ustilago	22	14	1	24
+Ustilentyloma	14	14	0	14
+Uwebraunia	11	5	0	11
+Valsa	3	0	0	3
+Vararia	9	2	5	14
+Vargamyces	1	0	0	1
+Veluticeps	1	1	0	1
+Venturia	2	2	6	8
+Vermispora	1	1	0	1
+Veronaea	1	0	0	1
+Vishniacozyma	144	65	79	164
+Vitex	0	1	0	1
+Wallemia	29	17	28	31
+Wickerhamiella	1	0	0	1
+Wickerhamomyces	1	1	1	1
+Wrightoporia	3	3	0	3
+Xanthoria	1	1	0	1
+Xenasma	3	0	0	3
+Xenasmatella	16	10	38	38
+Xenomeris	7	0	0	7
+Xenopenidiella	2	0	0	2
+Xeromphalina	2	1	3	3
+Xylaria	3	0	3	6
+Xylobolus	4	3	0	4
+Xylodon	84	44	26	87
+Xylodon radula	0	0	0	4
+Yurkovia	1	0	0	1
+Zasmidium	2	1	2	2
+Zygophiala	11	8	14	14
+Zymoseptoria	33	12	0	42
+Abortiporus biennis	1	0	0	1
+Absconditella rubra	1	0	0	1
+Acanthophysellum sp	2	0	0	2
+Acericola italica	10	0	0	10
+Achroceratosphaeria potamia	1	0	0	1
+Acremonium charticola	1	0	0	1
+Acremonium fusidioides	17	0	0	17
+Acremonium persicinum	2	0	0	2
+Acremonium rutilum	1	0	0	1
+Acremonium sp	1	0	0	1
+Acrospermum sp	1	0	0	1
+Actinochloris sphaerica	1	0	0	1
+Acutodesmus sp	2	0	0	2
+Agaricus bellanniae	1	0	0	1
+Agaricus deserticola	1	0	0	1
+Agaricus porphyrocephalus var. pallidus	1	0	0	1
+Agrocybe pediades	5	0	0	5
+Akenomyces costatus	1	0	0	0
+Aleurodiscus canadensis	1	0	0	1
+Alfaria ossiformis	1	0	0	1
+Allovahlkampfia sp	4	0	0	4
+Alternaria armoraciae	4	0	0	4
+Alternaria rosae	1	0	0	1
+Alternariaster centaureae-diffusae	9	0	0	9
+Alutaceodontia alutacea	3	0	0	3
+Amaranthus tricolor	1	0	0	1
+Amarenomyces ammophilae	1	0	0	1
+Ambrosia artemisiifolia	3	0	0	3
+Ambrosia sp	1	0	0	1
+Ambrosia trifida	2	0	0	2
+Amphobotrys ricini	5	0	0	5
+Amyloxenasma allantosporum	3	0	0	3
+Annulohypoxylon sp	1	0	0	1
+Anteholosticha sp	3	0	0	3
+Antrodia favescens	4	0	0	4
+Antrodia serialiformis	8	0	0	8
+Antrodia xantha	2	0	0	2
+Antrodiella pallescens	1	0	0	1
+Apatococcus sp	1	0	0	1
+Apenidiella foetida	1	0	0	1
+Aphanobasidium pseudotsugae	1	0	0	1
+Aporpium macroporum	1	0	0	1
+Apseudocercosporella trigonotidis	6	0	0	6
+Arabis glabra	1	0	0	1
+Arachnopeziza aurelia	1	0	0	1
+Aristida vexativa	1	0	0	1
+Arrhenia acerosa	1	0	0	1
+Arrhenia elegans	2	0	0	2
+Arthrinium jatrophae	1	0	0	1
+Arthrinium puccinioides	1	0	0	1
+Arthrocatena sp	9	0	0	9
+Arthrocatena tenebrio	18	0	0	18
+Artomyces pyxidatus	8	0	0	8
+Ascobolus sp	3	0	0	3
+Aspergillus flavus	0	0	5	5
+Aspergillus penicillioides	2	0	0	2
+Aspergillus sp	1	0	0	1
+Athelia decipiens	1	0	0	1
+Atrocalyx lignicola	4	0	0	4
+Aurantiporus fissilis	3	0	0	3
+Aureobasidium leucospermi	7	0	0	7
+Aureobasidium pullulans	12	0	0	12
+Auricularia angiospermarum	4	0	0	4
+Australohydnum dregeanum	1	0	0	1
+Australosphaerella nootherensis	1	0	0	1
+Baeospora myosura	4	0	0	4
+Ballistosporomyces sasicola	1	0	0	1
+Baltazaria galactina	1	0	0	0
+Bannoa hahajimensis	2	0	0	2
+Bannozyma yamatoana	8	0	0	8
+Barbatosphaeria arboricola	1	0	0	1
+Barbatosphaeria dryina	4	0	0	4
+Barbatosphaeria neglecta	5	0	0	5
+Basidiodendron eyrei	3	0	0	3
+Basiseptospora fallax	1	0	0	1
+Batrachochytrium dendrobatidis	3	0	3	3
+Bensingtonia pseudonaganoensis	1	0	0	1
+Bensingtonia sp	1	0	0	1
+Betula nigra	1	0	0	1
+Biatriospora antibiotica	1	0	0	1
+Biatriospora mackinnonii	4	0	0	4
+Bipolaris brizae	2	0	0	2
+Bipolaris yamadae	1	0	0	1
+Bjerkandera adusta	54	0	0	54
+Blakeslea trispora	5	0	0	5
+Blumeria graminis	2	0	0	2
+Bolbitius titubans	1	0	0	1
+Boletus bicolor	1	0	0	1
+Boletus sp	2	0	0	2
+Botryobasidium candicans	4	0	0	4
+Botryobasidium laeve	3	0	0	3
+Botryobasidium sp	1	0	0	1
+Botryobasidium subcoronatum	3	0	0	3
+Bovista plumbea	1	0	0	1
+Brevicellicium olivascens	4	0	0	4
+Brunneoporus cyclopis	1	0	0	1
+Buckleyzyma aurantiaca	10	0	0	10
+Bullera penniseticola	7	0	0	7
+Bullera unica	6	0	0	6
+Bulleromyces albus	29	0	0	28
+Burgoa verzuoliana	5	0	0	5
+Byssomerulius corium	9	0	0	9
+Cabalodontia sp	5	0	0	5
+Caliciopsis valentina	7	0	0	7
+Callistosporium luteo-olivaceum	1	0	0	1
+Calvatia cyathiformis	1	0	0	1
+Calvatia fenzlii	1	0	0	1
+Calvatia fragilis	3	0	0	3
+Calvatia gigantea	3	0	0	3
+Calyptella capula	2	0	0	2
+Calyptosphaeria sp	1	0	0	1
+Camarosporioides phragmitis	2	0	0	2
+Candelaria fibrosa	4	0	0	4
+Candida sake	2	0	0	2
+Candida sequanensis	2	0	0	2
+Candida tropicalis	10	0	10	10
+Capnobotryella renispora	5	0	0	5
+Capnocheirides sp	1	0	0	1
+Capronia epimyces	1	0	0	1
+Capronia semi-immersa	2	0	0	2
+Cartilosoma rene-hentic	2	0	0	2
+Catenulomyces convolutus	3	0	0	3
+Catinella olivacea	1	0	0	1
+Celerioriella prunicola	2	0	0	2
+Cellypha goldbachii	1	0	0	1
+Celosporium sp	7	0	0	7
+Cephaloascus fragrans	1	0	0	1
+Ceraceomyces serpens	1	0	0	1
+Ceratobasidium sp	19	0	0	19
+Ceratorhiza sp	1	0	0	1
+Cercospora zeae-maydis	5	0	0	5
+Ceriporia alachuana	1	0	0	1
+Ceriporia aurantiocarnescens	2	0	0	2
+Ceriporia humilis	4	0	0	4
+Ceriporia lacerata	1	0	0	1
+Ceriporia pierii	3	0	0	3
+Ceriporia purpurea	7	0	0	7
+Ceriporia reticulata	3	0	0	3
+Ceriporia spissa	10	0	0	10
+Ceriporia tarda	1	0	0	1
+Ceriporia torpida	3	0	0	3
+Ceriporia viridans	3	0	0	3
+Ceriporiopsis aneirina	3	0	0	3
+Ceriporiopsis gilvescens	1	0	0	1
+Ceriporiopsis sp	2	0	0	0
+Ceriporiopsis subrufa	4	0	0	3
+Chaetospermum sp	1	0	0	1
+Chaetosphaeronema sp	4	0	0	4
+Chalara sp	1	0	0	1
+Chloroidium sp	3	0	0	3
+Choanephora cucurbitarum	2	0	0	2
+Chondrostereum purpureum	3	0	0	3
+Chrysosporium lobatum	1	0	0	1
+Chrysozyma griseoflava	14	0	0	14
+Cinereomyces lindbladii	2	0	0	2
+Cistella sp	7	0	0	7
+Cladophialophora sp	11	0	0	11
+Cladorrhinum sp	4	0	0	4
+Cladosporium halotolerans	3	0	0	3
+Clavaria acuta	1	0	0	1
+Clavaria californica	1	0	0	1
+Clavaria sphagnicola	1	0	0	1
+Clavulina sp	2	0	0	2
+Climacodon septentrionalis	3	0	0	3
+Clitocella popinalis	1	0	0	1
+Clitocybe cokeri	1	0	0	1
+Clitocybe nebularis	1	0	0	1
+Clitocybe sp	1	0	0	1
+Clitocybe subditopoda	3	0	0	3
+Clitopilus hobsonii	2	0	0	2
+Clitopilus sp	1	0	0	1
+Colacogloea diffluens	1	0	0	1
+Colletotrichum cairnsense	6	0	0	6
+Colletotrichum cliviae	2	0	0	2
+Colpoda sp	59	0	0	57
+Comoclathris lini	3	0	0	3
+Comoclathris sp	3	0	0	3
+Coniochaeta prunicola	4	0	0	4
+Coniophora eremophila	1	0	0	1
+Coniothyrium glycines	2	0	0	2
+Coniothyrium sp	40	0	0	40
+Coprinellus curtus	2	0	0	2
+Coprinellus disseminatus	6	0	0	6
+Coprinellus micaceus	2	0	0	2
+Coprinellus sp	2	0	0	2
+Coprinellus verrucispermus	1	0	0	1
+Coprinopsis atramentaria	4	0	0	4
+Coprinopsis brunneofibrillosa	6	0	0	6
+Coprinopsis echinospora	1	0	0	1
+Coprinopsis friesii	2	0	0	2
+Coprinopsis neophlyctidospora	3	0	0	3
+Coprinopsis radiata	1	0	0	1
+Coprinopsis romagnesiana	2	0	0	2
+Coprinopsis scobicola	1	0	0	1
+Coprinopsis sp	1	0	0	1
+Coprinopsis strossmayeri	3	0	0	3
+Coprinopsis urticicola	7	0	0	7
+Corticifraga peltigerae	37	0	0	37
+Corticium boreoroseum	1	0	0	1
+Corticium roseum	5	0	0	5
+Cortinarius sp	2	0	0	2
+Cotylidia carpatica	1	0	0	1
+Crepidotus applanatus	9	0	0	9
+Crepidotus crocophyllus	14	0	0	14
+Crepidotus epibryus	1	0	0	1
+Crepidotus malachioides	1	0	0	1
+Crepidotus mollis	1	0	0	1
+Crepidotus sp	8	0	0	8
+Crepidotus subverrucisporus	4	0	0	4
+Crocicreas cyathoideum	3	0	0	3
+Crustoderma corneum	1	0	0	1
+Crustoderma marianum	1	0	0	1
+Crustodontia chrysocreas	6	0	0	6
+Cryptococcus aspenensis	10	0	0	10
+Cryptococcus cuniculi	5	0	0	5
+Cryptococcus sp	26	0	0	25
+Cryptosphaeria sp	3	0	0	3
+Cryptostroma corticale	1	0	0	1
+Ctenomyces serratus	1	0	0	1
+Cucumis maderaspatanus	2	0	0	2
+Cucurbita pepo	1	0	0	1
+Cunninghamella elegans	1	0	0	1
+Curvibasidium cygneicollum	3	0	0	3
+Curvularia intermedia	9	0	0	9
+Curvularia lunata	7	0	0	7
+Curvularia protuberata	7	0	0	7
+Curvularia pseudorobusta	2	0	0	2
+Curvularia sorghina	3	0	0	3
+Curvularia spicifera	7	0	0	7
+Cutaneotrichosporon dermatis	6	0	0	6
+Cutaneotrichosporon moniliiforme	1	0	0	1
+Cyberlindnera jadinii	5	0	0	5
+Cyclaneusma minus	4	0	0	4
+Cylindrobasidium evolvens	3	0	0	3
+Cylindrobasidium torrendii	3	0	0	3
+Cyphellophora fusarioides	2	0	0	2
+Cystobasidium lysinophilum	2	0	0	2
+Cystobasidium minuta	2	0	0	2
+Cystobasidium pinicola	2	0	0	2
+Cystobasidium slooffiae	3	0	0	3
+Cystodermella cinnabarina	1	0	0	1
+Cystodermella granulosa	1	0	0	1
+Cystofilobasidium capitatum	2	0	0	2
+Cystofilobasidium macerans	6	0	0	6
+Cytospora populina	2	0	0	2
+Cytospora pruinopsis	3	0	0	3
+Dacryobolus sudans	4	0	0	4
+Dactylella leptospora	7	0	0	7
+Daldinia hausknechtii	0	0	4	4
+Daldinia sp	2	0	0	2
+Datronia mollis	1	0	0	1
+Datronia scutellata	2	0	0	2
+Debaryomyces hansenii	1	0	0	1
+Deconica xeroderma	1	0	0	1
+Delicatula integrella	1	0	0	1
+Dendrophoma cytisporoides	6	0	0	0
+Dendrothele nivosa	7	0	0	0
+Deniquelata barringtoniae	1	0	0	1
+Dentocorticium portoricense	1	0	0	1
+Desmazierella acicola	1	0	0	1
+Desmodesmus sp	1	0	0	1
+Devriesia americana	1	0	0	1
+Devriesia pseudoamericana	6	0	0	6
+Diatrype stigma	12	0	0	12
+Diatrypella pulvinata	18	0	0	18
+Dichostereum effuscatum	3	0	0	3
+Dichostereum pallescens	15	0	0	15
+Dichostereum sp	7	0	0	7
+Dichotomophthora lutea	1	0	0	1
+Didymella glomerata	7	0	0	0
+Didymocyrtis cladoniicola	7	0	0	7
+Digitaria violascens	1	0	0	1
+Dioszegia buhagiarii	4	0	0	4
+Dioszegia changbaiensis	28	0	0	28
+Dioszegia hungarica	15	0	0	15
+Dioszegia rishiriensis	7	0	0	7
+Dioszegia sp	11	0	0	11
+Dioszegia zsoltii var. yunnanensis	6	0	0	6
+Dioszegia zsoltii var. zsoltii	6	0	0	6
+Diplomitoporus overholtsii	1	0	0	1
+Diplosphaera chodatii	2	0	0	2
+Dissoconium eucalypti	23	0	0	23
+Dissoconium sp	5	0	0	5
+Donadinia seaveri	11	0	0	11
+Dothidea sambuci	1	0	0	1
+Dothiora sp	4	0	0	4
+Ductifera pululahuana	3	0	0	3
+Duportella lassa	3	0	0	3
+Edenia gomezpompae	3	0	0	3
+Efibula americana	1	0	0	1
+Efibula clarkii	2	0	0	2
+Efibula gracilis	4	0	0	4
+Eichleriella bactriana	4	0	0	4
+Elmerina caryae	4	0	0	4
+Endoconidioma populi	1	0	0	1
+Endosporium aviarium	2	0	0	2
+Entoloma abortivum	1	0	0	1
+Entoloma aprile	1	0	0	1
+Entoloma cremeoalbum	1	0	0	1
+Entoloma halophilum	1	0	0	1
+Entoloma sp	2	0	0	2
+Epicoccum dendrobii	1	0	0	1
+Epulorhiza sp	2	0	0	2
+Erythrobasidium hasegawianum	12	0	0	12
+Erythrobasidium yunnanense	1	0	0	1
+Euoidium mutisiae	5	0	0	0
+Eutypa laevata	8	0	0	8
+Eutypa leptoplaca	2	0	0	2
+Eutypa microasca	4	0	0	4
+Eutypella cerviculata	1	0	0	1
+Eutypella quaternata	2	0	0	2
+Eutypella sp	43	0	0	43
+Exidia glandulosa	7	0	0	7
+Exidia sp	6	0	0	6
+Exobasidium maculosum	1	0	0	1
+Exobasidium miyabei	5	0	0	5
+Exobasidium rostrupii	2	0	0	2
+Exobasidium sp	1	0	0	1
+Exobasidium woronichinii	1	0	0	1
+Exophiala bonariae	1	0	0	1
+Exophiala equina	2	0	0	2
+Exophiala mesophila	1	0	0	1
+Exophiala salmonis	1	0	0	1
+Exserohilum rostratum	3	0	0	3
+Fenestella fenestrata	0	0	1	1
+Fibricium sp	1	0	0	1
+Fibroporia radiculosa	1	0	0	1
+Fibulobasidium inconspicuum	1	0	0	1
+Filobasidium oeirense	1	0	0	1
+Filobasidium stepposum	11	0	0	11
+Filobasidium wieringae	13	0	0	13
+Fitzroyomyces cyperacearum	8	0	0	7
+Flabellascoma cycadicola	1	0	0	1
+Flammulina elastica	1	0	0	1
+Flammulina velutipes	1	0	0	1
+Flavodon sp	1	0	0	1
+Flavopunctelia soredica	2	0	0	2
+Fomitiporella sp	4	0	0	4
+Fonsecazyma sp	20	0	0	20
+Fraxinus anomala	2	0	0	2
+Fraxinus longicuspis	2	0	0	2
+Funaria hygrometrica	1	0	0	1
+Fusariella sp	1	0	0	1
+Fusarium concentricum	1	0	0	1
+Fuscoboletinus spectabilis	1	0	0	1
+Fuscoporia sp	7	0	0	7
+Gaeumannomyces arxii	1	0	0	1
+Galerina marginata	3	0	0	3
+Galerina tibiicystis	1	0	0	1
+Galzinia incrustans	4	0	0	4
+Ganoderma sp	3	0	0	3
+Geastrum triplex	1	0	1	1
+Geastrumia polystigmatis	1	0	0	1
+Genolevuria amylolytica	20	0	0	20
+Genolevuria sp	4	0	0	4
+Gerronema nemorale	1	0	0	1
+Gibberella baccata	5	0	0	5
+Gibellulopsis sp	4	0	0	4
+Gloeocystidiellum kenyense	15	0	0	15
+Gloeocystidiellum porosum	6	0	0	6
+Gloeodontia subasperispora	1	0	0	1
+Gloeophyllum sepiarium	1	0	0	1
+Gloeophyllum trabeum	3	0	0	3
+Gloeoporus taxicola	6	0	0	6
+Gloiothele citrina	1	0	0	1
+Gloiothele sp	4	0	0	4
+Golovinomyces asterum	3	0	0	3
+Golubevia pallescens	15	0	0	15
+Granulobasidium vellereum	2	0	0	2
+Graphostroma platystoma	33	0	0	33
+Grifola frondosa	3	0	0	3
+Gymnopilus penetrans	1	0	0	1
+Gymnopilus spectabilis	1	0	0	1
+Gymnopus barbipes	1	0	0	1
+Gymnopus luxurians	1	0	0	1
+Hannaella coprosmae	19	0	0	19
+Hannaella kunmingensis	10	0	0	10
+Hannaella luteola	5	0	0	5
+Hannaella oryzae	22	0	0	22
+Hannaella phetchabunensis	10	0	0	10
+Hannaella sinensis	1	0	0	1
+Hannaella sp	16	0	0	16
+Hannaella zeae	13	0	0	13
+Hanseniaspora uvarum	1	0	0	1
+Hanseniaspora vineae	1	0	0	1
+Hansfordia pulvinata	26	0	0	26
+Hapalopilus mutans	1	0	0	1
+Hapalopilus nidulans	1	0	0	1
+Hastodontia sp	1	0	0	1
+Helicogloea pellucida	1	0	0	1
+Helicoma sp	2	0	0	2
+Helminthosporium asterinum	1	0	0	1
+Helvellosebacina sp	1	0	0	1
+Heterocephalacria arrabidensis	1	0	0	1
+Heterocephalacria sp	1	0	0	1
+Heterochaete shearii	5	0	0	5
+Heteroconium sp	1	0	0	1
+Heteroradulum kmetii	1	0	0	1
+Hirsutella subulata	4	0	0	4
+Hohenbuehelia atrocoerulea	3	0	0	3
+Hohenbuehelia canadensis	3	0	0	3
+Hohenbuehelia grisea	6	0	0	6
+Hohenbuehelia mastrucata	1	0	0	1
+Hohenbuehelia nimueae	1	0	0	1
+Hohenbuehelia pinacearum	2	0	0	2
+Holtermanniella takashimae	4	0	0	4
+Homophron camptopodum	2	0	0	2
+Hormonema macrosporum	11	0	0	11
+Hormonema sp	1	0	0	1
+Houjia pomigena	1	0	0	1
+Humicola sp	1	0	0	1
+Hyalorbilia erythrostigma	1	0	0	1
+Hyalorbilia lunata	3	0	0	3
+Hyalorbilia sp	3	0	0	3
+Hyaloscypha aureliella	1	0	0	1
+Hydnellum concrescens	1	0	0	1
+Hygrophorus roseobrunneus	1	0	0	1
+Hygrophorus russula	2	0	0	2
+Hymenochaetopsis corrugata	5	0	0	5
+Hymenoscyphus macroguttatus	1	0	0	1
+Hymenoscyphus menthae	1	0	0	1
+Hyperphyscia adglutinata	5	0	0	5
+Hyphoderma definitum	1	0	0	1
+Hyphoderma litschaueri	1	0	0	1
+Hyphoderma medioburiense	2	0	0	2
+Hyphoderma mutatum	8	0	0	8
+Hyphoderma setigerum	22	0	0	22
+Hyphoderma sp	5	0	0	5
+Hyphoderma variolosum	7	0	0	7
+Hyphodermella rosae	1	0	0	1
+Hyphodontia alutaria	1	0	0	1
+Hyphodontia cineracea	3	0	0	3
+Hyphodontia floccosa	3	0	0	3
+Hyphodontia microspora	3	0	0	3
+Hyphodontia pallidula	6	0	0	6
+Hyphodontia setulosa	3	0	0	3
+Hyphodontia sp	7	0	0	7
+Hyphodontia subalutacea	3	0	0	3
+Hypholoma capnoides	1	0	0	1
+Hypholoma fasciculare	2	0	0	2
+Hypholoma lateritium	2	0	0	2
+Hyphopichia burtonii	1	0	0	1
+Hyphozyma roseonigra	7	0	0	7
+Hypochnicium cremicolor	1	0	0	1
+Hypochnicium geogenium	2	0	0	2
+Hypoxylon carneum	11	0	0	11
+Hypoxylon fraxinophilum	1	0	0	1
+Hypoxylon lenormandii	1	0	0	1
+Hypoxylon macrocarpum	4	0	0	4
+Hypoxylon sp	1	0	0	1
+Hypsizygus marmoreus	1	0	0	1
+Hypsizygus ulmarius	4	0	0	4
+Hysterobrevium constrictum	4	0	0	4
+Hysteropatella prostii	5	0	0	5
+Idriella sp	11	0	0	11
+Inocybe lanatodisca	1	0	0	1
+Inocybe rimosoides	1	0	0	1
+Insolibasidium deformans	3	0	0	3
+Irpex lacteus	2	0	0	2
+Itersonilia perplexans	6	0	0	6
+Juglans jamaicensis	2	0	0	2
+Junghuhnia nitida	2	0	0	2
+Kalmanozyma fusiformata	2	0	0	2
+Kalmusia longispora	2	0	0	2
+Kazachstania kunashirensis	1	0	0	1
+Keissleriella quadriseptata	11	0	0	11
+Keissleriella taminensis	24	0	0	24
+Keissleriella yonaguniensis	1	0	0	1
+Knufia perforans	1	0	0	1
+Kondoa changbaiensis	2	0	0	2
+Kondoa miscanthi	2	0	0	2
+Kondoa phyllada	7	0	0	7
+Kondoa sorbi	2	0	0	2
+Kondoa sp	13	0	0	13
+Kondoa subrosea	1	0	0	1
+Kondoa yuccicola	3	0	0	3
+Kriegeria eriophori	3	0	0	3
+Kurtzmanomyces insolitus	4	0	0	4
+Kurtzmanomyces sp	1	0	0	1
+Kurtzmanomyces tardus	1	0	0	1
+Kwoniella betulae	2	0	0	2
+Kwoniella heveanensis	2	0	0	2
+Kwoniella pini	5	0	0	5
+Kwoniella shandongensis	1	0	0	1
+Kwoniella sp	1	0	0	1
+Lachancea quebecensis	5	0	0	5
+Lachnella alboviolascens	1	0	0	1
+Lachnella villosa	1	0	0	1
+Lactarius mutabilis	1	0	0	1
+Lactarius pubescens	1	0	0	1
+Laetiporus sulphureus	3	0	0	3
+Laetisaria arvalis	2	0	0	2
+Lapidomyces sp	2	0	0	2
+Laportea canadensis	1	0	0	1
+Lecania croatica	7	0	0	7
+Lecania naegelii	1	0	0	1
+Lectera longa	6	0	0	6
+Lentinellus castoreus	2	0	0	2
+Lentinellus subaustralis	1	0	0	1
+Lentinellus ursinus	3	0	0	3
+Lentinus tigrinus	3	0	0	3
+Lenzites betulina	5	0	0	5
+Lepista sordida	1	0	0	1
+Leptoporus mollis	2	0	0	2
+Leptosillia muelleri	4	0	0	4
+Leptosphaeria avenaria	4	0	0	4
+Leptospora rubella	16	0	0	16
+Leptospora sp	22	0	0	22
+Leptosporomyces sp	1	0	0	1
+Leucoagaricus leucothites	1	0	0	1
+Leucogyrophana olivascens	3	0	0	3
+Leucopaxillus giganteus	2	0	0	2
+Leucosporidium creatinivorum	1	0	0	1
+Leucosporidium fragarium	1	0	0	1
+Leucosporidium golubevii	2	0	0	2
+Leucosporidium intermedium	1	0	0	1
+Limonomyces sp	8	0	0	8
+Lopadostoma americanum	1	0	0	1
+Lopharia cinerascens	2	0	0	2
+Lopharia sp	3	0	0	3
+Lophiostoma cynaroidis	7	0	0	7
+Lophiotrema eburnoides	7	0	0	7
+Lophiotrema sp	4	0	0	4
+Lophium arboricola	1	0	0	1
+Lophodermium sp	3	0	0	3
+Lotus corniculatus	2	0	0	2
+Loweomyces fractipes	1	0	0	1
+Lycoperdon nigrescens	1	0	0	1
+Lycoperdon pyriforme	3	0	0	3
+Lyomyces sp	11	0	0	11
+Macalpinomyces spermophorus	9	0	0	9
+Macrophomina phaseolina	1	0	0	1
+Malassezia arunalokei	1	0	0	1
+Malassezia dermatis	1	0	0	1
+Malassezia globosa	7	0	0	7
+Malassezia restricta	4	0	0	4
+Marasmius capillaris	2	0	0	2
+Marasmius limosus	1	0	0	1
+Marasmius rotula	3	0	0	3
+Marchandiobasidium sp	1	0	0	1
+Marchandiomyces lignicola	1	0	0	1
+Massaria anomia	6	0	0	6
+Massaria campestris	4	0	0	4
+Massaria mediterranea	1	0	0	1
+Massariosphaeria roumeguerei	4	0	0	4
+Megacollybia rodmanii	1	0	0	1
+Melanelixia subaurifera	4	0	0	4
+Melanoleuca griseobrunnea	1	0	0	1
+Melanoleuca sp	1	0	0	1
+Melanoporia nigra	2	0	0	2
+Merismodes fasciculata	12	0	0	12
+Meristemomyces frigidus	2	0	0	2
+Merulius incarnatus	1	0	0	1
+Merulius tremellosus	23	0	0	23
+Metarhizium anisopliae	1	0	0	1
+Metarhizium marquandii	2	0	0	2
+Metarhizium rileyi	1	0	0	1
+Metschnikowia reukaufii	19	0	0	19
+Metuloidea sp	1	0	0	1
+Microbotryum anomalum	1	0	0	1
+Microbotryum tenuisporum	1	0	0	1
+Microcyclospora sp	3	0	0	3
+Microdochium fisheri	5	0	0	5
+Microdochium neoqueenslandicum	1	0	0	1
+Microdochium seminicola	11	0	0	11
+Microdochium sp	1	0	0	1
+Microstroma bacarum	4	0	0	4
+Moesziomyces aphidis	1	0	0	1
+Moesziomyces rugulosus	2	0	0	2
+Mollisia cinerea	6	0	0	6
+Mollisia sp	6	0	0	6
+Montagnula scabiosae	4	0	0	4
+Morchella punctipes	1	0	0	1
+Moristroma quercinum	5	0	0	5
+Mortierella elongata	2	0	0	2
+Mortierella exigua	2	0	0	2
+Morus rubra	1	0	0	1
+Mrakiella aquatica	1	0	0	0
+Mucor circinelloides	22	0	0	22
+Mucor hiemalis	2	0	0	2
+Mucor irregularis	1	0	0	1
+Mucor nidicola	11	0	0	11
+Mucronella calva	3	0	0	3
+Muriphaeosphaeria viburni	6	0	0	6
+Myceliophthora thermophila	1	0	0	1
+Mycena adscendens	2	0	0	2
+Mycena epipterygia	1	0	0	1
+Mycena haematopus	9	0	0	9
+Mycena inclinata	4	0	0	4
+Mycena laevigata	3	0	0	3
+Mycena meliigena	4	0	0	4
+Mycena metata	3	0	0	3
+Mycena pearsoniana	1	0	0	1
+Mycena polygramma	3	0	0	3
+Mycena sp	3	0	0	3
+Mycena speirea	1	0	0	1
+Mycoacia aurea	6	0	0	6
+Mycoacia fuscoatra	4	0	0	4
+Mycoacia nothofagi	2	0	0	2
+Mycoacia uda	2	0	0	2
+Mycocalicium victoriae	2	0	0	2
+Mycosphaerella latebrosa	5	0	0	5
+Myrmecia sp	1	0	0	1
+Myxarium hyalinum	6	0	0	6
+Myxozyma melibiosi	1	0	0	1
+Naganishia albida	6	0	0	6
+Naganishia vaughanmartiniae	2	0	0	2
+Naohidea sebacea	3	0	0	3
+Nematoctonus subreniformis	1	0	0	1
+Neoascochyta argentina	43	0	0	43
+Neoascochyta desmazieri	14	0	0	14
+Neoascochyta europaea	7	0	0	7
+Neoascochyta exitialis	4	0	0	4
+Neoascochyta sp	7	0	0	7
+Neoascochyta tardicrescens	1	0	0	1
+Neocamarosporium sp	1	0	0	1
+Neocatenulostroma sp	12	0	0	12
+Neocladophialophora quercina	1	0	0	1
+Neocucurbitaria acerina	8	0	0	8
+Neocucurbitaria sp	1	0	0	1
+Neodendryphiella mali	5	0	0	5
+Neodevriesia poagena	23	0	0	23
+Neofavolus alveolaris	3	0	0	3
+Neofavolus sp	4	0	0	4
+Neofitzroyomyces nerii	3	0	0	3
+Neophaeomoniella niveniae	1	0	0	1
+Neosetophoma samararum	5	0	0	5
+Nigrograna sp	8	0	0	8
+Nigrospora musae	4	0	0	4
+Nigrospora sp	1	0	0	1
+Oberwinklerozyma silvestris	1	0	0	1
+Occultibambusa pustula	1	0	0	1
+Occultifur mephitis	1	0	0	1
+Occultifur sp	1	0	0	1
+Ochroconis sexualis	1	0	0	1
+Odonticium septocystidia	1	0	0	1
+Omphalotus illudens	2	0	0	2
+Oomyces carneoalbus	5	0	0	5
+Ophiobolus disseminans	1	0	0	1
+Ophioceras leptosporum	6	0	0	6
+Ophiosphaerella sp	6	0	0	6
+Orbilia aprilis	2	0	0	2
+Orbilia aurantiorubra	3	0	0	3
+Orbilia carpoboloides	2	0	0	2
+Orbilia crenatomarginata	1	0	0	1
+Orbilia epipora	1	0	0	1
+Orbilia flavidorosella	1	0	0	1
+Orbilia leucostigma	1	0	0	1
+Orbilia rectispora	5	0	0	5
+Orbilia sarraziniana	6	0	0	6
+Orbilia sp	13	0	0	13
+Orbilia stipitata	1	0	0	1
+Ossicaulis lignatilis	2	0	0	2
+Oxyporus corticola	2	0	0	2
+Panaeolus fimicola	2	0	0	2
+Panaeolus papilionaceus	1	0	0	1
+Panellus serotinus	1	0	0	1
+Panellus stipticus	3	0	0	3
+Panellus violaceofulvus	1	0	0	1
+Panicum repens	2	0	0	2
+Panus conchatus	1	0	0	1
+Papiliotrema aurea	23	0	0	23
+Papiliotrema flavescens	12	0	0	12
+Papiliotrema frias	6	0	0	6
+Papiliotrema fusca	13	0	0	13
+Papiliotrema nemorosus	3	0	0	3
+Papiliotrema perniciosus	3	0	0	3
+Papiliotrema pseudoalba	4	0	0	4
+Papiliotrema rajasthanensis	5	0	0	5
+Papiliotrema sp	2	0	0	2
+Papiliotrema terrestris	1	0	0	1
+Papiliotrema wisconsinensis	4	0	0	4
+Parafenestella salicis	14	0	0	14
+Paraphaeosphaeria angularis	4	0	0	4
+Paraphaeosphaeria michotii	8	0	0	8
+Paraphaeosphaeria sp	4	0	0	4
+Parapterulicium sp	1	0	0	0
+Parasola plicatilis	2	0	0	2
+Parathyridaria philadelphi	6	0	0	6
+Parathyridaria rosae	1	0	0	1
+Parmelia sulcata	7	0	0	7
+Passalora bacilligera	2	0	0	2
+Patellaria quercus	3	0	0	3
+Paulisebacina allantoidea	1	0	0	1
+Paxillus obscurisporus	1	0	0	1
+Peltaster fructicola	6	0	0	6
+Peltaster sp	9	0	0	9
+Penicillium adametzioides	0	0	2	2
+Penicillium brevicompactum	5	0	0	5
+Penicillium herquei	0	0	1	1
+Penicillium oxalicum	4	0	0	4
+Penicillium sp	1	0	0	1
+Peniophora albobadia	13	0	0	13
+Peniophora cinerea	13	0	0	13
+Peniophora laxitexta	3	0	0	3
+Peniophora pini	7	0	0	7
+Peniophora pithya	2	0	0	2
+Peniophora pseudoversicolor	3	0	0	3
+Peniophora versiformis	24	0	0	24
+Peniophorella guttulifera	5	0	0	5
+Peniophorella pallida	3	0	0	3
+Peniophorella praetermissa	12	0	0	12
+Peniophorella pubera	2	0	0	2
+Perenniporia bostonensis	2	0	0	2
+Periconia echinochloae	8	0	0	8
+Periconia epilithographicola	1	0	0	1
+Periconia macrospinosa	4	0	0	4
+Periconia pseudobyssoides	1	0	0	1
+Periconia pseudodigitata	6	0	0	6
+Periconia sp	8	0	0	8
+Perusta inaequalis	6	0	0	6
+Pestalotiopsis jesteri	2	0	0	2
+Pestalotiopsis sp	3	0	0	3
+Petrophila incerta	7	0	0	3
+Phaeobotryon sp	3	0	0	3
+Phaeococcomyces mexicanus	6	0	0	6
+Phaeococcomyces sp	3	0	0	3
+Phaeomarasmius proximans	2	0	0	2
+Phaeomoniella pinifoliorum	6	0	0	6
+Phaeomoniella sp	2	0	0	2
+Phaeophyscia rubropulchra	5	0	0	5
+Phaeoseptum sp	4	0	0	4
+Phaeosphaeria fuckelii	2	0	0	2
+Phaeosphaeria oryzae	4	0	0	4
+Phaeosphaeria rousseliana	1	0	0	1
+Phaeosphaeria sp	50	0	0	50
+Phaeosphaeria typharum	5	0	0	5
+Phaeotheca fissurella	1	0	0	1
+Phaeotheca triangularis	1	0	0	1
+Phaeothecoidiella illinoisensis	4	0	0	4
+Phaffia sp	1	0	0	1
+Phanerochaete chrysosporium	1	0	0	1
+Phanerochaete citri	2	0	0	2
+Phanerochaete cumulodentata	1	0	0	1
+Phanerochaete jose-ferreirae	6	0	0	6
+Phanerochaete laevis	3	0	0	3
+Phanerochaete livescens	2	0	0	2
+Phanerochaete sordida	3	0	0	3
+Phellinopsis conchata	4	0	0	4
+Phellinus gilvus	7	0	0	7
+Phellinus robiniae	1	0	0	1
+Phellinus viticola	2	0	0	2
+Phialocephala aylmerensis	1	0	0	1
+Phialocephala oblonga	3	0	0	3
+Phialophora livistonae	3	0	0	3
+Phlebia acanthocystis	7	0	0	7
+Phlebia acerina	3	0	0	3
+Phlebia centrifuga	1	0	0	1
+Phlebia coccineofulva	3	0	0	3
+Phlebia queletii	2	0	0	2
+Phlebia radiata	4	0	0	4
+Phlebia sp	2	0	0	2
+Phlebia subochracea	3	0	0	3
+Phlebiopsis gigantea	1	0	0	1
+Phleum pratense	20	0	0	20
+Pholiota adiposa	8	0	0	8
+Pholiota flammans	2	0	0	2
+Pholiota highlandensis	3	0	0	3
+Pholiota pusilla	4	0	0	4
+Pholiota squarrosoides	1	0	0	1
+Phoma sp	2	0	0	2
+Phomatospora biseriata	4	0	0	4
+Phyllosticta paviae	1	0	0	1
+Phyllotopsis nidulans	5	0	0	5
+Phyllozyma linderae	24	0	0	24
+Physalacria maipoensis	1	0	0	1
+Physcia millegrana	46	0	0	46
+Physcia stellaris	30	0	0	30
+Physciella chloantha	5	0	0	5
+Physisporinus vitreus	3	0	0	3
+Physoderma maydis	1	0	0	1
+Phytolacca americana	1	0	0	1
+Piniphoma wesendahlina	7	0	0	7
+Piptoporus betulinus	7	0	0	7
+Piskurozyma sp	1	0	0	1
+Pisum sativum	3	0	0	3
+Plectania melastoma	1	0	0	1
+Plectosphaerella oratosquillae	6	0	0	6
+Plenodomus collinsoniae	3	0	0	3
+Pleomonodictys descalsii	4	0	0	4
+Pleospora sp	6	0	0	6
+Pleurophoma sp	5	0	0	5
+Pleurotus citrinopileatus	2	0	0	2
+Pleurotus ostreatus	2	0	0	2
+Pleurotus pulmonarius	3	0	0	3
+Plicaturopsis crispa	1	0	0	1
+Pluteus atropungens	3	0	0	3
+Pluteus hongoi	6	0	0	6
+Pluteus longistriatus	4	0	0	4
+Pluteus petasatus	4	0	0	4
+Pluteus podospileus	1	0	0	1
+Pluteus sp	2	0	0	2
+Podospora sp	1	0	0	1
+Polyporus varius	5	0	0	5
+Porodisculus pendulus	3	0	0	3
+Porotheleum fimbriatum	3	0	0	3
+Postia caesia	3	0	0	3
+Postia cyanescens	1	0	0	1
+Postia fragilis	4	0	0	4
+Postia stiptica	4	0	0	4
+Powellomyces sp	4	0	0	4
+Praetumpfia obducens	4	0	0	4
+Preussia africana	1	0	0	1
+Preussia isomera	1	0	0	1
+Preussia persica	3	0	0	3
+Protomyces inouyei	8	0	0	7
+Psathyrella candolleana	10	0	0	10
+Psathyrella complutensis	1	0	0	1
+Psathyrella fimiseda	1	0	0	1
+Psathyrella laricina	4	0	0	4
+Psathyrella luteopallida	1	0	0	1
+Psathyrella piluliformis	4	0	0	4
+Psathyrella seymourensis	2	0	0	2
+Psathyrella sp	1	0	0	1
+Psathyrella spintrigeroides	1	0	0	1
+Psathyrella sulcatotuberculosa	2	0	0	2
+Psathyrella typhae	2	0	0	2
+Pseudapiospora corni	1	0	0	1
+Pseudocoleophoma calamagrostidis	1	0	0	1
+Pseudocoleophoma polygonicola	5	0	0	5
+Pseudohalonectria lignicola	2	0	0	2
+Pseudomicrostroma glucosiphilum	3	0	0	3
+Pseudomicrostroma phylloplanum	23	0	0	23
+Pseudoomphalina compressipes	1	0	0	1
+Pseudopithomyces rosae	7	0	0	7
+Pseudorobillarda phragmitis	24	0	0	23
+Pseudosplanchnonema phorcioides	4	0	0	4
+Pseudotrichia mutabilis	1	0	0	1
+Pseudoveronaea obclavata	2	0	0	2
+Pseudozyma hubeiensis	2	0	0	2
+Pseudozyma pruni	3	0	0	3
+Pterula gracilis	1	0	0	1
+Puccinia emaculata	10	0	0	10
+Punctularia strigosozonata	2	0	0	2
+Pyrenochaeta sp	1	0	0	1
+Pyrenochaeta unguis-hominis	4	0	0	4
+Pyrenochaetopsis leptospora	19	0	0	19
+Pyrenochaetopsis pratorum	1	0	0	1
+Pyrenopeziza revincta	6	0	0	6
+Pyrenophora bromi	3	0	0	3
+Pyrenophora tritici-repentis	4	0	0	4
+Pyxidiophora arvernensis	5	0	0	5
+Quambalaria cyanescens	2	0	0	2
+Rachicladosporium cboliae	7	0	0	7
+Radulidium subulatum	6	0	0	6
+Radulodon americanus	1	0	0	1
+Ramichloridium indicum	1	0	0	1
+Ramularia grevilleana	9	0	0	9
+Resinicium bicolor	1	0	0	1
+Resinicium friabile	1	0	0	1
+Resinicium rimulosum	4	0	0	4
+Resupinatus alboniger	5	0	0	5
+Resupinatus applicatus	6	0	0	6
+Resupinatus poriaeformis	1	0	0	1
+Resupinatus rouxii	3	0	0	3
+Resupinatus sp	2	0	0	2
+Resupinatus striatulus	2	0	0	2
+Rhamphoria pyriformis	6	0	0	6
+Rhizochaete americana	1	0	0	1
+Rhizoctonia alpina	1	0	0	1
+Rhizoctonia fusispora	1	0	0	1
+Rhizomarasmius setosus	4	0	0	4
+Rhizophlyctis rosea	5	0	6	5
+Rhizophlyctis sp	1	0	0	0
+Rhizopus arrhizus	5	0	0	5
+Rhizopus microsporus	1	0	0	1
+Rhodonia placenta	2	0	0	2
+Rhodosporidiobolus colostri	5	0	0	5
+Rhodosporidiobolus odoratus	12	0	0	12
+Rhodosporidiobolus ruineniae	1	0	0	1
+Rhodotorula diobovata	3	0	0	3
+Rhodotorula mucilaginosa	12	0	0	12
+Rhodotorula nothofagi	14	0	0	14
+Rhodotorula sp	6	0	0	6
+Rhodotorula taiwanensis	6	0	0	6
+Rhodotus palmatus	1	0	0	1
+Rigidoporus piceicola	7	0	0	7
+Rigidoporus pouzarii	3	0	0	3
+Roussoella solani	1	0	0	1
+Ruinenia sp	1	0	0	1
+Russula puellaris	1	0	0	1
+Saitoella coloradoensis	1	0	0	1
+Saitozyma flava	9	0	0	9
+Saitozyma paraflava	13	0	0	13
+Saitozyma sp	1	0	0	1
+Sampaiozyma ingeniosa	3	0	0	3
+Sarcinomyces crustaceus	3	0	0	3
+Sarcodontia delectans	3	0	0	3
+Sarcodontia pachyodon	2	0	0	2
+Sarcoporia longitubulata	4	0	0	4
+Sarcoporia polyspora	1	0	0	1
+Sarocladium zeae	2	0	0	2
+Schizophyllum commune	11	0	0	11
+Sclerencoelia fraxinicola	1	0	0	1
+Scleroderma polyrhizum	1	0	0	1
+Scleroramularia pomigena	3	0	0	3
+Scopuloides hydnoides	4	0	0	4
+Scopuloides rimosa	2	0	0	2
+Seimatosporium hypericinum	3	0	0	3
+Septoriella hirta	14	0	0	14
+Septoriella poae	7	0	0	7
+Serendipita sp	3	0	0	3
+Serpula himantioides	2	0	0	2
+Setophaeosphaeria badalingensis	9	0	0	9
+Setophoma sp	6	0	0	6
+Setoseptoria arundelensis	1	0	0	1
+Sidera sp	2	0	0	2
+Sigarispora arundinis	3	0	0	3
+Simocybe sumptuosa	3	0	0	3
+Simplicillium lamellicola	5	0	0	5
+Sirobasidium brefeldianum	1	0	0	1
+Sistotrema coronilla	2	0	0	2
+Sistotrema oblongisporum	8	0	0	8
+Sistotrema raduloides	2	0	0	2
+Sistotrema sernanderi	4	0	0	4
+Sistotrema sp	19	0	0	19
+Sistotremastrum guttuliferum	2	0	0	2
+Sistotremastrum niveocremeum	3	0	0	3
+Sistotremastrum sp	3	0	0	3
+Sistotremastrum suecicum	3	0	0	3
+Skeletocutis kuehneri	13	0	0	13
+Skeletocutis odora	1	0	0	1
+Skeletocutis papyracea	1	0	0	1
+Skeletocutis sp	1	0	0	1
+Skvortzovia furfuracea	2	0	0	2
+Skvortzovia pinicola	3	0	0	3
+Spadicoides bina	1	0	0	1
+Spegazzinia tessarthra	5	0	0	5
+Sphacelotheca hydropiperis	2	0	0	2
+Sphaerellopsis filum	5	0	0	5
+Sphagnurus paluster	1	0	0	1
+Spongiochloris spongiosa	1	0	0	1
+Sporidiobolus salmonicolor	1	0	0	1
+Sporisorium graminicola	5	0	0	5
+Sporobolomyces japonicus	1	0	0	1
+Sporobolomyces johnsonii	1	0	0	1
+Sporobolomyces koalae	2	0	0	2
+Sporobolomyces sp	5	0	0	5
+Sporormiella similis	2	0	0	2
+Stagonospora foliicola	8	0	0	8
+Stagonospora neglecta	1	0	0	1
+Stagonosporopsis trachelii	1	0	0	1
+Steccherinum bourdotii	4	0	0	4
+Steccherinum fimbriatum	12	0	0	12
+Steccherinum ochraceum	9	0	0	9
+Steccherinum sp	10	0	0	10
+Steccherinum tenue	2	0	0	2
+Stemphylium beticola	1	0	0	1
+Stemphylium sp	6	0	0	6
+Sterellum rufum	3	0	0	3
+Stereum complicatum	8	0	0	8
+Stereum hirsutum	8	0	0	8
+Stereum ostrea	2	0	0	2
+Stereum sanguinolentum	4	0	0	4
+Sterigmatomyces halophilus	1	0	0	1
+Strelitziana africana	1	0	0	1
+Strelitziana albiziae	5	0	0	5
+Striaticonidium cinctum	2	0	0	2
+Strickeria kochii	2	0	0	2
+Stypella grilletii	1	0	0	1
+Suhomyces vadensis	2	0	0	2
+Suillus americanus	1	0	0	1
+Suillus granulatus	1	0	0	1
+Suillus grevillei	1	0	0	1
+Suillus luteus	1	0	0	1
+Suillus viscidus	1	0	0	1
+Suttonomyces rosae	1	0	0	0
+Symmetrospora coprosmae	6	0	0	6
+Symmetrospora foliicola	1	0	0	1
+Symmetrospora gracilis	5	0	0	5
+Symmetrospora sp	2	0	0	2
+Talaromyces wortmannii	1	0	0	1
+Taphrina caerulescens	7	0	0	7
+Taphrina communis	4	0	0	4
+Taphrina confusa	2	0	0	2
+Taphrina flavorubra	1	0	0	1
+Taphrina inositophila	6	0	0	6
+Taphrina letifera	1	0	0	1
+Taphrina populina	2	0	0	2
+Taphrina robinsoniana	1	0	0	1
+Taphrina sp	4	0	0	4
+Taphrina tormentillae	1	0	0	1
+Tapinella atrotomentosa	1	0	0	1
+Teichospora kingiae	7	0	0	7
+Teichospora quercus	3	0	0	3
+Teichospora sp	1	0	0	1
+Terana coerulea	2	0	0	2
+Tetraplosphaeria sp	1	0	0	1
+Thanatephorus cucumeris	9	0	0	9
+Thecaphora schwarzmaniana	1	0	0	1
+Thermomyces lanuginosus	0	0	4	4
+Therrya fuckelii	5	0	0	5
+Thielavia sp	0	0	1	1
+Tiarosporella dactylis	6	0	0	6
+Tilletia maclaganii	41	0	0	41
+Tilletia puccinelliae	1	0	0	1
+Tilletia sp	5	0	0	5
+Tilletiopsis lilacina	2	0	0	2
+Tilletiopsis washingtonensis	18	0	0	18
+Tomentella sp	3	0	0	3
+Trametes cinnabarina	1	0	0	1
+Trametes cubensis	3	0	0	3
+Trametes trogii	1	0	0	1
+Trametes versicolor	3	0	0	3
+Tranzscheliella hypodytes	1	0	0	1
+Trebouxia arboricola	1	0	0	1
+Trebouxia decolorans	2	0	0	2
+Trebouxia simplex	3	0	0	3
+Trebouxia sp	18	0	0	18
+Trechispora bispora	2	0	0	2
+Trechispora byssinella	1	0	0	1
+Trechispora cyatheae	2	0	0	2
+Trechispora invisitata	1	0	0	1
+Trechispora microspora	1	0	0	1
+Trechispora sp	4	0	0	4
+Trechispora stevensonii	2	0	0	2
+Tremella indecorata	1	0	0	1
+Tremella moriformis	1	0	0	1
+Trichaptum biforme	5	0	0	5
+Trichaptum fuscoviolaceum	1	0	0	1
+Tricharina praecox	1	0	0	1
+Tricholoma batschii	1	0	0	1
+Tricholoma fulvum	1	0	0	1
+Tricholoma populinum	5	0	0	5
+Tricholoma terreum	1	0	0	1
+Tricholomopsis sp	5	0	0	5
+Trichomerium dioscoreae	2	0	0	2
+Trichopeziza mollissima	4	0	0	4
+Trichosporon asahii	4	0	0	4
+Tricladium angustum	12	0	0	12
+Tubaria praestans	6	0	0	6
+Tubaria sp	1	0	0	1
+Tubulicrinis angustus	6	0	0	6
+Tubulicrinis subulatus	3	0	0	3
+Tulostoma sp	1	0	0	1
+Tulostoma striatum	1	0	0	1
+Typhula erythropus	1	0	0	1
+Typhula incarnata	6	0	0	6
+Typhula sp	1	0	0	1
+Typhula spathulata	2	0	0	2
+Typhula variabilis	2	0	0	2
+Tyromyces chioneus	12	0	0	12
+Tyromyces galactinus	2	0	0	2
+Udeniomyces megalosporus	1	0	0	1
+Udeniomyces puniceus	2	0	0	2
+Udeniomyces pyricola	4	0	0	4
+Udeniozyma ferulica	1	0	0	1
+Uncobasidium sp	1	0	0	1
+Unidentified	13567	18466	18428	13603
+Urnula craterium	6	0	0	6
+Urocystis tritici	3	0	0	3
+Ustilaginoidea virens	4	0	0	0
+Ustilago hordei	5	0	0	5
+Ustilago nunavutica	6	0	0	6
+Ustilago scrobiculata	3	0	0	3
+Ustilago sp	4	0	0	4
+Ustilago sporoboli-indici	1	0	0	1
+Ustilentyloma graminis	14	0	0	14
+Uwebraunia dekkeri	6	0	0	6
+Valsa cypri	3	0	0	3
+Vararia gallica	6	0	0	6
+Vararia investiens	2	0	0	2
+Vararia ochroleuca	1	0	0	1
+Vargamyces sp	1	0	0	1
+Veluticeps abietina	1	0	0	1
+Venturia inaequalis	2	0	0	2
+Vermispora fusarina	1	0	0	1
+Vishniacozyma dimennae	26	0	0	26
+Vishniacozyma globispora	27	0	0	27
+Vishniacozyma heimaeyensis	3	0	0	3
+Vishniacozyma sp	27	0	0	27
+Vishniacozyma tephrensis	6	0	0	6
+Vishniacozyma victoriae	7	0	0	7
+Wallemia canadensis	14	0	0	14
+Wallemia ichthyophaga	2	0	0	2
+Wallemia sebi	8	0	0	8
+Wickerhamomyces anomalus	1	0	0	1
+Wrightoporia austrosinensis	1	0	0	1
+Wrightoporia cylindrospora	2	0	0	2
+Xanthoria fallax	1	0	0	1
+Xenasmatella ardosiaca	8	0	0	8
+Xenasmatella vaga	5	0	0	5
+Xenomeris sp	7	0	0	7
+Xenopenidiella sp	2	0	0	2
+Xeromphalina campanelloides	1	0	0	1
+Xylaria cornu-damae	1	0	0	1
+Xylaria persicaria	2	0	0	2
+Xylobolus subpileatus	4	0	0	4
+Xylodon borealis	1	0	0	1
+Xylodon erastii	16	0	0	16
+Xylodon flaviporus	5	0	0	5
+Xylodon nespori	3	0	0	3
+Xylodon radula	36	0	0	31
+Xylodon raduloides	5	0	0	5
+Xylodon rimosissimus	6	0	0	6
+Xylodon sambuci	6	0	0	6
+Xylodon sp	3	0	0	3
+Yurkovia mendeliana	1	0	0	1
+Zygophiala cryptogama	4	0	0	4
+Zygophiala wisconsinensis	3	0	0	3
+Zymoseptoria brevis	1	0	0	1
