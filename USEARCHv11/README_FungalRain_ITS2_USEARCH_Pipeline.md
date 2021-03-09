@@ -1,9 +1,9 @@
-# Here are the raw files from the USEARCHv11 pipeline used to process the raw sequences
+# Raw files from the USEARCHv11 pipeline used to process the raw sequences
 
-### Files made outside of USEARCH 
+## Files made outside of USEARCH 
 
-##### Marshall_petri_exp_plant_data.csv
-###### Metadata for mapping the samples sequenced and processed for analyses 
+### Marshall_petri_exp_plant_data.csv
+Metadata for mapping the samples sequenced and processed for analyses 
 
 + sampleID_bact	- unique identfier for samples
 + sampleID_fung - unique identfier for samples used for labeling the raw sequences
@@ -35,8 +35,8 @@
 + seq_plate_col - column that each sample was on the sequecing plate
 
 
-##### Marshall_petri_exp_plant_data.csv
-###### Data from the plant response of the petri experiment
+### Marshall_petri_exp_plant_data.csv
+Data from the plant response of the petri experiment
 
 + dish - full sample identifier for each sample
 + field_plot - field block from which rain was collected at Marshall Farms
