@@ -163,7 +163,7 @@ Leaf03,Leaf03,Leaf,Sample,3,Plant_1,1.2116,NA,NA,NA,Marshall Leaf Pot 41,7/10/20
 Leaf23,Leaf23,Leaf,Sample,23,Plant_1,5.5502,NA,NA,NA,Marshall Leaf Pot 42,7/10/2018,9/5/2018,Pot_42_43348,0.1433,NA,Marshall,Seedling,B4,B4,Field_rain,42,638811.969,4700754.249,57,2,E,7
 Leaf43,Leaf43,Leaf,Sample,43,Plant_1,1.5215,NA,NA,NA,Marshall Leaf Pot 43,7/10/2018,9/5/2018,Pot_43_43348,0.0908,NA,Marshall,Seedling,B4,B4,Field_rain,43,638811.969,4700754.249,57,2,A,10
 Leaf59,Leaf59,Leaf,Sample,59,Plant_2,1.527,NA,NA,NA,Marshall Leaf Pot 37,7/10/2018,9/5/2018,Pot_37_43348,0.039,NA,Marshall,Seedling,B4,B4,Field_rain,37,638811.969,4700754.249,57,2,A,12
-Leaf07,Leaf07,Leaf,Sample,7,Plant_1,1.67645,NA,NA,NA,Petri S1 B1,8/21/2018,9/18/2018,S1B1_43361,0.0055,NA,Marshall,Petri,B1,B1,Sterile_rain,S1,639046.075,4700603.84,28,2,E,5
+Leaf07,Leaf07,Leaf,Sample,7,Plant_1,1.67645,NA,NA,NA,Petri S1 B4 (erroneously labeled B1),8/21/2018,9/18/2018,S1B4_43361,0.0055,NA,Marshall,Petri,B4,B4,Sterile_rain,S1,638811.969,4700754.249,28,2,E,5
 Leaf22,Leaf22,Leaf,Sample,22,Plant_1,2.4512,NA,NA,NA,Petri S1 B2,8/21/2018,9/18/2018,S1B2_43361,0.0058,NA,Marshall,Petri,B2,B2,Sterile_rain,S1,638976.568,4700616.674,28,2,D,7
 Leaf28,Leaf28,Leaf,Sample,28,Plant_1,1.5215,NA,NA,NA,Petri S2 B2,8/21/2018,9/18/2018,S2B2_43361,0.0025,NA,Marshall,Petri,B2,B2,Sterile_rain,S2,638976.568,4700616.674,28,2,B,8
 Leaf42,Leaf42,Leaf,Sample,42,Plant_1,4.77545,NA,NA,NA,Petri L1 B2,8/21/2018,9/18/2018,L1B2_43361,0.0197,NA,Marshall,Petri,B2,B2,Live_Rain,L1,638976.568,4700616.674,28,2,H,9
