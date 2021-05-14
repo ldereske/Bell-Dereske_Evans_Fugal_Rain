@@ -238,13 +238,6 @@ grep -c "^>" no_phix_USEARCH/ITS2_merged_FungiRainLeaf2019_filtered_one_per.fq
 #70682
 ```
 
-### Now let's remove the primers from the entire fastq dataset
-```
-/mnt/research/rdp/public/thirdParty/usearch11.0.667_i86linux64 -fastx_trim_primer no_phix_USEARCH/TS2_merged_FungiRainLeaf2019_filtered.fq -db JGI_ITS2_primers.fa -strand both  -maxdiffs 5 -width 21 -fastqout no_phix_USEARCH/ITS2_merged_FungiRainLeaf2019_phix_primer_filtered.fq
-#Segmentation fault1% Processing
-#I am going to remove the primers from the quality filtered dataset since I am getting this weird error
-```
-
 Before we continue, you may want to check if the sample names are formatted correctly. USEARCH does some funny cutting during the merging step. Any hyphens or underscores can be problematic and you need to remove these (use sed command and merged_cut files)
 
 Additionally, this is a good opportunity to double check that all of your samples merged and have unique IDs using [fastx_get_sample_names](https://www.drive5.com/usearch/manual/cmd_fastx_get_sample_names.html)
@@ -254,180 +247,7 @@ Additionally, this is a good opportunity to double check that all of your sample
 #00:27 38Mb    100.0% 200 samples found
 ```
 
-## 4) Filtering and Truncate the merged seqs  to MaxEE and set length using [fastq_filter](https://www.drive5.com/usearch/manual/cmd_fastq_filter.html)
 
-#### 300 bp is within the expected amplification length and >92% of sequences meet this length cut off
-```
-/mnt/research/rdp/public/thirdParty/usearch11.0.667_i86linux64 -fastq_filter no_phix_USEARCH/TS2_merged_FungiRainLeaf2019_filtered.fq -fastq_maxee 1 -fastq_minlen 300 -fastaout ITS2_merged_FungiRainLeaf2019_phix_filtered.fa
-```
-```
-01:22 628Mb   100.0% Filtering, 90.4% passed
-   7068269  Reads (7.1M)
-    467289  Discarded reads with expected errs > 1.00
-   6390168  Filtered reads (6.4M, 90.4%)
-```
-Now let's try to remove the primers and all reads that lack the primer squence as a final filtering step
-```
-/mnt/research/rdp/public/thirdParty/usearch11.0.667_i86linux64 -fastx_trim_primer ITS2_merged_FungiRainLeaf2019_phix_filtered.fa -db JGI_ITS2_primers.fa -strand both  -maxdiffs 5 -width 21 -fastaout ITS2_merged_FungiRainLeaf2019_phix_primer_filtered.fa -tabbedout ITS2_merged_FungiRainLeaf2019_phix_filtered_primer_remove.txt
-
-grep -c "^>" ITS2_merged_FungiRainLeaf2019_phix_primer_filtered.fa
-#6387736
-```
-
-
-## 5) Filter so we only have unique sequences with [fastx_uniques](https://www.drive5.com/usearch/manual/cmd_fastx_uniques.html)
-```
-/mnt/research/rdp/public/thirdParty/usearch11.0.667_i86linux64 -fastx_uniques ITS2_merged_FungiRainLeaf2019_phix_primer_filtered.fa  -fastaout uniques_ITS2_merged_FungiRainLeaf2019_phix_primer_filtered.fa -sizeout
-```
-```
-00:27 4.7Gb  6387736 seqs, 1381928 uniques, 965363 singletons (69.9%)
-00:27 4.7Gb  Min size 1, median 1, max 95096, avg 4.62
-00:46 4.1Gb   100.0% Writing uniques_ITS2_merged_FungiRainLeaf2019_phix_primer_filtered.fa
-```
-As an additional qualitity check [fastx_learn](https://www.drive5.com/usearch/manual/cmd_fastx_learn.html) command checks the observed error rate
-```
-/mnt/research/rdp/public/thirdParty/usearch11.0.667_i86linux64 -fastx_learn uniques_ITS2_merged_FungiRainLeaf2019_phix_primer_filtered.fa -output uniques_ITS2_merged_FungiRainLeaf2019_phix_primer_filtered_learn_qual.txt
-
-```
-```
-00:05 666Mb   100.0% Reading uniques_ITS2_merged_FungiRainLeaf2019_phix_primer_filtered.fa
-08:11 1.8Gb   100.0% Training
-08:12 1.8Gb   100.0% Build tree
-
-WARNING: Not enough data to train
-```
-## 6) Cluster into OTUS and filter out singletons
-There are two options here. **(A)** uses the traditional approach and clusters sequences into 0.97 identity cutoff OTUs. **(B)** uses unoise3 to identify ZOTUs.
-
-### 6A) Cluster into 0.97 OTUs using UPARSE and [cluster_otus](https://www.drive5.com/usearch/manual/cmd_cluster_otus.html)
-This step will also denovo chimera check and filter out singletons. You can remove single sequences prior to clustering but singletons are also removed at the OTU clustering step (defaults cluster_otus filters out OTUs <2 and unoise3 filters ZOTUs <8)
-### 6B) Identify ZOTUs using [unoise3](https://www.drive5.com/usearch/manual/cmd_unoise3.html)
-This step will also denovo chimera check and filter out low abundance ZOTUs. IMPORTANT: ZOTUs with less than 3 reads will be filtered out (i.e. -minsize 3) default setting filters out ZOTUs less than 8 reads
-Let's use the SLURM job submission
-
-```
-nano cluster_FungiRainLeaf2019_Z.OTU.sbatch
-
-#!/bin/bash --login
-########## SBATCH Lines for Resource Request ##########
- 
-#SBATCH --time=3:30:00             # limit of wall clock time - how long the job will run (same as -t)
-#SBATCH --nodes=1-2                # number of different nodes - could be an exact number or a range of nodes (same as -N)
-#SBATCH --ntasks=2                  # number of tasks - how many tasks (nodes) that you require (same as -n)
-#SBATCH --cpus-per-task=5           # number of CPUs (or cores) per task (same as -c)
-#SBATCH --mem-per-cpu=20G            # memory required per allocated CPU (or core) - amount of memory (in bytes)
-#SBATCH --job-name   cluster_FungiRainLeaf2019_Z.OTU  # you can give your job a name for easier identification (same as -J)
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=belldere@msu.edu
-
-cd /mnt/research/EvansLab/Lukas/ITS2_FungiRainLeaf2019/mergedfastq_FungiRainLeaf2019
-
-/mnt/research/rdp/public/thirdParty/usearch11.0.667_i86linux64 -cluster_otus uniques_ITS2_merged_FungiRainLeaf2019_phix_primer_filtered.fa -otus rep_set_ITS2_FungiRainLeaf2019_otus.fa -uparseout ITS2_FungiRainLeaf2019_otus_uparse.txt -relabel OTU
-
-/mnt/research/rdp/public/thirdParty/usearch11.0.667_i86linux64 -unoise3 uniques_ITS2_merged_FungiRainLeaf2019_phix_primer_filtered.fa -zotus rep_set_ITS2_FungiRainLeaf2019_zotus.fa  -tabbedout ITS2_FungiRainLeaf2019_otus_zotus_report.txt -minsize 3 
-
-###end of .sbatch
-
-sbatch cluster_FungiRainLeaf2019_Z.OTU.sbatch
-#Submitted batch job 52693738
-```
-```
-#OTU clustering results
-03:31 78Mb    100.0% 6267 OTUs, 2990 chimeras
-
-#ZOTU denoise and filtering results
-01:10:11 962Mb   100.0% 20649 good, 1731 chimeras
-01:10:11 962Mb     0.0% Writing zotus            
-01:10:11 962Mb   100.0% Writing zotus
-```
-## 7) Map reads back to OTUs at a 97% similarity score using [otutab](https://www.drive5.com/usearch/manual/cmd_otutab.html)
-**-id 0.97 -strand plus are defaults**
-### 7A) Mapping reads to traditional 0.97 OTUS
-### 7B) Mapping reads to ZOTUs
-
-```
-nano mapping_FungiRainLeaf2019_Z.OTU.sbatch
-
-#!/bin/bash --login
-########## SBATCH Lines for Resource Request ##########
- 
-#SBATCH --time=20:00:00             # limit of wall clock time - how long the job will run (same as -t)
-#SBATCH --nodes=1-2                # number of different nodes - could be an exact number or a range of nodes (same as -N)
-#SBATCH --ntasks=2                  # number of tasks - how many tasks (nodes) that you require (same as -n)
-#SBATCH --cpus-per-task=5           # number of CPUs (or cores) per task (same as -c)
-#SBATCH --mem-per-cpu=20G            # memory required per allocated CPU (or core) - amount of memory (in bytes)
-#SBATCH --job-name   mapping_FungiRainLeaf2019_Z.OTU  # you can give your job a name for easier identification (same as -J)
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=belldere@msu.edu
-
-cd /mnt/research/EvansLab/Lukas/ITS2_FungiRainLeaf2019/mergedfastq_FungiRainLeaf2019
-
-#OTU
-/mnt/research/rdp/public/thirdParty/usearch11.0.667_i86linux64 -otutab ITS2_merged_FungiRainLeaf2019.fastq -otus rep_set_ITS2_FungiRainLeaf2019_otus.fa -uc ITS2_FungiRainLeaf2019_OTU_map.uc -otutabout OTU_table_ITS2_FungiRainLeaf2019.txt -biomout OTU_tableITS2_FungiRainLeaf2019_jsn.biom -notmatchedfq ITS2_merged_FungiRainLeaf2019_otu_unmapped.fq
-
-#ZOTU
-/mnt/research/rdp/public/thirdParty/usearch11.0.667_i86linux64 -otutab ITS2_merged_FungiRainLeaf2019.fastq -zotus rep_set_ITS2_FungiRainLeaf2019_zotus.fa -uc ITS2_FungiRainLeaf2019_ZOTU_map.uc -otutabout ZOTU_table_ITS2_FungiRainLeaf2019.txt -biomout ZOTU_table_ITS2_FungiRainLeaf2019_jsn.biom -notmatchedfq ITS2_merged_FungiRainLeaf2019_ZOTU_unmapped.fq
-###end of .sbatch
-
-sbatch mapping_FungiRainLeaf2019_Z.OTU.sbatch
-#Submitted batch job 52697161
-```
-```
-#OTU mapping
-6814368 / 7068346 mapped to OTUs (96.4%)        
-02:20:36 691Mb  Writing OTU_table_ITS2_FungiRainLeaf2019.txt
-02:20:36 691Mb  Writing OTU_table_ITS2_FungiRainLeaf2019.txt ...done.
-02:20:37 691Mb  Writing OTU_tableITS2_FungiRainLeaf2019_jsn.biom
-02:20:37 691Mb  Writing OTU_tableITS2_FungiRainLeaf2019_jsn.biom ...done.
-
-#ZOTU mapping
-6824215 / 7068346 mapped to OTUs (96.5%)        
-01:23:09 725Mb  Writing ZOTU_table_ITS2_FungiRainLeaf2019.txt
-01:23:09 725Mb  Writing ZOTU_table_ITS2_FungiRainLeaf2019.txt ...done.
-01:23:10 725Mb  Writing ZOTU_table_ITS2_FungiRainLeaf2019_jsn.biom
-01:23:10 725Mb  Writing ZOTU_table_ITS2_FungiRainLeaf2019_jsn.biom ...done.
-```
-
-## 8) Classifying taxa against the reference database using [sintax](https://www.drive5.com/usearch/manual/cmd_sintax.html)
-Currently used database is [silva version 123](https://www.drive5.com/usearch/manual/sintax_downloads.html).
-
-### 8A) Classifying the traditional 0.97 OTUs
-### 8B) Classifying the ZOTUs
-
-```
-nano taxa_class_FungiRainLeaf2019_Z.OTU.sbatch
-
-#!/bin/bash --login
-########## SBATCH Lines for Resource Request ##########
- 
-#SBATCH --time=3:30:00             # limit of wall clock time - how long the job will run (same as -t)
-#SBATCH --nodes=1-2                # number of different nodes - could be an exact number or a range of nodes (same as -N)
-#SBATCH --ntasks=2                  # number of tasks - how many tasks (nodes) that you require (same as -n)
-#SBATCH --cpus-per-task=5           # number of CPUs (or cores) per task (same as -c)
-#SBATCH --mem-per-cpu=20G            # memory required per allocated CPU (or core) - amount of memory (in bytes)
-#SBATCH --job-name   taxa_class_FungiRainLeaf2019_Z.OTU  # you can give your job a name for easier identification (same as -J)
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=belldere@msu.edu
-cd /mnt/research/EvansLab/Lukas/ITS2_FungiRainLeaf2019/mergedfastq_FungiRainLeaf2019
-/mnt/research/rdp/public/thirdParty/usearch11.0.667_i86linux64 -sintax rep_set_ITS2_FungiRainLeaf2019_otus.fa -db /mnt/research/EvansLab/Databases/UNITE_8.0/utax_reference_dataset_all_02.02.2019_fixed.udb -tabbedout taxonomy_ITS2_FungiRainLeaf2019_otus.sintax -strand both
-
-/mnt/research/rdp/public/thirdParty/usearch11.0.667_i86linux64 -sintax rep_set_ITS2_FungiRainLeaf2019_zotus.fa -db /mnt/research/EvansLab/Databases/UNITE_8.0/utax_reference_dataset_all_02.02.2019_fixed.udb -tabbedout taxonomy_ITS2_FungiRainLeaf2019_zotus.sintax -strand both
-
-###end of .sbatch
-
-sbatch taxa_class_FungiRainLeaf2019_Z.OTU.sbatch
-#Submitted batch job 52762411
-```
-```
-#OTU Classifying
-01:23 1.1Gb   100.0% Processing
-
-#ZOTU Classifying
-04:39 1.1Gb   100.0% Processing
-```
-
-
-#I need to run the abive analyses with no min length 
 
 ## 4) Filtering and Truncate the merged seqs  to MaxEE and set length using [fastq_filter](https://www.drive5.com/usearch/manual/cmd_fastq_filter.html)
 
@@ -442,7 +262,7 @@ sbatch taxa_class_FungiRainLeaf2019_Z.OTU.sbatch
    6600405  Filtered reads (6.6M, 93.4%)
 
 ```
-Now let's try to remove the primers and all reads that lack the primer squence as a final filtering step
+#### Now let's try to remove the primers and all reads that lack the primer squence as a final filtering step
 ```
 /mnt/research/rdp/public/thirdParty/usearch11.0.667_i86linux64 -fastx_trim_primer ITS2_merged_FungiRainLeaf2019_phix_filtered_full.fa -db JGI_ITS2_primers.fa -strand both  -maxdiffs 2 -width 21 -fastaout ITS2_merged_FungiRainLeaf2019_phix_primer_filtered_full.fa -tabbedout ITS2_merged_FungiRainLeaf2019_phix_filtered_primer_full_remove.txt
 #00:00 44Mb    100.0% Reading JGI_ITS2_primers.fa
@@ -451,7 +271,7 @@ Now let's try to remove the primers and all reads that lack the primer squence a
 grep -c "^>" ITS2_merged_FungiRainLeaf2019_phix_primer_filtered_full.fa
 #6588968
 ```
-Now I want to truncate the sequences to 350 bp
+#### Now I want to truncate the sequences to 350 bp
 
 ```
 
@@ -570,43 +390,9 @@ sbatch mapping_FungiRainLeaf2019_Z.OTU_full.sbatch
 ## 8) Classifying taxa against the reference database using [sintax](https://www.drive5.com/usearch/manual/cmd_sintax.html)
 
 
-### 8A) Classifying the traditional 0.97 OTUs
-### 8B) Classifying the ZOTUs
+### 8A) Classifying the traditional 0.97 OTUs against UNITE8.2 v04.02.2020
+### 8B) Classifying the ZOTUs against UNITE8.2 v04.02.2020
 
-```
-nano taxa_class_FungiRainLeaf2019_Z.OTU_full.sbatch
-
-#!/bin/bash --login
-########## SBATCH Lines for Resource Request ##########
- 
-#SBATCH --time=3:30:00             # limit of wall clock time - how long the job will run (same as -t)
-#SBATCH --nodes=1-2                # number of different nodes - could be an exact number or a range of nodes (same as -N)
-#SBATCH --ntasks=2                  # number of tasks - how many tasks (nodes) that you require (same as -n)
-#SBATCH --cpus-per-task=5           # number of CPUs (or cores) per task (same as -c)
-#SBATCH --mem-per-cpu=20G            # memory required per allocated CPU (or core) - amount of memory (in bytes)
-#SBATCH --job-name   taxa_class_FungiRainLeaf2019_Z.OTU  # you can give your job a name for easier identification (same as -J)
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=belldere@msu.edu
-cd /mnt/research/EvansLab/Lukas/ITS2_FungiRainLeaf2019/mergedfastq_FungiRainLeaf2019
-/mnt/research/rdp/public/thirdParty/usearch11.0.667_i86linux64 -sintax rep_set_ITS2_full_FungiRainLeaf2019_otus.fa -db /mnt/research/EvansLab/Databases/UNITE_8.0/utax_reference_dataset_all_02.02.2019_fixed.udb -tabbedout taxonomy_ITS2_full_FungiRainLeaf2019_otus.sintax -strand both
-
-/mnt/research/rdp/public/thirdParty/usearch11.0.667_i86linux64 -sintax rep_set_ITS2_full_FungiRainLeaf2019_zotus.fa -db /mnt/research/EvansLab/Databases/UNITE_8.0/utax_reference_dataset_all_02.02.2019_fixed.udb -tabbedout taxonomy_ITS2_full_FungiRainLeaf2019_zotus.sintax -strand both
-
-###end of .sbatch
-
-sbatch taxa_class_FungiRainLeaf2019_Z.OTU_full.sbatch
-#Submitted batch job 60227868
-#Submitted batch job 60229018 typo correction
-```
-```
-#OTU Classifying
-01:23 1.1Gb   100.0% Processing
-
-#ZOTU Classifying
-06:43 800Mb   100.0% Processing
-
-```
-### 8B) Re-Classifying the ZOTUs with UNITE8.2 v04.02.2020
 
 ```
 cd /mnt/research/EvansLab/Lukas/ITS2_FungiRainLeaf2019/mergedfastq_FungiRainLeaf2019
@@ -618,197 +404,8 @@ cd /mnt/research/EvansLab/Lukas/ITS2_FungiRainLeaf2019/mergedfastq_FungiRainLeaf
 ```
 
 
-### 9a) Classifiying the taxa with the [CONSTAX](https://github.com/Gian77/CONSTAX) against the eukaryote UNITe 8.2
 
-
-
-```
-I am running into a problem with the EvansLab being out of space so I am going to put these results in my home directory
-
-cd /mnt/home/belldere
-mkdir ITS2_FungiRainLeaf2019
-cd ITS2_FungiRainLeaf2019
-nano CONSTAX_class_FungiRainLeaf2019_ZOTU_full.sbatch
-
-#!/bin/bash --login
-
-#SBATCH --time=3:00:00             # limit of wall clock time - how long the job will run (same as -t)
-#SBATCH --ntasks=1                 # number of tasks - how many tasks (nodes) that you require (same as -n)
-#SBATCH --cpus-per-task=1          # number of CPUs (or cores) per task (same as -c)
-#SBATCH --mem=32G                  # memory required per node - amount of memory (in bytes)
-#SBATCH --job-name costax          # you can give your job a name for easier identification (same as -J)
-#SBATCH --output=%x-%j.SLURMout
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=belldere@msu.edu
-
-cd /mnt/home/belldere/ITS2_FungiRainLeaf2019
-sh /opt/software/CONSTAX/2/constax.sh --input /mnt/research/EvansLab/Lukas/ITS2_FungiRainLeaf2019/mergedfastq_FungiRainLeaf2019/rep_set_ITS2_full_FungiRainLeaf2019_zotus.fa --db /mnt/home/belldere/Databases/UNITe8.2/sh_general_release_04.02.2020/sh_general_release_dynamic_04.02.2020.fasta --train --trainfile /mnt/home/belldere/Databases/UNITe8.2/sh_general_release_04.02.2020/CONSTAX_all_02.02.2019_training_files/ --tax ZOTU_constax_classification/ --conf 0.8
-
-scontrol show job $SLURM_JOB_ID     ### write job information to output file
-####
-
-sbatch CONSTAX_class_FungiRainLeaf2019_ZOTU_full.sbatch
-#Submitted batch job 64070849
-```
-Failed for RDP
-
-### 9b) Classifiying the taxa with the [CONSTAX](https://github.com/Gian77/CONSTAX) against the fungal only UNITe 8.2
-```
-I am running into a problem with the EvansLab being out of space so I am going to put these results in my home directory
-
-cd /mnt/home/belldere/ITS2_FungiRainLeaf2019
-
-nano CONSTAX_fung_class_FungiRainLeaf2019_ZOTU_full.sbatch
-
-#!/bin/bash --login
-
-#SBATCH --time=3:00:00             # limit of wall clock time - how long the job will run (same as -t)
-#SBATCH --ntasks=1                 # number of tasks - how many tasks (nodes) that you require (same as -n)
-#SBATCH --cpus-per-task=1          # number of CPUs (or cores) per task (same as -c)
-#SBATCH --mem=32G                  # memory required per node - amount of memory (in bytes)
-#SBATCH --job-name costax          # you can give your job a name for easier identification (same as -J)
-#SBATCH --output=%x-%j.SLURMout
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=belldere@msu.edu
-
-cd /mnt/home/belldere/ITS2_FungiRainLeaf2019
-sh /opt/software/CONSTAX/2/constax.sh --input /mnt/research/EvansLab/Lukas/ITS2_FungiRainLeaf2019/mergedfastq_FungiRainLeaf2019/rep_set_ITS2_full_FungiRainLeaf2019_zotus.fa --db /mnt/home/belldere/Databases/UNITe8.2/sh_general_release_s_04.02.2020/sh_general_release_dynamic_s_04.02.2020.fasta --train --trainfile /mnt/home/belldere/Databases/UNITe8.2/sh_general_release_s_04.02.2020/CONSTAX_all_04.02.2020_training_files/ --tax ZOTU_constax_classification/ --conf 0.8
-
-scontrol show job $SLURM_JOB_ID     ### write job information to output file
-####
-
-sbatch CONSTAX_fung_class_FungiRainLeaf2019_ZOTU_full.sbatch
-#Submitted batch job 64141901
-```
-
-Failed for RDP
-
-
-### 9c) Classifiying the taxa with the [CONSTAX](https://github.com/Gian77/CONSTAXv2) against the eukaryote UNITe 8.2
-```
-
-cd /mnt/home/belldere/ITS2_FungiRainLeaf2019
-
-nano CONSTAX_all_class_FungiRainLeaf2019_ZOTU_full.sbatch
-
-#!/bin/bash --login
-
-#SBATCH --time=3:00:00             # limit of wall clock time - how long the job will run (same as -t)
-#SBATCH --ntasks=1                 # number of tasks - how many tasks (nodes) that you require (same as -n)
-#SBATCH --cpus-per-task=1          # number of CPUs (or cores) per task (same as -c)
-#SBATCH --mem=32G                  # memory required per node - amount of memory (in bytes)
-#SBATCH --job-name costax_All_v4.2.2020_T         # you can give your job a name for easier identification (same as -J)
-#SBATCH --output=%x-%j.SLURMout
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=belldere@msu.edu
-
-cd /mnt/home/belldere/ITS2_FungiRainLeaf2019
-sh /opt/software/CONSTAX/2/constax.sh --input /mnt/research/EvansLab/Lukas/ITS2_FungiRainLeaf2019/mergedfastq_FungiRainLeaf2019/rep_set_ITS2_full_FungiRainLeaf2019_zotus.fa --db /mnt/ufs18/home-087/belldere/Databases/UNITe8.2/sh_general_release_all_04.02.2020/sh_general_release_dynamic_all_04.02.2020.fasta --train --trainfile /mnt/home/belldere/Databases/UNITe8.2/sh_general_release_all_04.02.2020/CONSTAX_training_files/ --tax ZOTU_constax_classification_all_v4.2.2020_taxa/ -o ZOTU_constax_classification_all_v4.2.2020_taxa/ --conf 0.8 
-
-scontrol show job $SLURM_JOB_ID     ### write job information to output file
-####
-
-sbatch CONSTAX_all_class_FungiRainLeaf2019_ZOTU_full.sbatch
-
-#Submitted batch job 6362648
-#RDP failed due to formating
-```
-
-
-### 9d) Classifiying the taxa with the native install [CONSTAX](https://github.com/Gian77/CONSTAXv2) against the eukaryote UNITe 8.2
-```
-
-cd /mnt/home/belldere/ITS2_FungiRainLeaf2019
-
-nano CONSTAX_v2_all_class_FungiRainLeaf2019_ZOTU_full.sbatch
-
-#!/bin/bash --login
-
-#SBATCH --time=3:00:00             # limit of wall clock time - how long the job will run (same as -t)
-#SBATCH --ntasks=1                 # number of tasks - how many tasks (nodes) that you require (same as -n)
-#SBATCH --cpus-per-task=1          # number of CPUs (or cores) per task (same as -c)
-#SBATCH --mem=32G                  # memory required per node - amount of memory (in bytes)
-#SBATCH --job-name costax_v2_All_v4.2.2020_T         # you can give your job a name for easier identification (same as -J)
-#SBATCH --output=%x-%j.SLURMout
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=belldere@msu.edu
-
-cd /mnt/home/belldere/ITS2_FungiRainLeaf2019
-/mnt/home/belldere/Programs/constax.sh --input /mnt/research/EvansLab/Lukas/ITS2_FungiRainLeaf2019/mergedfastq_FungiRainLeaf2019/rep_set_ITS2_full_FungiRainLeaf2019_zotus.fasta --db /mnt/ufs18/home-087/belldere/Databases/UNITe8.2/sh_general_release_all_04.02.2020/sh_general_release_dynamic_all_04.02.2020.fasta --train --trainfile /mnt/home/belldere/Databases/UNITe8.2/sh_general_release_all_04.02.2020/CONSTAX_v2_training_files/ --tax ZOTU_constax_V2_classification_all_v4.2.2020_taxa/ -o ZOTU_constax_V2_classification_all_v4.2.2020_taxa/ --conf 0.8 --msu_hpcc -b
-
-scontrol show job $SLURM_JOB_ID     ### write job information to output file
-####
-
-sbatch CONSTAX_v2_all_class_FungiRainLeaf2019_ZOTU_full.sbatch
-
-#Submitted batch job 6364321
-
-
-### 9d) Classifiying the taxa with the native install and no Bonito lab paths [CONSTAX](https://github.com/Gian77/CONSTAXv2) against the eukaryote UNITe 8.2
-```
-
-cd /mnt/home/belldere/ITS2_FungiRainLeaf2019
-
-nano CONSTAX_v2_nav_all_class_FungiRainLeaf2019_ZOTU_full.sbatch
-
-#!/bin/bash --login
-
-#SBATCH --time=12:00:00             # limit of wall clock time - how long the job will run (same as -t)
-#SBATCH --ntasks=1                 # number of tasks - how many tasks (nodes) that you require (same as -n)
-#SBATCH --cpus-per-task=1          # number of CPUs (or cores) per task (same as -c)
-#SBATCH --mem=32G                  # memory required per node - amount of memory (in bytes)
-#SBATCH --job-name costax_v2_nav_All_v4.2.2020_T         # you can give your job a name for easier identification (same as -J)
-#SBATCH --output=%x-%j.SLURMout
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=belldere@msu.edu
-
-cd /mnt/home/belldere/ITS2_FungiRainLeaf2019
-export PATH=$PATH:$HOME/anaconda3/bin
-source activate CONSTAXv2
-/mnt/home/belldere/Programs/CONSTAX/CONSTAXv2/constax.sh --input /mnt/research/EvansLab/Lukas/ITS2_FungiRainLeaf2019/mergedfastq_FungiRainLeaf2019/rep_set_ITS2_full_FungiRainLeaf2019_zotus.fasta --db /mnt/ufs18/home-087/belldere/Databases/UNITe8.2/sh_general_release_all_04.02.2020/sh_general_release_dynamic_all_04.02.2020_fix.fasta --train --trainfile /mnt/home/belldere/Databases/UNITe8.2/sh_general_release_all_04.02.2020/CONSTAX_v2_Nav_training_files/ --tax ZOTU_constax_V2_Nav_classification_all_v4.2.2020_taxa/ -o ZOTU_constax_V2_Nav_classification_all_v4.2.2020_taxa/ --conf 0.8 -b --pathfile /mnt/home/belldere/Programs/CONSTAX/CONSTAXv2/pathfile.txt 
-
-scontrol show job $SLURM_JOB_ID     ### write job information to output file
-####
-
-sbatch CONSTAX_v2_nav_all_class_FungiRainLeaf2019_ZOTU_full.sbatch
-
-#Submitted batch job 6481934
-```
-
-
-
-### 9d) Classifiying the taxa with the native install and no Bonito lab paths [CONSTAX](https://github.com/Gian77/CONSTAXv2) against the Fungal UNITe 8.2 formated by Julian 
-```
-
-cd /mnt/home/belldere/ITS2_FungiRainLeaf2019
-
-nano CONSTAX_v2_nav_Julian_fungi_FungiRainLeaf2019_ZOTU_full.sbatch
-
-#!/bin/bash --login
-
-#SBATCH --time=12:00:00             # limit of wall clock time - how long the job will run (same as -t)
-#SBATCH --ntasks=1                 # number of tasks - how many tasks (nodes) that you require (same as -n)
-#SBATCH --cpus-per-task=1          # number of CPUs (or cores) per task (same as -c)
-#SBATCH --mem=32G                  # memory required per node - amount of memory (in bytes)
-#SBATCH --job-name costax_v2_Julian_fungi_v4.2.2020_T         # you can give your job a name for easier identification (same as -J)
-#SBATCH --output=%x-%j.SLURMout
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=belldere@msu.edu
-
-cd /mnt/home/belldere/ITS2_FungiRainLeaf2019
-export PATH=$PATH:$HOME/anaconda3/bin
-source activate CONSTAXv2
-/mnt/home/belldere/Programs/CONSTAX/CONSTAXv2/constax.sh --input /mnt/research/EvansLab/Lukas/ITS2_FungiRainLeaf2019/mergedfastq_FungiRainLeaf2019/rep_set_ITS2_full_FungiRainLeaf2019_zotus.fasta --db /mnt/ufs18/home-087/belldere/Databases/UNITE_Fungi_tf/sh_general_release_fungi_35077_RepS_04.02.2020.fasta --trainfile /mnt/ufs18/home-087/belldere/Databases/UNITE_Fungi_tf/ --tax ZOTU_constax_V2_Julian_fungi_classification_v4.2.2020_taxa/ -o ZOTU_constax_V2_Julian_fungi_classification_v4.2.2020_taxa/ --conf 0.8 -b --pathfile /mnt/home/belldere/Programs/CONSTAX/CONSTAXv2/pathfile_US_10.txt
-
-scontrol show job $SLURM_JOB_ID     ### write job information to output file
-####
-
-sbatch CONSTAX_v2_nav_Julian_fungi_FungiRainLeaf2019_ZOTU_full.sbatch
-
-#Submitted batch job 6533636
-```
-
-### 9d) Classifiying the taxa with the native install and no Bonito lab paths and the utax_reference_dataset_all_04.02.2020_fix.udb [CONSTAX](https://github.com/Gian77/CONSTAXv2) against the eukaryote UNITe 8.2
+### 9) Classifying the taxa with the native install and no Bonito lab paths and the utax_reference_dataset_all_04.02.2020_fix.udb [CONSTAX](https://github.com/Gian77/CONSTAXv2) against the eukaryote UNITe 8.2
 ```
 
 cd /mnt/home/belldere/ITS2_FungiRainLeaf2019
@@ -837,3 +434,4 @@ scontrol show job $SLURM_JOB_ID     ### write job information to output file
 sbatch CONSTAX_v2_sintax_fix_all_class_FungiRainLeaf2019_ZOTU_full.sbatch
 
 #Submitted batch job 6657328
+```
