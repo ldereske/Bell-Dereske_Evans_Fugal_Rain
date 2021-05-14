@@ -4,10 +4,10 @@
 File describing the functional role of each published leaf fungal endophyte.
 
 + target - the NCBI classification of each published OTU
-+ Study - study in which OTU was charaterized and published (see below for citation) 
++ Study - study in which OTU was characterized and published (see below for citation) 
 + Taxa - low classification of OTU from study
 + Result - description of results on characterization of OTU
-+ Group - simplified groupin of each OTU based of published results
++ Group - simplified grouping of each OTU based of published results
 + Interaction - combined interaction group limited to Mutualist, Pathogen, Context Mutualist, and Unknown
 
 ##### Sequences and functional roles are based off of 
@@ -25,12 +25,6 @@ Representative sequence of OTUs used in analyses for the manuscript
 ### Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData
 Phyloseq object with the rarified OTU table, mapping data, and Taxonmy used for the analyses. 
 
-### Mar_leaf.fung_v4.2.2020_decon_pr_petr_S_nan.rar_phyloseq_obj.RData
-Phyloseq object with the rarified OTU table, mapping data, and Taxonmy subsetted to only include data for the petri experiment. Generated in the "Petri community analyses No Nano" portion of the code
-
-
-### Mar_leaf_rain.fung_v4.2.2020_decon_rar_Mar_field_phyloseq_obj.RData
-Phyloseq object with the rarified OTU table, mapping data, and Taxonmy subsetted to only include data for the field experiment. Generated in the "Field experiment analyses" portion of the code
 
 ### Treatments_Mar_leaf.fung_decon_pr_petr_S_nan.rar_map.csv
 Treatments file created for the PERMANOVA analyses the petri experiment in Primer v6
@@ -44,7 +38,6 @@ Jaccard distance matrix created for the PERMANOVA analyses the petri experiment 
 ### Mar_leaf_rain.fung_decon_rar_Mar_field_map.csv
 Treatments file created for the PERMANOVA analyses the field experiment in Primer v6
 
-
 ### Bray_Mar_leaf_rain.fung_decon_rar_Mar_field_dis.csv
 Bray-Curtis distance matrix created for the PERMANOVA analyses the petri experiment in Primer v6
 
@@ -54,9 +47,14 @@ Jaccard distance matrix created for the PERMANOVA analyses the field experiment 
 Pairwise_turnover_Jaccard_fung_v4.2.2020_decon_pruned_ZOTU_full_rar_Marshall.csv
 Pairwise_turnover_grad_distance_fung_v4.2.2020_decon_pruned_ZOTU_full_rar_Marshall.csv
 
+### IndVal_Petri_rain_seed_comb_taxa_class.csv
+Indicator values for all ASVs in the petri experiment based off fidelity and specificity of taxa to seed endophytes or rain fungi.
+
+### IndVal_Field_rain_seed_comb_taxa_class.csv
+Indicator values for all ASVs in the field experiment based off fidelity and specificity of taxa to seed endophytes or rain fungi.
 
 ## Outputs from the comparison of OTUs to previously published OTUs
-Code run for the matching of OTUs
+Code run for the matching of ASVs to OTUs from switchgrass leaf fungal endophytes
 
 ```
 
@@ -78,6 +76,9 @@ Representative sequence of OTUs that matched the published sequences
 
 
 ## Outputs from the classification of OTUs to [FunGuild](https://github.com/UMNFuN/FUNGuild) accessed March 2021
+
+These files are included as reference but not used in the analyses for this paper.
+
 ### FunRainLeaf2019_ZOTU_CONSTAXv4.2.2020_ZOTU_for_FunGuild.csv
 OTU Taxonomy formated for the FunGuilf classificaiton. See "FUNGuild CONSTAX Dataset creation" section of R code
 
