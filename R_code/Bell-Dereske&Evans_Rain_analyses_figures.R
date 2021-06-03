@@ -3,6 +3,8 @@
 
 
 #####Libraries required####
+here::i_am("R_code/Bell-Dereske&Evans_Rain_analyses_figures.R")
+library(here)
 library("phyloseq")
 library("ggplot2")
 library("vegan")
@@ -29,7 +31,7 @@ pa=function(x)(ifelse(x>0,1,0))
 
 
 #####Preprocessing of Community Data####
-FunRainLeaf2019.MAP=read.csv("D:/FungiRainLeaf2019/USEARCHv11/Rain_Leaf_GLBRC_Marsh_metadata.csv", header = T, row.names = "sampleID_fung")
+FunRainLeaf2019.MAP=read.csv(here::here("USEARCHv11","Rain_Leaf_GLBRC_Marsh_metadata.csv"), header = T, row.names = "sampleID_fung")
 head(FunRainLeaf2019.MAP)
 nrow(FunRainLeaf2019.MAP)
 #200
@@ -37,14 +39,14 @@ nrow(FunRainLeaf2019.MAP)
 
 #Read in the fasta file
 
-rep_set.FunRainLeaf2019_ZOTU_full<- read.fasta(file = "D:/FungiRainLeaf2019/USEARCHv11/rep_set_ITS2_full_FungiRainLeaf2019_zotus.fa", as.string = TRUE, set.attributes = FALSE)
+rep_set.FunRainLeaf2019_ZOTU_full<- read.fasta(here::here("USEARCHv11","rep_set_ITS2_full_FungiRainLeaf2019_zotus.fa"), as.string = TRUE, set.attributes = FALSE)
 head(rep_set.FunRainLeaf2019_ZOTU_full)
 length(rep_set.FunRainLeaf2019_ZOTU_full)
 #18466
 
 
 #ASV table
-FunRainLeaf2019.ZOTU_full=read.delim("D:/FungiRainLeaf2019/USEARCHv11/ZOTU_table_ITS2_full_FungiRainLeaf2019.txt",header=T, row.names = 1)
+FunRainLeaf2019.ZOTU_full=read.delim(here::here("USEARCHv11","ZOTU_table_ITS2_full_FungiRainLeaf2019.txt"),header=T, row.names = 1)
 head(FunRainLeaf2019.ZOTU_full)
 colnames(FunRainLeaf2019.ZOTU_full)
 head(rownames(FunRainLeaf2019.ZOTU_full))
@@ -59,7 +61,7 @@ FunRainLeaf2019_ZOTU_full[1:10,1:10]
 
 #UNITE8 Taxon table
 
-FunRainLeaf2019.taxa_ZOTU_full_raw_UNITE8 = read.delim("D:/FungiRainLeaf2019/USEARCHv11/taxonomy_ITS2_full_FungiRainLeaf2019_zotus.sintax",sep = c("\t"),header = F)
+FunRainLeaf2019.taxa_ZOTU_full_raw_UNITE8 = read.delim(here::here("USEARCHv11","taxonomy_ITS2_full_FungiRainLeaf2019_zotus.sintax"),sep = c("\t"),header = F)
 head(FunRainLeaf2019.taxa_ZOTU_full_raw_UNITE8)
 nrow(FunRainLeaf2019.taxa_ZOTU_full_raw_UNITE8)
 #18466
@@ -112,7 +114,9 @@ sort(sample_sums(FunRainLeaf2019_ZOTU_full.fung))#Leaf55 and Leaf25 are outliers
 
 
 #I am going to use CONSTAX for taxonomy since it estimates deeper classifications and catches some crap sequences
-FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8.2_all = read.delim("D:/FungiRainLeaf2019/USEARCHv11/ZOTU_constax_V2_sintax_fix_classification_all_v4.2.2020_taxa/combined_taxonomy.txt",
+FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8.2_all = read.delim(here::here("USEARCHv11",
+                                                                          "ZOTU_constax_V2_sintax_fix_classification_all_v4.2.2020_taxa",
+                                                                          "combined_taxonomy.txt"),
                                                                  sep = "\t",header = T,fill=T, row.names = 1)
 head(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8.2_all)
 nrow(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8.2_all)
@@ -125,7 +129,8 @@ head(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8.2_all)
 #There is a formating error where sintax kingdom is a number if there are no lower classifications
 #I am going to replace any numbers in Kingdom_SINTAX with the classification from the raw sintax taxonomy
 
-FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8.2_SINTAX = read.delim("D:/FungiRainLeaf2019/USEARCHv11/ZOTU_constax_V2_sintax_fix_classification_all_v4.2.2020_taxa/otu_taxonomy.SINTAX",
+FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8.2_SINTAX = 
+  read.delim(here::here("USEARCHv11","ZOTU_constax_V2_sintax_fix_classification_all_v4.2.2020_taxa/otu_taxonomy.SINTAX"),
                                                                      sep = "\t",header = F,fill=T, row.names = 1)
 
 head(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8.2_SINTAX)
@@ -398,7 +403,7 @@ unknown_kingdom_names=taxa_names(subset_taxa(FunRainLeaf2019_ZOTU_full.fung_cons
 length(unknown_kingdom_names)
 #253
 
-rep_set.FunRainLeaf2019_ZOTU_full<- read.fasta(file = "D:/FungiRainLeaf2019/USEARCHv11/rep_set_ITS2_full_FungiRainLeaf2019_zotus.fa", as.string = TRUE, set.attributes = FALSE)
+
 head(rep_set.FunRainLeaf2019_ZOTU_full)
 length(rep_set.FunRainLeaf2019_ZOTU_full)
 #18466
@@ -410,7 +415,7 @@ length(rep_set.FunRainLeaf2019_ZOTU_full.fung_cons_UNKNOWN)
 
 
 write.fasta(sequences =rep_set.FunRainLeaf2019_ZOTU_full.fung_cons_UNKNOWN, names = names(rep_set.FunRainLeaf2019_ZOTU_full.fung_cons_UNKNOWN), 
-            file.out ="D:/FungiRainLeaf2019/R_file/rep_set.FunRainLeaf2019_ZOTU_full.fung_cons_UNKNOWN_UKNOWN_v4.2.2020.fna")
+            file.out =here::here("R_file","rep_set.FunRainLeaf2019_ZOTU_full.fung_cons_UNKNOWN_UKNOWN_v4.2.2020.fna"))
 
 #None of these taxa match up well with NCBI Fungi
 
@@ -499,7 +504,7 @@ colnames(FunRainLeaf2019_ZOTU_CONSTAX_ZOTU)[1]="OTUID"
 
 colnames(FunRainLeaf2019_ZOTU_CONSTAX_ZOTU)
 
-write.csv(FunRainLeaf2019_ZOTU_CONSTAX_ZOTU, "D:/FungiRainLeaf2019/R_file/FunRainLeaf2019_ZOTU_CONSTAXv4.2.2020_ZOTU_for_FunGuild.csv", row.names = F) 
+write.csv(FunRainLeaf2019_ZOTU_CONSTAX_ZOTU, here::here("R_file","FunRainLeaf2019_ZOTU_CONSTAXv4.2.2020_ZOTU_for_FunGuild.csv"), row.names = F) 
 #I had to modify this in excel (i.e. turn "OTU.ID "to "OTU ID")
 
 #RUN in shell 
@@ -849,12 +854,11 @@ Mar_leaf_rain.fung_decon_rar=rarefy_even_depth(Mar_leaf_rain.fung_decon, sample.
 #6511OTUs were removed because they are no longer
 #present in any sample after random subsampling
 
-#save(Mar_leaf_rain.fung_decon_rar, file = "D:/FungiRainLeaf2019/R_file/Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData")
-load("D:/FungiRainLeaf2019/R_file/Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData")
+save(Mar_leaf_rain.fung_decon_rar, file = here::here("R_file","Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData"))
+load(here::here("R_file","Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData"))
 
 #I need to the rep set here for comparison with previous published sequences
 
-rep_set.FunRainLeaf2019_ZOTU_full<- read.fasta(file = "D:/FungiRainLeaf2019/USEARCHv11/rep_set_ITS2_full_FungiRainLeaf2019_zotus.fa", as.string = TRUE, set.attributes = FALSE)
 
 rep_set.FunRainLeaf2019_ZOTU_rar1000=rep_set.FunRainLeaf2019_ZOTU_full[names(rep_set.FunRainLeaf2019_ZOTU_full) %in% taxa_names(Mar_leaf_rain.fung_decon_rar)]
 head(rep_set.FunRainLeaf2019_ZOTU_rar1000)
@@ -863,7 +867,7 @@ length(rep_set.FunRainLeaf2019_ZOTU_rar1000)
 
 
 write.fasta(sequences =rep_set.FunRainLeaf2019_ZOTU_rar1000, names = names(rep_set.FunRainLeaf2019_ZOTU_rar1000), 
-            file.out ="D:/FungiRainLeaf2019/R_file/rep_set.FunRainLeaf2019_v4.2.2020_ZOTU_rar1000.fna")
+            file.out =here::here("R_file","rep_set.FunRainLeaf2019_v4.2.2020_ZOTU_rar1000.fna"))
 
 #####Bray Rarefied Pairwise community distance####
 #I am only interested in the Marshall Proj Rain
@@ -984,7 +988,7 @@ Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt$s1_s2_rain_trt=with(Mar_leaf_rain.
 Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt$s1_s2_gh_block=with(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt,
                                                                   interaction(s1_gh_block,s2_gh_block))
 head(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt)
-write.csv(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt,"D:/FungiRainLeaf2019/R_file/Pairwise_turnover_grad_distance_fung_v4.2.2020_decon_pruned_ZOTU_full_rar_Marshall.csv")
+write.csv(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt,here::here("R_file","Pairwise_turnover_grad_distance_fung_v4.2.2020_decon_pruned_ZOTU_full_rar_Marshall.csv"))
 
 bray_paiwise=Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt %>% group_by(s1_s2_plant_type,s1_s2_collect_date) %>% summarise_at("bray", 
                                                                                                                               list(~mean(.),se=~sd(.)/sqrt(n()),~n()))
@@ -1104,7 +1108,7 @@ Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt$s1_s2_rain_trt=with(Mar_leaf_ra
 Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt$s1_s2_gh_block=with(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt,
                                                                      interaction(s1_gh_block,s2_gh_block))
 head(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt)
-write.csv(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt,"D:/FungiRainLeaf2019/R_file/Pairwise_turnover_Jaccard_fung_v4.2.2020_decon_pruned_ZOTU_full_rar_Marshall.csv")
+write.csv(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt,here::here("R_file","Pairwise_turnover_Jaccard_fung_v4.2.2020_decon_pruned_ZOTU_full_rar_Marshall.csv"))
 
 
 
@@ -1115,8 +1119,8 @@ write.csv(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt,"D:/FungiRainLeaf2019
 
 
 #####Petri Bray analyses No Nano####
-#save(Mar_leaf_rain.fung_decon_rar, file = "D:/FungiRainLeaf2019/R_file/Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData")
-load("D:/FungiRainLeaf2019/R_file/Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData")
+
+load(here::here("R_file","Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData"))
 #I am only interested in the Marshall Proj Rain
 head(sample_data(Mar_leaf_rain.fung_decon_rar))
 Mar_leaf_rain.fung_decon_rar_Mar=subset_samples(Mar_leaf_rain.fung_decon_rar, sub_proj=="Marshall")
@@ -1160,8 +1164,8 @@ Mar_leaf.fung_decon_pr_petr_S_nan.rar.ord=ordinate(Mar_leaf.fung_decon_pr_petr_S
 Mar_leaf.fung_decon_pr_petr_S_nan.rar_dis=phyloseq::distance(Mar_leaf.fung_decon_pr_petr_S_nan.rar,method = "bray")
 Mar_leaf.fung_decon_pr_petr_S_nan.rar_map=sample_data(Mar_leaf.fung_decon_pr_petr_S_nan.rar)
 
-write.csv(as.matrix(Mar_leaf.fung_decon_pr_petr_S_nan.rar_dis),"D:/FungiRainLeaf2019/R_file/Bray_Mar_leaf.fung_decon_pr_petr_S_nan.rar_dis.csv")
-write.csv(as.matrix(Mar_leaf.fung_decon_pr_petr_S_nan.rar_map),"D:/FungiRainLeaf2019/R_file/Treatments_Mar_leaf.fung_decon_pr_petr_S_nan.rar_map.csv")
+write.csv(as.matrix(Mar_leaf.fung_decon_pr_petr_S_nan.rar_dis),here::here("R_file","Bray_Mar_leaf.fung_decon_pr_petr_S_nan.rar_dis.csv"))
+write.csv(as.matrix(Mar_leaf.fung_decon_pr_petr_S_nan.rar_map),here::here("R_file","Treatments_Mar_leaf.fung_decon_pr_petr_S_nan.rar_map.csv"))
 
 
 ####Petri Bray Betadispersion#####
@@ -1578,7 +1582,7 @@ Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_dis=phyloseq::distance(Mar_leaf.fung_dec
 Mar_leaf.fung_decon_pr_petr_S_nan.rar_map=sample_data(Mar_leaf.fung_decon_pr_petr_S_nan.rar)
 
 
-write.csv(as.matrix(Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_dis),"D:/FungiRainLeaf2019/R_file/Jaccard_Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_dis.csv")
+write.csv(as.matrix(Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_dis),here::here("R_file","Jaccard_Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_dis.csv"))
 
 ####Petri Jaccard Betadispersion#####
 
@@ -2119,7 +2123,7 @@ ggplot(Mar_leaf_rar_petri_div_map_P_nan,aes(x=interaction(rain_trt,start_date),y
 #####Petri Plant Analyses####
 #Germination and Leaf fungal colonization
 
-Petri_plant=read.csv("D:/FungiRainLeaf2019/USEARCHv11/Marshall_petri_exp_plant_data.csv",header = T)
+Petri_plant=read.csv(here::here("USEARCHv11","Marshall_petri_exp_plant_data.csv"),header = T)
 summary(Petri_plant)
 
 
@@ -2239,7 +2243,7 @@ plot_grid(petri_germ,petri_fung_col,nrow = 2, align="v")
 #~/HardDrive/Sciencey_Program/Old_usearch_v/usearch10.0.240_win32.exe -usearch_global CAP_rep_set.FunRainLeaf2019_v4.2.2020_ZOTU_rar1000.fna.fung_decon_rar_pruned_phyloseq_obj.RData -db switchgrass_compiled_ITS_database_v2.fasta -id 0.97 -strand both -maxaccepts 0 -maxhits 10 -matched MATCHED_pub_seq_rep_set.FunRainLeaf2019_ZOTU_rar1000.fa -notmatched NOT_matched_pub_seq_rep_set.FunRainLeaf2019_ZOTU_rar1000.fa -userout TBL_pub_seq_rep_set.FunRainLeaf2019_ZOTU_rar1000.txt -userfields query+target+id+mid+bits+evalue+ql+ts+qlor+qhir+tlor+thir
 #00:02 14Mb    100.0% Searching, 5.1% matched
 
-publ_matched_rar_OTUs=read.delim("D:/FungiRainLeaf2019/R_file/TBL_pub_seq_rep_set.FunRainLeaf2019_ZOTU_v4.2.2020_rar1000.txt", header = F)
+publ_matched_rar_OTUs=read.delim(here::here("R_file","TBL_pub_seq_rep_set.FunRainLeaf2019_ZOTU_v4.2.2020_rar1000.txt"), header = F)
 head(publ_matched_rar_OTUs)
 
 colnames(publ_matched_rar_OTUs)=c("query","target","id","mid","bits","evalue","ql","ts","qlor","qhir","tlor","thir")
@@ -2299,7 +2303,7 @@ sapply(Mar_leaf.fung_decon_pr_petr_S.rar_pub_Endo, class)
 #Group by interaction and indicator type
 
 #Load in the names table
-publ_matchednames=read.csv("D:/FungiRainLeaf2019/R_file/Matched_pub_seq_names_TBL.csv", header = T)
+publ_matchednames=read.csv(here::here("R_file","Matched_pub_seq_names_TBL.csv"), header = T)
 colnames(publ_matchednames)
 Mar_leaf.fung_decon_pr_petr_S.rar_pub_Endo_names=merge(Mar_leaf.fung_decon_pr_petr_S.rar_pub_Endo,publ_matchednames,by = "target")
 nrow(Mar_leaf.fung_decon_pr_petr_S.rar_pub_Endo_names)
@@ -2661,7 +2665,7 @@ emmeans(Cave_pub_seq_mod, pairwise~rain_trt_round_nan,adjust="fdr")
 
 
 #####Bray Petri Pariwise####
-Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt=read.csv("D:/FungiRainLeaf2019/R_file/Pairwise_turnover_grad_distance_fung_v4.2.2020_decon_pruned_ZOTU_full_rar_Marshall.csv")
+Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt=read.csv(here::here("R_file","Pairwise_turnover_grad_distance_fung_v4.2.2020_decon_pruned_ZOTU_full_rar_Marshall.csv"))
 head(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt)
 nrow(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt)
 #6786
@@ -3284,9 +3288,9 @@ head(P_rain_seed_ind_comb)
 P_rain_seed_ind_comb=merge(P_rain_seed_ind_comb,P_rain_seed.ind$sign,by.x = "OTUs",by.y = "row.names")
 
 
-write.csv(P_rain_seed_ind_comb, "D:/FungiRainLeaf2019/R_file/IndVal_Petri_rain_seed_comb_taxa_class.csv",row.names = F)
+write.csv(P_rain_seed_ind_comb, here::here("R_file","IndVal_Petri_rain_seed_comb_taxa_class.csv"),row.names = F)
 
-P_rain_seed_ind_comb=read.csv("D:/FungiRainLeaf2019/R_file/IndVal_Petri_rain_seed_comb_taxa_class.csv")
+P_rain_seed_ind_comb=read.csv(here::here("R_file","IndVal_Petri_rain_seed_comb_taxa_class.csv"))
 
 ntaxa(Mar_leaf.fung_decon_pr_petr_S_nan.rar)
 #944
@@ -3455,7 +3459,7 @@ nrow(Mar_leaf.fung_decon_pr_petr_S.rar_plants_NS_otu_M_NZ)
 
 #Let's load in the indicator matrix and combine that with the below matrices
 
-P_rain_seed_ind_comb=read.csv("D:/FungiRainLeaf2019/R_file/IndVal_Petri_rain_seed_comb_taxa_class.csv")
+P_rain_seed_ind_comb=read.csv(here::here("R_file","IndVal_Petri_rain_seed_comb_taxa_class.csv"))
 
 Mar_leaf.fung_decon_pr_petr_S.rar_plants_NS_otu_M_IndV=merge(Mar_leaf.fung_decon_pr_petr_S.rar_plants_NS_otu_M_NZ,
                                                              P_rain_seed_ind_comb,by="OTUs",all.x = T)
@@ -3549,7 +3553,7 @@ emmeans(Petri_IndVal_sig_mod,pairwise~ind_grp*rain_trt|collect_date, adjust="fdr
 
 
 #####Jaccard Petri Pariwise####
-Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt=read.csv("D:/FungiRainLeaf2019/R_file/Pairwise_turnover_Jaccard_fung_v4.2.2020_decon_pruned_ZOTU_full_rar_Marshall.csv")
+Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt=read.csv(here::here("R_file","Pairwise_turnover_Jaccard_fung_v4.2.2020_decon_pruned_ZOTU_full_rar_Marshall.csv"))
 head(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt)
 nrow(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt)
 #6786
@@ -4039,8 +4043,8 @@ plot_grid(bray1000_petri_nan_p,jacc1000_petri_nan_p,rat_NT_1000_petri_nan_p,nrow
 
 #####Field experiment####
 
-#save(Mar_leaf_rain.fung_decon_rar, file = "D:/FungiRainLeaf2019/R_file/Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData")
-load("D:/FungiRainLeaf2019/R_file/Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData")
+
+load(here::here("R_file","Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData"))
 head(sample_data(Mar_leaf_rain.fung_decon_rar))
 
 Mar_leaf_rain.fung_decon_rar_Mar=subset_samples(Mar_leaf_rain.fung_decon_rar, sub_proj=="Marshall")
@@ -4093,8 +4097,8 @@ Mar_leaf_rain.fung_decon_rar_Mar_field.ord=ordinate(Mar_leaf_rain.fung_decon_rar
 Mar_leaf_rain.fung_decon_rar_Mar_field_dis=phyloseq::distance(Mar_leaf_rain.fung_decon_rar_Mar_field,method = "bray")
 Mar_leaf_rain.fung_decon_rar_Mar_field_map=sample_data(Mar_leaf_rain.fung_decon_rar_Mar_field)
 
-write.csv(as.matrix(Mar_leaf_rain.fung_decon_rar_Mar_field_dis),file = "D:/FungiRainLeaf2019/R_file/Bray_Mar_leaf_rain.fung_decon_rar_Mar_field_dis.csv")
-write.csv(Mar_leaf_rain.fung_decon_rar_Mar_field_map,file = "D:/FungiRainLeaf2019/R_file/Mar_leaf_rain.fung_decon_rar_Mar_field_map.csv")
+write.csv(as.matrix(Mar_leaf_rain.fung_decon_rar_Mar_field_dis),file = here::here("R_file","Bray_Mar_leaf_rain.fung_decon_rar_Mar_field_dis.csv"))
+write.csv(Mar_leaf_rain.fung_decon_rar_Mar_field_map,file = here::here("R_file","Mar_leaf_rain.fung_decon_rar_Mar_field_map.csv"))
 
 
 #####Field Bray Beta-dipsersion####
@@ -4622,7 +4626,7 @@ fill_order_R=c("Ascomycota.Dothideomycetes","Ascomycota.Sordariomycetes","Ascomy
 
 
 #####Field and Rain  Diversity#####
-load("D:/FungiRainLeaf2019/R_file/Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData")
+load(here::here("R_file","Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData"))
 Mar_leaf_rain.fung_decon_rar_Mar=subset_samples(Mar_leaf_rain.fung_decon_rar, sub_proj=="Marshall")
 nsamples(Mar_leaf_rain.fung_decon_rar_Mar)
 #117
@@ -4846,7 +4850,7 @@ Mar_leaf_rain.fung_decon_rar_Mar_field_J.ord=ordinate(Mar_leaf_rain.fung_decon_r
 
 Mar_leaf_rain.fung_decon_rar_Mar_field_J_dis=phyloseq::distance(Mar_leaf_rain.fung_decon_rar_Mar_field,method = "jaccard",binary = TRUE)
 Mar_leaf_rain.fung_decon_rar_Mar_field_map=sample_data(Mar_leaf_rain.fung_decon_rar_Mar_field)
-write.csv(as.matrix(Mar_leaf_rain.fung_decon_rar_Mar_field_J_dis),"D:/FungiRainLeaf2019/R_file/Jaccard_Mar_leaf_rain.fung_decon_rar_Mar_field_J_dis.csv")
+write.csv(as.matrix(Mar_leaf_rain.fung_decon_rar_Mar_field_J_dis),here::here("R_file","Jaccard_Mar_leaf_rain.fung_decon_rar_Mar_field_J_dis.csv"))
 
 
 
@@ -5216,7 +5220,7 @@ plot_grid(NMDS_Field_Bray,NMDS_Field_Jacc,nrow = 2, align="hv")
 #~/HardDrive/Sciencey_Program/usearch11 -usearch_global CAP_rep_set.FunRainLeaf2019_v4.2.2020_ZOTU_rar1000.fna -db switchgrass_compiled_ITS_database_v2.fasta -id 0.97 -strand both -maxaccepts 0 -maxhits 10 -matched MATCHED_pub_seq_rep_set.FunRainLeaf2019_ZOTU_v4.2.2020_rar1000.fa -notmatched NOT_matched_pub_seq_rep_set.FunRainLeaf2019_ZOTU_v4.2.2020_rar1000.fa -userout TBL_pub_seq_rep_set.FunRainLeaf2019_ZOTU_v4.2.2020_rar1000.txt -userfields query+target+id+mid+bits+evalue+ql+ts+qlor+qhir+tlor+thir
 #00:02 22Mb    100.0% Searching, 5.2% matched
 
-publ_matched_rar_OTUs=read.delim("D:/FungiRainLeaf2019/R_file/TBL_pub_seq_rep_set.FunRainLeaf2019_ZOTU_v4.2.2020_rar1000.txt", header = F)
+publ_matched_rar_OTUs=read.delim(here::here("R_file","TBL_pub_seq_rep_set.FunRainLeaf2019_ZOTU_v4.2.2020_rar1000.txt"), header = F)
 head(publ_matched_rar_OTUs)
 
 colnames(publ_matched_rar_OTUs)=c("query","target","id","mid","bits","evalue","ql","ts","qlor","qhir","tlor","thir")
@@ -5233,8 +5237,8 @@ nrow(publ_matched_rar_OTUs_top_hits)
 
 
 
-#save(Mar_leaf_rain.fung_decon_rar, file = "D:/FungiRainLeaf2019/R_file/Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData")
-load("D:/FungiRainLeaf2019/R_file/Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData")
+
+load(here::here("R_file","Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData"))
 
 Mar_leaf_rain.fung_decon_rar_Mar=subset_samples(Mar_leaf_rain.fung_decon_rar, sub_proj=="Marshall")
 Mar_leaf_rain.fung_decon_rar_Mar_field=subset_samples(Mar_leaf_rain.fung_decon_rar_Mar, plant_type!="Petri")
@@ -5279,7 +5283,7 @@ nrow(Mar_leaf_rain.fung_decon_rar_Mar_field_pub_Endo)
 #Group by interaction and indicator type
 
 #Load in the names table
-publ_matchednames=read.csv("D:/FungiRainLeaf2019/R_file/Matched_pub_seq_names_TBL.csv", header = T)
+publ_matchednames=read.csv(here::here("R_file","Matched_pub_seq_names_TBL.csv"), header = T)
 colnames(publ_matchednames)
 Mar_leaf_rain.fung_decon_rar_Mar_field_pub_Endo_names=merge(Mar_leaf_rain.fung_decon_rar_Mar_field_pub_Endo,publ_matchednames,by = "target")
 nrow(Mar_leaf_rain.fung_decon_rar_Mar_field_pub_Endo_names)
@@ -5557,7 +5561,7 @@ emmeans(Prair_field_r1000_mod,pairwise~plant_data_grp, adjust="fdr")
 
 
 #####Bray Pariwise to Sept####
-Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt=read.csv("D:/FungiRainLeaf2019/R_file/Pairwise_turnover_grad_distance_fung_v4.2.2020_decon_pruned_ZOTU_full_rar_Marshall.csv")
+Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt=read.csv(here::here("R_file","Pairwise_turnover_grad_distance_fung_v4.2.2020_decon_pruned_ZOTU_full_rar_Marshall.csv"))
 head(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt)
 nrow(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt)
 #6786
@@ -6037,7 +6041,7 @@ rain_seed.ind$sign
 rain_seed_ind_comb=merge(rain_seed_ind_comb,rain_seed.ind$sign, by.x = "OTUs",by.y="row.names")
 head(rain_seed_ind_comb)
 
-write.csv(rain_seed_ind_comb, "D:/FungiRainLeaf2019/R_file/IndVal_Field_rain_seed_comb_taxa_class.csv",row.names = F)
+write.csv(rain_seed_ind_comb, here::here("R_file","IndVal_Field_rain_seed_comb_taxa_class.csv"),row.names = F)
 #We need OTUs from plants only
 Mar_leaf_rain.fung_decon_rar_Mar_field_plants_NS=subset_samples(Mar_leaf_rain.fung_decon_rar_Mar_field, plant_type!="Seed"&plant_type!="Rain")
 nsamples(Mar_leaf_rain.fung_decon_rar_Mar_field_plants_NS)
@@ -6063,7 +6067,7 @@ nrow(Mar_leaf_rain.fung_decon_rar_Mar_field_plants_NS_otu_M)
 Mar_leaf_rain.fung_decon_rar_Mar_field_plants_NS_otu_M_NZ=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_plants_NS_otu_M,abund>0)
 nrow(Mar_leaf_rain.fung_decon_rar_Mar_field_plants_NS_otu_M_NZ)
 #2231
-rain_seed_ind_comb= read.csv("D:/FungiRainLeaf2019/R_file/IndVal_Field_rain_seed_comb_taxa_class.csv")
+rain_seed_ind_comb= read.csv(here::here("R_file","IndVal_Field_rain_seed_comb_taxa_class.csv"))
 Mar_leaf_rain.fung_decon_rar_Mar_field_plants_NS_otu_M_IndV=merge(Mar_leaf_rain.fung_decon_rar_Mar_field_plants_NS_otu_M_NZ,
                                                                   rain_seed_ind_comb,by="OTUs",all.x = T)
 
@@ -6265,7 +6269,7 @@ nrow(Mar_leaf_rain.fung_decon_rar_Mar_field_plants_NS_otu_M_NZ)
 
 #Let's load in the indicator matrix and combine that with the below matrices
 
-rain_seed_ind_comb=read.csv("D:/FungiRainLeaf2019/R_file/IndVal_Field_rain_seed_comb_taxa_class.csv")
+rain_seed_ind_comb=read.csv(here::here("R_file","IndVal_Field_rain_seed_comb_taxa_class.csv"))
 
 Mar_leaf_rain.fung_decon_rar_Mar_field_plants_NS_otu_M_IndV=merge(Mar_leaf_rain.fung_decon_rar_Mar_field_plants_NS_otu_M_NZ,
                                                                   rain_seed_ind_comb,by="OTUs",all.x = T)
@@ -6402,7 +6406,7 @@ plot_grid(IndVal_sig_petri_nan_p2,IndVal_Field_sig_nb2,rel_widths =c(1,.75),ncol
 
 
 #####Jaccard Field Pariwise to Sept####
-Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt=read.csv("D:/FungiRainLeaf2019/R_file/Pairwise_turnover_Jaccard_fung_v4.2.2020_decon_pruned_ZOTU_full_rar_Marshall.csv")
+Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt=read.csv(here::here("R_file","Pairwise_turnover_Jaccard_fung_v4.2.2020_decon_pruned_ZOTU_full_rar_Marshall.csv"))
 head(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt)
 nrow(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt)
 #6786
