@@ -18,7 +18,6 @@ library(otuSummary)
 library(emmeans)
 library(lme4)
 library(lmerTest)
-#library(ranacapa)
 library(cowplot)
 library(RColorBrewer)
 library(ggh4x)
@@ -113,7 +112,7 @@ sort(sample_sums(FunRainLeaf2019_ZOTU_full.fung))#Leaf55 and Leaf25 are outliers
 
 
 
-#I am going to use CONSTAX for taxonomy since it estimates deeper classifications and catches some crap sequences
+#I am going to use CONSTAX for taxonomy since it estimates deeper classifications and catches some non-fungal sequences
 FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8.2_all = read.delim(here::here("USEARCHv11",
                                                                           "ZOTU_constax_V2_sintax_fix_classification_all_v4.2.2020_taxa",
                                                                           "combined_taxonomy.txt"),
@@ -126,7 +125,7 @@ FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8.2_all[FunRainLeaf2019.taxa_ZOT
                                                           is.na(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8.2_all)]="Unknown"
 head(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8.2_all)
 
-#There is a formating error where sintax kingdom is a number if there are no lower classifications
+#There is a formatting error where sintax kingdom is a number if there are no lower classifications
 #I am going to replace any numbers in Kingdom_SINTAX with the classification from the raw sintax taxonomy
 
 FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8.2_SINTAX = 
@@ -222,7 +221,7 @@ FunRainLeaf2019_ZOTU_full.fung_CONSTAX_UNITE8.2_all_Taxa_tbl_raw$Phyla_unkn=ifel
 nrow(subset(FunRainLeaf2019_ZOTU_full.fung_CONSTAX_UNITE8.2_all_Taxa_tbl_raw,Phyla_unkn==TRUE))
 #5076
 
-#How many TAXA have a classification at Phyla across the three measures but differ in there phyla classification
+#How many TAXA have a classification at Phyla across the three measures but differ in there phyla classification?
 
 FunRainLeaf2019_ZOTU_full.fung_CONSTAX_UNITE8.2_all_Taxa_tbl_raw_KNW=subset(FunRainLeaf2019_ZOTU_full.fung_CONSTAX_UNITE8.2_all_Taxa_tbl_raw,Phyla_unkn==FALSE)
 nrow(FunRainLeaf2019_ZOTU_full.fung_CONSTAX_UNITE8.2_all_Taxa_tbl_raw_KNW)
@@ -334,7 +333,8 @@ FunRainLeaf2019_ZOTU_full.fung_CONSTAX_UNITE8.2_all_Taxa_tbl_raw_KNW_P_dif=subse
 
 
 
-FunRainLeaf2019_ZOTU_full.fung_CONSTAX_UNITE8.2_all_KNW_P_dif=FunRainLeaf2019_ZOTU_full.fung_CONSTAX_UNITE8.2_all_Taxa_tbl_raw_KNW_P_dif[c("V2.2_OTUs","Kingdom_Consensus","Phylum_Consensus","Class_Consensus","Order_Consensus",
+FunRainLeaf2019_ZOTU_full.fung_CONSTAX_UNITE8.2_all_KNW_P_dif=FunRainLeaf2019_ZOTU_full.fung_CONSTAX_UNITE8.2_all_Taxa_tbl_raw_KNW_P_dif[c("V2.2_OTUs","Kingdom_Consensus","Phylum_Consensus",
+                                                                                                                                           "Class_Consensus","Order_Consensus",
                                                                                                 "Family_RDP","Genus_RDP","Species_RDP")]
 
 row.names(FunRainLeaf2019_ZOTU_full.fung_CONSTAX_UNITE8.2_all_KNW_P_dif)=FunRainLeaf2019_ZOTU_full.fung_CONSTAX_UNITE8.2_all_KNW_P_dif$V2.2_OTUs
@@ -459,73 +459,6 @@ max(sample_sums(FunRainLeaf2019_ZOTU_full.fung_cons))
 min(sample_sums(FunRainLeaf2019_ZOTU_full.fung_cons))
 #3
 sort(sample_sums(FunRainLeaf2019_ZOTU_full.fung_cons))
-
-
-
-
-#####FUNGuild CONSTAX Dataset creation####
-
-#Example formating
-
-#OTU ID	sample1	sample2	sample3	sample4	sample5	taxonomy
-#OTU_100	0	1	0	0	0	93.6%|Laetisaria_fuciformis|EU118639|SH012042.06FU|reps_singleton|k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Corticiales;f__Corticiaceae;g__Laetisaria;s__Laetisaria_fuciformis
-FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8 = data.frame(tax_table(FunRainLeaf2019_ZOTU_full.fung_cons))
-head(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8)
-nrow(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8)
-#15504
-#remove all of the unknown
-FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8[FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8=="Unknown"|
-                                                          is.na(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8)]=""
-
-FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy=paste("k__",FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$Kingdom,";",
-                                                                 "p__",FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$Phylum,";",
-                                                                 "c__",FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$Class,";",
-                                                                 "o__",FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$Order,";",
-                                                                 "f__",FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$Family,";",
-                                                                 "g__",FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$Genus,";",
-                                                                 "s__",FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$Species,sep = "")
-FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy=str_replace_all(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy, " ", "_")
-FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy=str_replace_all(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy, ";p__;c__;o__;f__;g__;s__", "")
-FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy=str_replace_all(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy, ";c__;o__;f__;g__;s__", "")
-FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy=str_replace_all(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy, ";o__;f__;g__;s__", "")
-FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy=str_replace_all(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy, ";f__;g__;s__", "")
-FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy=str_replace_all(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy, ";g__;s__", "")
-FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy=str_replace_all(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy, ";s__\n", "")
-FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy=str_replace_all(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy, " ", "_")
-head(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$taxonomy)
-FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8$OTU_ID=row.names(FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8)
-FunRainLeaf2019_ZOTU_CONSTAX_ZOTU=merge(otu_table(FunRainLeaf2019_ZOTU_full.fung_cons),FunRainLeaf2019.taxa_ZOTU_full_raw_CONSTAX_UNITE8[,c("OTU_ID","taxonomy")], 
-                                    by="row.names",by.y="OTU_ID")
-head(FunRainLeaf2019_ZOTU_CONSTAX_ZOTU)
-
-
-colnames(FunRainLeaf2019_ZOTU_CONSTAX_ZOTU)[1]="OTUID"
-
-
-colnames(FunRainLeaf2019_ZOTU_CONSTAX_ZOTU)
-
-write.csv(FunRainLeaf2019_ZOTU_CONSTAX_ZOTU, here::here("R_file","FunRainLeaf2019_ZOTU_CONSTAXv4.2.2020_ZOTU_for_FunGuild.csv"), row.names = F) 
-#I had to modify this in excel (i.e. turn "OTU.ID "to "OTU ID")
-
-#RUN in shell 
-
-#cd HardDrive/FungiRainLeaf2019/R_file/
-#python Guilds_v1.1.py -otu FunRainLeaf2019_ZOTU_CONSTAXv4.2.2020_ZOTU_for_FunGuild.csv -db fungi -m -u
-
-#Found 12894 matching taxonomy records in the database.
-#Dereplicating and sorting the result...
-#FunGuild tried to assign function to 15504 OTUs in 'FunRainLeaf2019_ZOTU_CONSTAXv4.2.2020_ZOTU_for_FunGuild.csv'.
-#FUNGuild made assignments on 8307 OTUs.
-#Result saved to 'FunRainLeaf2019_ZOTU_CONSTAXv4.2.2020_ZOTU_for_FunGuild.guilds.txt'
-
-#Additional output:
-#  FUNGuild made assignments on 8307 OTUs, these have been saved to FunRainLeaf2019_ZOTU_CONSTAXv4.2.2020_ZOTU_for_FunGuild.guilds_matched.txt.
-#7197 OTUs were unassigned, these are saved to FunRainLeaf2019_ZOTU_CONSTAXv4.2.2020_ZOTU_for_FunGuild.guilds_unmatched.txt.
-
-#Total calculating time: 185.96 seconds.
-
-
-
 
 
 
@@ -699,11 +632,6 @@ sort(sample_sums(Mar_rain.fungi))
 head(sample_data(Mar_rain.fungi))
 
 
-#####microDecon
-
-#Let try to remove any contaminants from the OTU table before we move forward
-#I am going to use https://github.com/donaldtmcknight/microDecon
-library(microDecon)
 
 
 Mar_rain.fungi_ZOTU=data.frame(otu_table(Mar_rain.fungi))
@@ -856,6 +784,29 @@ Mar_leaf_rain.fung_decon_rar=rarefy_even_depth(Mar_leaf_rain.fung_decon, sample.
 
 save(Mar_leaf_rain.fung_decon_rar, file = here::here("R_file","Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData"))
 load(here::here("R_file","Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData"))
+
+#Number of samples in Petri Exp
+
+data.frame(sample_data(subset_samples(Mar_leaf_rain.fung_decon_rar, plant_type=="Petri")))%>%group_by(plant_type,collect_date,rain_trt)%>%
+  summarise(final_no=n())
+
+#Number of samples in Rain inoculum used for Petri Exp
+
+data.frame(sample_data(subset_samples(Mar_leaf_rain.fung_decon_rar, collect_date=="8/21/2018"|collect_date=="7/21/2018")))%>%
+  group_by(plant_type,collect_date,rain_trt)%>%
+  summarise(final_no=n())
+
+
+#Number of samples in Field Exp
+
+data.frame(sample_data(subset_samples(Mar_leaf_rain.fung_decon_rar, plant_type!="Petri"&plant_type!="Rain")))%>%group_by(plant_type,collect_date)%>%
+  summarise(final_no=n())
+
+#Number of samples in Rain
+
+data.frame(sample_data(subset_samples(Mar_leaf_rain.fung_decon_rar, plant_type=="Rain"&sub_proj=="Marshall")))%>%group_by(plant_type)%>%
+  summarise(final_no=n())
+
 
 #I need to the rep set here for comparison with previous published sequences
 
@@ -1120,6 +1071,8 @@ write.csv(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt,here::here("R_file","
 
 #####Petri Bray analyses No Nano####
 
+#Nano samples are an additional control that were not included in the final analyses
+
 load(here::here("R_file","Mar_leaf_rain_ZOTU_full_v4.2.2020.fung_decon_rar_pruned_phyloseq_obj.RData"))
 #I am only interested in the Marshall Proj Rain
 head(sample_data(Mar_leaf_rain.fung_decon_rar))
@@ -1154,9 +1107,6 @@ max(sample_sums(Mar_leaf.fung_decon_pr_petr_S_nan.rar))
 
 
 
-Mar_leaf.fung_decon_pr_petr_S_nan.rar.ord=ordinate(Mar_leaf.fung_decon_pr_petr_S_nan.rar,method = "NMDS",distance = "bray")
-#*** Solution reached
-#0.1793605       
 
 
 #Creation of files for PERMANOVA analyses in Primer v6
@@ -1179,7 +1129,9 @@ colnames(Mar_leaf.fung_decon_pr_petr_S_nan.rar_betamod_dist)="betadisp"
 Mar_leaf.fung_decon_pr_petr_S_nan.rar_betamod_dist=merge(Mar_leaf.fung_decon_pr_petr_S_nan.rar_betamod_dist,Mar_leaf.fung_decon_pr_petr_S_nan.rar_map,by="row.names")
 
 
-#####Graphing the Bray Betadispersion of Petri No nano####
+
+#Nano samples are an additional control that were not included in the final analyses
+
 
 brewer.pal(n = 12, name = "Paired")
 head(Mar_leaf.fung_decon_pr_petr_S_nan.rar_betamod_dist)
@@ -1236,15 +1188,9 @@ anova(Petri_betadisp_mod_nan)
 #trt_date 8.7538   1.459     6    28   2.098 0.08538 .
 
 
-emmeans(Petri_betadisp_mod_nan, pairwise~trt_date,adjust="fdr")
 
 
-ggplot(Mar_leaf.fung_decon_pr_petr_S_nan.rar_betamod_dist,aes(x=plant_type,y=betadisp))+geom_point()+geom_boxplot()
-
-
-
-
-#####LFE Analyses the betadisp of Petri No nano####
+#####LFE Analyses the betadisp of Petri####
 
 
 #Petri 
@@ -1265,7 +1211,7 @@ qqPlot(resid(Petri_LFE_betadisp_mod))
 shapiro.test(resid(Petri_LFE_betadisp_mod))
 #W = 0.93014, p-value = 0.09817
 
-####Table S5 Beta-dispersion (Bray)####
+####Table S4 Beta-dispersion (Bray)####
 anova(Petri_LFE_betadisp_mod)
 #rain_trt       0.063509 0.063509     1 17.308  0.1043 0.7506
 #round          0.024095 0.024095     1 19.451  0.0396 0.8444
@@ -1279,6 +1225,11 @@ ggplot(Mar_leaf.fung_decon_pr_petr_S_nan.rar_betamod_dist_p,aes(x=interaction(ra
 
 
 #####Petri NMDS graph####
+
+Mar_leaf.fung_decon_pr_petr_S_nan.rar.ord=ordinate(Mar_leaf.fung_decon_pr_petr_S_nan.rar,method = "NMDS",distance = "bray")
+#*** Solution reached
+#0.1793605       
+
 
 #Hull for the Bray NMDS
 Mar_leaf.fung_decon_pr_petr_S_nan.rar_map=sample_data(Mar_leaf.fung_decon_pr_petr_S_nan.rar)
@@ -1457,7 +1408,7 @@ Mar_leaf.fung_decon_pr_petr_S_nan.rar_fact.phylum.prop_otu_M2$round=ifelse(Mar_l
                                                                                   Mar_leaf.fung_decon_pr_petr_S_nan.rar_fact.phylum.prop_otu_M2$collectDate=="7/21/2018",
                                                                                   "Round1","Round2"))
 
-#####PLOT: Figure S7####
+#####PLOT: Figure S9####
 (p_petri_color_F=ggplot(Mar_leaf.fung_decon_pr_petr_S_nan.rar_fact.phylum.prop_otu_M2,aes(x=factor(rain_trt,levels = c("No_rain","Sterile_rain","Live_Rain","Rain"),
                                                                                                    labels=c("Seeds","Sterile","Live","Rain")),
                                                                                           y=value,fill=Phylum))+
@@ -1490,7 +1441,6 @@ get_taxa_unique(Mar_leaf.fung_decon_pr_petr_S_nan.rar_fact, taxonomic.rank="Clas
 (Mar_leaf.fung_decon_pr_petr_S_nan.rar.class<-tax_glom(Mar_leaf.fung_decon_pr_petr_S_nan.rar_fact, taxrank="Class"))
 #24 taxa
 
-#How many 
 
 Mar_leaf.fung_decon_pr_petr_S_nan.rar.class_Names_raw=data.frame("Phylum"=data.frame(tax_table(Mar_leaf.fung_decon_pr_petr_S_nan.rar.class))$Phylum,
                                                                      "Class"=data.frame(tax_table(Mar_leaf.fung_decon_pr_petr_S_nan.rar.class))$Class,
@@ -1596,6 +1546,7 @@ Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_betamod_dist=merge(Mar_leaf.fung_decon_p
 
 
 #####Graphing the Betadispersion of Petri No nano####
+#Nano samples are an additional control that were not included in the final analyses
 
 brewer.pal(n = 12, name = "Paired")
 head(Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_betamod_dist)
@@ -1642,7 +1593,7 @@ Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_betamod_dist$trt_date=with(Mar_leaf.fung
 
 
 
-#Jaccarc bet disp
+#Jaccard beta dispersion
 
 Petri_betadisp_J_mod_nan=lmer((betadisp)~trt_date+(1|gh_block),Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_betamod_dist)
 plot(Petri_betadisp_J_mod_nan)
@@ -1654,7 +1605,7 @@ shapiro.test(resid(Petri_betadisp_J_mod_nan))
 anova(Petri_betadisp_J_mod_nan)
 #trt_date 0.092204 0.015367     6 14.208  4.3456 0.01076 *
 
-#####POSTHOC TEST: Figure S6b####
+#####POSTHOC TEST: Figure S8b####
 emmeans(Petri_betadisp_J_mod_nan, pairwise~trt_date,adjust="fdr")
 
 
@@ -1662,7 +1613,6 @@ emmeans(Petri_betadisp_J_mod_nan, pairwise~trt_date,adjust="fdr")
 
 
 #####LFE Analyses the betadisp of Petri No nano####
-
 
 #Petri 
 
@@ -1682,7 +1632,7 @@ qqPlot(resid(Petri_LFE_betadisp_J_mod))
 shapiro.test(resid(Petri_LFE_betadisp_J_mod))
 #W = 0.96512, p-value = 0.5496
 
-####Table S5 Beta-dispersion (Jaccard)####
+####Table S4 Beta-dispersion (Jaccard)####
 anova(Petri_LFE_betadisp_J_mod)
 #rain_trt       0.0160336 0.0160336     1 17.114  4.3017 0.05347 .
 #round          0.0003384 0.0003384     1 19.711  0.0908 0.76632  
@@ -1694,7 +1644,7 @@ emmeans(Petri_LFE_betadisp_J_mod, pairwise~rain_trt|round)
 
 
 
-#####PLOT: Figure S6####
+#####PLOT: Figure S8####
 #####Plot Petri combined betadisp graph####
 
 (B_petri_betadisp_nan_p2=ggplot(Mar_leaf.fung_decon_pr_petr_S_nan.rar_betamod_dist)+
@@ -1771,7 +1721,7 @@ J_grp1000_Round1_Live <- Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_coordinates[Mar
                                                                        Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_coordinates$
                                                                          plant_data_grp =="Round1_Live", c("MDS1", "MDS2")]), ] 
 nrow(J_grp1000_Round1_Live)
-#5
+#4
 J_grp1000_Round2_Live <- Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_coordinates[Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_coordinates$plant_data_grp == "Round2_Live", 
                                                                      ][chull(Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_coordinates[
                                                                        Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_coordinates$
@@ -1826,7 +1776,7 @@ nrow(J_grp1000_P_Round2_Rain)
 J_hull1000_Petri=rbind(J_grp1000_Round1_Live,J_grp1000_Round2_Live,J_grp1000_Round1_Sterile,J_grp1000_Round2_Sterile,
                      J_grp1000_P_Round1_Rain, J_grp1000_P_Round2_Rain,J_grp1000_P_Seed)
 nrow(J_hull1000_Petri)
-#28
+#27
 
 
 #In order to use facet I need to duplicate seed
@@ -1878,7 +1828,7 @@ unique(Mar_leaf.fung_decon_pr_petr_S_nan.rar_J_coordinates$rain_trt)
 
 
 
-#####PLOT: Figure S1####
+#####PLOT: Figure S5####
 #####Plot Petri combined NMDS####
 
 (petri_nmds_bray=ggplot(Mar_leaf.fung_decon_pr_petr_S_nan.rar_coordinates2,aes(x= MDS1, y=MDS2))+
@@ -1934,8 +1884,8 @@ Mar_leaf.fung_decon_pr_petr_S_nan.rar_div=estimate_richness(Mar_leaf.fung_decon_
 Mar_leaf_rar_petri_div_map_nan=merge(Mar_leaf.fung_decon_pr_petr_S_nan.rar_div,sample_data(Mar_leaf.fung_decon_pr_petr_S_nan.rar),by="row.names")
 
 
-#####PLOT: Figure S4####
-#####Graphing the diversity of Petri No nano####
+#####PLOT: Figure S3####
+#####Graphing the diversity of Petri####
 
 
 Mar_leaf_rar_petri_div_map_nan$round=ifelse(Mar_leaf_rar_petri_div_map_nan$rain_trt=="No_rain","Seed",ifelse(Mar_leaf_rar_petri_div_map_nan$collect_date=="9/18/2018"|Mar_leaf_rar_petri_div_map_nan$collect_date=="8/21/2018","Round2","Round1"))
@@ -1970,11 +1920,6 @@ date_trt=c("7/10/2018.No_rain","8/14/2018.Sterile_rain","8/14/2018.Live_Rain","7
   theme(axis.title = element_text(size = 32),axis.text = element_text(size = 28),legend.title = element_blank(),legend.position = "none",
         strip.background = element_rect(fill = NA),strip.text = element_text(size = 32)))
 
-#1200x800
-#geom_line(data=Mar_leaf_rar_petri_div_map_nan_sum,aes(x=factor(interaction(collect_date,rain_trt),levels = date_trt),group=collect_date,
-#y=Observed_mean),size=2)+
-
-
 #Inverse Simpson
 
 
@@ -2002,7 +1947,7 @@ date_trt=c("7/10/2018.No_rain","8/14/2018.Sterile_rain","8/14/2018.Live_Rain","7
           strip.background = element_rect(fill = NA),strip.text = element_text(size = 32)))
 
 
-#1200x800
+
 
 plot_grid(petri_rich_nan,petri_invSimp_nan,nrow = 2, align="v")
 #1000*1000
@@ -2020,7 +1965,7 @@ shapiro.test(resid(Petri_seed_rich_mod_nan))
 anova(Petri_seed_rich_mod_nan)
 #trt_date 340.22  56.703     6    28  27.491 1.648e-10 ***
 #no change
-#####POSTHOC TEST: Figure S4a####
+#####POSTHOC TEST: Figure S3a####
 emmeans(Petri_seed_rich_mod_nan, pairwise~trt_date,adjust="fdr")
 
 
@@ -2039,11 +1984,11 @@ shapiro.test(resid(Petri_seed_invS_mod_nan))
 anova(Petri_seed_invS_mod_nan)
 #trt_date 3155.9  525.98     6 18.209  6.5779 0.0007946 ***
 
-#####POSTHOC TEST: Figure S4b####
+#####POSTHOC TEST: Figure S3b####
 emmeans(Petri_seed_invS_mod_nan, pairwise~trt_date)
 
 
-#####LFE Analyses the diversity of Petri No nano####
+#####LFE Analyses the diversity of Petri####
 
 
 #Petri 
@@ -2064,17 +2009,13 @@ qqPlot(resid(Petri_rich_mod_nan))
 shapiro.test(resid(Petri_rich_mod_nan))
 #W = 0.9362, p-value = 0.1342
 
-####Table S5 Richness####
+####Table S4 Richness####
 anova(Petri_rich_mod_nan)
 #rain_trt       925.04  925.04     1    20  2.1376 0.1593
 #round          145.04  145.04     1    20  0.3352 0.5691
 #rain_trt:round  26.04   26.04     1    20  0.0602 0.8087
 #no change
 
-emmeans(Petri_rich_mod_nan, pairwise~rain_trt|round)
-
-
-ggplot(Mar_leaf_rar_petri_div_map_P_nan,aes(x=interaction(rain_trt,start_date),y=Observed))+geom_point()+geom_boxplot()
 
 
 #invSimp
@@ -2086,38 +2027,11 @@ qqPlot(resid(Petri_invSimp_mod_nan))
 shapiro.test(resid(Petri_invSimp_mod_nan))
 #W = 0.9821, p-value = 0.9312
 
-####Table S5 Inverse Simpson####
+####Table S4 Inverse Simpson####
 anova(Petri_invSimp_mod_nan)
 #rain_trt       91.446  91.446     1    20  2.0565 0.1670
 #round          20.833  20.833     1    20  0.4685 0.5015
 #rain_trt:round 93.170  93.170     1    20  2.0953 0.1632
-
-#no change
-emmeans(Petri_invSimp_mod_nan, pairwise~rain_trt|round)
-
-
-
-#Shannon
-
-Petri_Shan_mod_nan=lmer((Shannon)~rain_trt*round+(1|gh_block),data=Mar_leaf_rar_petri_div_map_P_nan)
-#boundary (singular) fit: see ?isSingular
-hist(resid(Petri_Shan_mod_nan))
-qqPlot(resid(Petri_Shan_mod_nan))
-shapiro.test(resid(Petri_Shan_mod_nan))
-#W = 0.93728, p-value = 0.1419
-
-anova(Petri_Shan_mod_nan)
-#rain_trt       0.39536 0.39536     1    20  0.8129 0.3780
-#round          0.03611 0.03611     1    20  0.0742 0.7880
-#rain_trt:round 0.93046 0.93046     1    20  1.9130 0.1819
-
-#no change
-
-emmeans(Petri_Shan_mod_nan, pairwise~rain_trt|round)
-
-
-ggplot(Mar_leaf_rar_petri_div_map_P_nan,aes(x=interaction(rain_trt,start_date),y=Shannon))+geom_point()+geom_boxplot()
-
 
 
 #####Petri Plant Analyses####
@@ -2134,11 +2048,13 @@ nrow(Petri_plant_end)
 #32
 
 
-#no nano
+#Nano samples were excluded
+#Nano samples are an additional control that were not included in the final analyses
 
 Petri_plant_end_nan=subset(Petri_plant_end,rain_trt!="Nano")
 
-Petri_plant_end_sum_nan=subset(Petri_plant_end_sum,rain_trt!="Nano")
+Petri_plant_end_sum_nan=Petri_plant_end_nan[,c("rain_trt","collect_date","germ_seed","fung_seed")] %>% 
+  group_by(rain_trt,collect_date) %>% summarise_all(list(~mean(.),se=~sd(.)/sqrt(n())))
 
 
 
@@ -2171,8 +2087,6 @@ anova(Petri_germ_end_mod_nan, type = 3)
     theme_cowplot()+theme(axis.text = element_text(size = 28),axis.title = element_text(size = 32),legend.position = "none",
                           strip.background = element_rect(fill = NA),strip.text = element_text(size = 32)))
 
-#petri_germination_dot_error_nan
-#800x600
 
 
 
@@ -2194,17 +2108,8 @@ shapiro.test(resid(Petri_fung_col_end_mod_nan))
 anova(Petri_fung_col_end_mod_nan, type = 3)
 #collect_date          2.29044 2.29044     1    20  4.3761 0.04941 *
 
-emmeans(Petri_fung_col_end_mod_nan,pairwise~collect_date|rain_trt)
-
-emmeans(Petri_fung_col_end_mod_nan,pairwise~rain_trt|collect_date)
 
 emmeans(Petri_fung_col_end_mod_nan,pairwise~rain_trt*collect_date, adjust="fdr")
-
-#no nano
-
-Petri_plant_end_nan=subset(Petri_plant_end,rain_trt!="Nano")
-
-Petri_plant_end_sum_nan=subset(Petri_plant_end_sum,rain_trt!="Nano")
 
 
 
@@ -2222,7 +2127,7 @@ Petri_plant_end_sum_nan=subset(Petri_plant_end_sum,rain_trt!="Nano")
 
 #petri_fungi_colon_dot_error_nan
 #800x600
-#####PLOT: Figure S8####
+#####PLOT: Figure S10####
 #####Seed Germ and Colon Combined Graphs#####
 
 plot_grid(petri_germ,petri_fung_col,nrow = 2, align="v")
@@ -2402,7 +2307,7 @@ Mar_leaf.fung_decon_pr_petr_S.rar_pub_Endo_comb_E=subset(Mar_leaf.fung_decon_pr_
 Mar_leaf.fung_decon_pr_petr_S.rar_pub_Endo_comb_sum=Mar_leaf.fung_decon_pr_petr_S.rar_pub_Endo_comb_E%>%group_by(round,rain_trt,grp_inter)%>%
   summarise_at("prop_abun",list(~mean(.),se=~sd(.)/sqrt(n())))
 
-#####PLOT: Figure S5####
+#####PLOT: Figure S15####
 
 
 grp_inter_order=c("Endophyte","Pathogen","Context Mutualist","Mutualist","Prairie Indicator","Cave-in-Rock Indicator")
@@ -2439,7 +2344,15 @@ ggplot(subset(Mar_leaf.fung_decon_pr_petr_S.rar_pub_Endo_comb_E,rain_trt!="Nano"
 #Petri_pub_seq_grp_prop_dot_nan
 
 
+#Proportion of seed LFE that were pathogens
+subset(Mar_leaf.fung_decon_pr_petr_S.rar_pub_Endo_comb_sum,round=="Seed")
+#0.0453/0.288
+#[1] 0.1572917
 
+#Proportion of seed LFE that were Prairie indicators
+subset(Mar_leaf.fung_decon_pr_petr_S.rar_pub_Endo_comb_sum,round=="Seed")
+#0.0252/0.288
+#[1] 0.0875
 
 
 #####Stats Petri Published leaf endophyte#####
@@ -2590,7 +2503,7 @@ anova(Path_pub_seq_mod)
 #rain_trt_round_nan 41.348  6.8913     6    28   1.707 0.1563
 #no change
 
-#####POSTHOC TEST: Figure S5b####
+#####POSTHOC TEST: Figure S15b####
 emmeans(Path_pub_seq_mod, pairwise~rain_trt_round_nan,adjust="fdr")
 
 
@@ -2799,7 +2712,9 @@ Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_petri_pair_sub_sum_sum=Mar_leaf_ra
   group_by(round,unique_rain_trt,treatment)%>%
   summarise_all(list(~mean(.),se=~sd(.)/sqrt(n()),~n(),~sd(.)))
 
-#No nanopure samples
+#Nano samples were excluded
+#Nano samples are an additional control that were not included in the final analyses
+
 Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_petri_pair_sub_sum_nan=subset(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_petri_pair_sub_sum, unique_rain_trt!="Nano")
 Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_petri_pair_sub_sum_sum_nan=subset(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_petri_pair_sub_sum_sum, unique_rain_trt!="Nano")
 
@@ -2875,361 +2790,6 @@ emmeans(Petri_pair_dist_1000_nan_mod,pairwise~unique_rain_trt|treatment|round)
 
 #####POSTHOC TEST: Figure 2a####
 emmeans(Petri_pair_dist_1000_nan_mod,pairwise~unique_rain_trt*treatment|round,adjust="fdr")
-
-#####Overlap in Taxa between Petri Taxa####
-
-
-Mar_leaf_rain.fung_decon_rar_Mar=subset_samples(Mar_leaf_rain.fung_decon_rar, sub_proj=="Marshall")
-Mar_leaf_rain.fung_decon_rar_Mar_petri=subset_samples(Mar_leaf_rain.fung_decon_rar_Mar, plant_type!="Adult"&plant_type!="Seedling")
-
-Mar_leaf.fung_decon_pr_petr_S.rar=subset_samples(Mar_leaf_rain.fung_decon_rar_Mar_petri,plant_type!="Rain"|collect_date=="8/21/2018"|
-                                                   collect_date=="7/21/2018")
-
-nsamples(Mar_leaf.fung_decon_pr_petr_S.rar)
-#43
-
-unique(sample_data(Mar_leaf.fung_decon_pr_petr_S.rar)$sub_proj)
-
-Mar_leaf.fung_decon_pr_petr_S.rar=prune_taxa(taxa_sums(Mar_leaf.fung_decon_pr_petr_S.rar) > 0, Mar_leaf.fung_decon_pr_petr_S.rar)
-ntaxa(Mar_leaf.fung_decon_pr_petr_S.rar)
-#1027
-sum(taxa_sums(Mar_leaf.fung_decon_pr_petr_S.rar))
-#43000
-min(sample_sums(Mar_leaf.fung_decon_pr_petr_S.rar))
-#1000
-max(sample_sums(Mar_leaf.fung_decon_pr_petr_S.rar))
-#1000
-
-ntaxa(Mar_leaf.fung_decon_pr_petr_S.rar)
-#1027
-nsamples(Mar_leaf.fung_decon_pr_petr_S.rar)
-#43
-
-#what OTUs are in Seeds 
-Mar_leaf.fung_decon_pr_petr_S.rar_SEED=subset_samples(Mar_leaf.fung_decon_pr_petr_S.rar, plant_type=="Seed")
-Mar_leaf.fung_decon_pr_petr_S.rar_SEED=prune_taxa(taxa_sums(Mar_leaf.fung_decon_pr_petr_S.rar_SEED)>0,Mar_leaf.fung_decon_pr_petr_S.rar_SEED)
-
-nsamples(Mar_leaf.fung_decon_pr_petr_S.rar_SEED)
-#4
-ntaxa(Mar_leaf.fung_decon_pr_petr_S.rar_SEED)
-#152
-
-Petri_SEED=taxa_names(Mar_leaf.fung_decon_pr_petr_S.rar_SEED)
-
-unique(sample_data(Mar_leaf.fung_decon_pr_petr_S.rar)$collect_date)
-
-#Round 1
-
-#what OTUs are in Rain  
-Mar_leaf.fung_decon_pr_petr_S.rar_RAIN_R1=subset_samples(Mar_leaf.fung_decon_pr_petr_S.rar, plant_type=="Rain"&collect_date=="7/21/2018")
-Mar_leaf.fung_decon_pr_petr_S.rar_RAIN_R1=prune_taxa(taxa_sums(Mar_leaf.fung_decon_pr_petr_S.rar_RAIN_R1)>0,Mar_leaf.fung_decon_pr_petr_S.rar_RAIN_R1)
-
-nsamples(Mar_leaf.fung_decon_pr_petr_S.rar_RAIN_R1)
-#3
-ntaxa(Mar_leaf.fung_decon_pr_petr_S.rar_RAIN_R1)
-#417
-
-Petri_RAIN_R1=taxa_names(Mar_leaf.fung_decon_pr_petr_S.rar_RAIN_R1)
-
-unique(sample_data(Mar_leaf.fung_decon_pr_petr_S.rar)$collect_date)
-unique(sample_data(Mar_leaf.fung_decon_pr_petr_S.rar)$rain_trt)
-unique(with(sample_data(Mar_leaf.fung_decon_pr_petr_S.rar),interaction(collect_date,rain_trt)))
-#what OTUs are in Nano
-Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R1=subset_samples(Mar_leaf.fung_decon_pr_petr_S.rar, rain_trt=="Nano"&collect_date=="8/14/2018")
-Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R1=prune_taxa(taxa_sums(Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R1)>0,Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R1)
-
-nsamples(Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R1)
-#4
-ntaxa(Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R1)
-#142
-
-Mar_leaf.fung_decon_pr_petr_S.rar_NANO_R1_overlap=data.frame(estimate_richness(Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R1,measures ="Observed"),
-                                                             estimate_richness(prune_taxa(Petri_SEED,Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R1),
-                                                                               measures ="Observed"),
-                                                             estimate_richness(prune_taxa(Petri_RAIN_R1,Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R1),
-                                                                               measures ="Observed"),
-                                                             "overlap_seed_sum"=sample_sums(prune_taxa(Petri_SEED,Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R1)),
-                                                             "overlap_rain_sum"=sample_sums(prune_taxa(Petri_RAIN_R1,Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R1)),
-                                                             sample_data(Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R1))
-colnames(Mar_leaf.fung_decon_pr_petr_S.rar_NANO_R1_overlap)[1:3]=c("tot_rich","overlap_seed_rich","overlap_rain_rich")
-
-#what OTUs are in Sterile
-Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R1=subset_samples(Mar_leaf.fung_decon_pr_petr_S.rar, rain_trt=="Sterile_rain"&collect_date=="8/14/2018")
-Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R1=prune_taxa(taxa_sums(Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R1)>0,Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R1)
-
-nsamples(Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R1)
-#6
-ntaxa(Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R1)
-#163
-
-
-Mar_leaf.fung_decon_pr_petr_S.rar_STERILE_R1_overlap=data.frame(estimate_richness(Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R1,measures ="Observed"),
-                                                                       estimate_richness(prune_taxa(Petri_SEED,Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R1),
-                                                                                         measures ="Observed"),
-                                                                       estimate_richness(prune_taxa(Petri_RAIN_R1,Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R1),
-                                                                                         measures ="Observed"),
-                                                                       "overlap_seed_sum"=sample_sums(prune_taxa(Petri_SEED,Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R1)),
-                                                                       "overlap_rain_sum"=sample_sums(prune_taxa(Petri_RAIN_R1,Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R1)),
-                                                                       sample_data(Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R1))
-colnames(Mar_leaf.fung_decon_pr_petr_S.rar_STERILE_R1_overlap)[1:3]=c("tot_rich","overlap_seed_rich","overlap_rain_rich")
-
-
-#what OTUs are in Live
-Mar_leaf.fung_decon_pr_petr_S.rar_Live_R1=subset_samples(Mar_leaf.fung_decon_pr_petr_S.rar, rain_trt=="Live_Rain"&collect_date=="8/14/2018")
-Mar_leaf.fung_decon_pr_petr_S.rar_Live_R1=prune_taxa(taxa_sums(Mar_leaf.fung_decon_pr_petr_S.rar_Live_R1)>0,Mar_leaf.fung_decon_pr_petr_S.rar_Live_R1)
-
-nsamples(Mar_leaf.fung_decon_pr_petr_S.rar_Live_R1)
-#6
-ntaxa(Mar_leaf.fung_decon_pr_petr_S.rar_Live_R1)
-#154
-
-
-Mar_leaf.fung_decon_pr_petr_S.rar_LIVE_R1_overlap=data.frame(estimate_richness(Mar_leaf.fung_decon_pr_petr_S.rar_Live_R1,measures ="Observed"),
-                                                                estimate_richness(prune_taxa(Petri_SEED,Mar_leaf.fung_decon_pr_petr_S.rar_Live_R1),
-                                                                                  measures ="Observed"),
-                                                                estimate_richness(prune_taxa(Petri_RAIN_R1,Mar_leaf.fung_decon_pr_petr_S.rar_Live_R1),
-                                                                                  measures ="Observed"),
-                                                                "overlap_seed_sum"=sample_sums(prune_taxa(Petri_SEED,Mar_leaf.fung_decon_pr_petr_S.rar_Live_R1)),
-                                                                "overlap_rain_sum"=sample_sums(prune_taxa(Petri_RAIN_R1,Mar_leaf.fung_decon_pr_petr_S.rar_Live_R1)),
-                                                                sample_data(Mar_leaf.fung_decon_pr_petr_S.rar_Live_R1))
-colnames(Mar_leaf.fung_decon_pr_petr_S.rar_LIVE_R1_overlap)[1:3]=c("tot_rich","overlap_seed_rich","overlap_rain_rich")
-
-
-
-#Round 2
-
-#what OTUs are in Rain  
-Mar_leaf.fung_decon_pr_petr_S.rar_RAIN_R2=subset_samples(Mar_leaf.fung_decon_pr_petr_S.rar, plant_type=="Rain"&collect_date=="8/21/2018")
-Mar_leaf.fung_decon_pr_petr_S.rar_RAIN_R2=prune_taxa(taxa_sums(Mar_leaf.fung_decon_pr_petr_S.rar_RAIN_R2)>0,Mar_leaf.fung_decon_pr_petr_S.rar_RAIN_R2)
-
-nsamples(Mar_leaf.fung_decon_pr_petr_S.rar_RAIN_R2)
-#4
-ntaxa(Mar_leaf.fung_decon_pr_petr_S.rar_RAIN_R2)
-#439
-
-Petri_RAIN_R2=taxa_names(Mar_leaf.fung_decon_pr_petr_S.rar_RAIN_R2)
-
-#what OTUs are in Nano
-Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R2=subset_samples(Mar_leaf.fung_decon_pr_petr_S.rar, rain_trt=="Nano"&collect_date=="9/18/2018")
-Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R2=prune_taxa(taxa_sums(Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R2)>0,Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R2)
-
-nsamples(Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R2)
-#4
-ntaxa(Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R2)
-#158
-
-Mar_leaf.fung_decon_pr_petr_S.rar_NANO_R2_overlap=data.frame(estimate_richness(Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R2,measures ="Observed"),
-                                                             estimate_richness(prune_taxa(Petri_SEED,Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R2),
-                                                                               measures ="Observed"),
-                                                             estimate_richness(prune_taxa(Petri_RAIN_R2,Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R2),
-                                                                               measures ="Observed"),
-                                                             "overlap_seed_sum"=sample_sums(prune_taxa(Petri_SEED,Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R2)),
-                                                             "overlap_rain_sum"=sample_sums(prune_taxa(Petri_RAIN_R2,Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R2)),
-                                                             sample_data(Mar_leaf.fung_decon_pr_petr_S.rar_Nano_R2))
-colnames(Mar_leaf.fung_decon_pr_petr_S.rar_NANO_R2_overlap)[1:3]=c("tot_rich","overlap_seed_rich","overlap_rain_rich")
-
-#what OTUs are in Sterile
-Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R2=subset_samples(Mar_leaf.fung_decon_pr_petr_S.rar, rain_trt=="Sterile_rain"&collect_date=="9/18/2018")
-Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R2=prune_taxa(taxa_sums(Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R2)>0,Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R2)
-
-nsamples(Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R2)
-#6
-ntaxa(Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R2)
-#164
-
-
-Mar_leaf.fung_decon_pr_petr_S.rar_STERILE_R2_overlap=data.frame(estimate_richness(Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R2,measures ="Observed"),
-                                                                estimate_richness(prune_taxa(Petri_SEED,Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R2),
-                                                                                  measures ="Observed"),
-                                                                estimate_richness(prune_taxa(Petri_RAIN_R2,Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R2),
-                                                                                  measures ="Observed"),
-                                                                "overlap_seed_sum"=sample_sums(prune_taxa(Petri_SEED,Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R2)),
-                                                                "overlap_rain_sum"=sample_sums(prune_taxa(Petri_RAIN_R2,Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R2)),
-                                                                sample_data(Mar_leaf.fung_decon_pr_petr_S.rar_Sterile_R2))
-colnames(Mar_leaf.fung_decon_pr_petr_S.rar_STERILE_R2_overlap)[1:3]=c("tot_rich","overlap_seed_rich","overlap_rain_rich")
-
-
-#what OTUs are in Live
-Mar_leaf.fung_decon_pr_petr_S.rar_Live_R2=subset_samples(Mar_leaf.fung_decon_pr_petr_S.rar, rain_trt=="Live_Rain"&collect_date=="9/18/2018")
-Mar_leaf.fung_decon_pr_petr_S.rar_Live_R2=prune_taxa(taxa_sums(Mar_leaf.fung_decon_pr_petr_S.rar_Live_R2)>0,Mar_leaf.fung_decon_pr_petr_S.rar_Live_R2)
-
-nsamples(Mar_leaf.fung_decon_pr_petr_S.rar_Live_R2)
-#6
-ntaxa(Mar_leaf.fung_decon_pr_petr_S.rar_Live_R2)
-#136
-
-
-Mar_leaf.fung_decon_pr_petr_S.rar_LIVE_R2_overlap=data.frame(estimate_richness(Mar_leaf.fung_decon_pr_petr_S.rar_Live_R2,measures ="Observed"),
-                                                             estimate_richness(prune_taxa(Petri_SEED,Mar_leaf.fung_decon_pr_petr_S.rar_Live_R2),
-                                                                               measures ="Observed"),
-                                                             estimate_richness(prune_taxa(Petri_RAIN_R2,Mar_leaf.fung_decon_pr_petr_S.rar_Live_R2),
-                                                                               measures ="Observed"),
-                                                             "overlap_seed_sum"=sample_sums(prune_taxa(Petri_SEED,Mar_leaf.fung_decon_pr_petr_S.rar_Live_R2)),
-                                                             "overlap_rain_sum"=sample_sums(prune_taxa(Petri_RAIN_R2,Mar_leaf.fung_decon_pr_petr_S.rar_Live_R2)),
-                                                             sample_data(Mar_leaf.fung_decon_pr_petr_S.rar_Live_R2))
-colnames(Mar_leaf.fung_decon_pr_petr_S.rar_LIVE_R2_overlap)[1:3]=c("tot_rich","overlap_seed_rich","overlap_rain_rich")
-summary(Mar_leaf.fung_decon_pr_petr_S.rar_LIVE_R2_overlap)
-
-Mar_leaf.fung_decon_pr_petr_S.rar_overlap=rbind(Mar_leaf.fung_decon_pr_petr_S.rar_NANO_R1_overlap,
-                                                Mar_leaf.fung_decon_pr_petr_S.rar_STERILE_R1_overlap,
-                                                Mar_leaf.fung_decon_pr_petr_S.rar_LIVE_R1_overlap,
-                                                Mar_leaf.fung_decon_pr_petr_S.rar_NANO_R2_overlap,
-                                                Mar_leaf.fung_decon_pr_petr_S.rar_STERILE_R2_overlap,
-                                                Mar_leaf.fung_decon_pr_petr_S.rar_LIVE_R2_overlap)
-
-
-
-Mar_leaf.fung_decon_pr_petr_S.rar_overlap$overlap_seed_rich_prop=Mar_leaf.fung_decon_pr_petr_S.rar_overlap$overlap_seed_rich/
-  Mar_leaf.fung_decon_pr_petr_S.rar_overlap$tot_rich
-Mar_leaf.fung_decon_pr_petr_S.rar_overlap$overlap_rain_rich_prop=Mar_leaf.fung_decon_pr_petr_S.rar_overlap$overlap_rain_rich/
-  Mar_leaf.fung_decon_pr_petr_S.rar_overlap$tot_rich
-
-Mar_leaf.fung_decon_pr_petr_S.rar_overlap$overlap_seed_sum_prop=Mar_leaf.fung_decon_pr_petr_S.rar_overlap$overlap_seed_sum/1000
-Mar_leaf.fung_decon_pr_petr_S.rar_overlap$overlap_rain_sum_prop=Mar_leaf.fung_decon_pr_petr_S.rar_overlap$overlap_rain_sum/1000
-
-
-#Richness overlap
-
-Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Rich_M=melt(Mar_leaf.fung_decon_pr_petr_S.rar_overlap[c("rain_trt","collect_date","sampleID_bact",
-                                                                                                  "overlap_rain_rich_prop","overlap_seed_rich_prop",
-                                                                                                  "gh_block")])
-
-
-#Richness Overlap
-
-
-Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Rich_sum=Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Rich_M%>%
-  group_by(rain_trt,collect_date,variable)%>%
-  summarise_at(vars("value"),list(~mean(.),se=~sd(.)/sqrt(n()),~n(),~sd(.)))
-Rain_order=c("Nano","Sterile_rain","Live_Rain")
-unique(with(Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Rich_sum,interaction(collect_date,variable)))
-round_trt_over_order=c("8/14/2018.overlap_seed_rich_prop","9/18/2018.overlap_seed_rich_prop","8/14/2018.overlap_rain_rich_prop","9/18/2018.overlap_rain_rich_prop")
-with(Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Rich_sum,interaction(rain_trt,collect_date))
-rain_trt_over_round=c("Nano.8/14/2018","Nano.9/18/2018","Sterile_rain.8/14/2018","Sterile_rain.9/18/2018","Live_Rain.8/14/2018","Live_Rain.9/18/2018")
-brewer.pal(n = 12, name = "Paired")
-
-
-
-#No Nanopure samples
-Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Rich_M_nan=subset(Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Rich_M,rain_trt!="Nano")
-Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Rich_sum_nan=subset(Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Rich_sum,rain_trt!="Nano")
-Rain_order_nan=c("Sterile_rain","Live_Rain")
-
-
-
-
-
-
-(rich_over_petri_nan_p=ggplot(Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Rich_M_nan,
-                              aes(x=factor(variable,levels = c("overlap_seed_rich_prop","overlap_rain_rich_prop")),y=value))+
-    geom_point(aes(shape=factor(rain_trt,levels = Rain_order_nan),fill=factor(rain_trt,levels = Rain_order_nan),
-                   group=factor(rain_trt,levels = Rain_order_nan)), 
-               color="black",size=4,position = position_dodge(0.65),alpha=.15)+
-    geom_errorbar(data=Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Rich_sum_nan, 
-                  aes(x=factor(variable,levels = c("overlap_seed_rich_prop","overlap_rain_rich_prop")),group=factor(rain_trt,levels = Rain_order_nan),
-                      y=mean,ymin=mean-se,ymax=mean+se),width=.5,
-                  color="black",position = position_dodge(0.65))+
-    geom_point(data=Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Rich_sum_nan,
-               aes(y=mean,shape=factor(rain_trt,levels = Rain_order_nan),group=factor(rain_trt,levels = Rain_order_nan),
-                   fill=factor(rain_trt,levels = Rain_order_nan),x=factor(variable,levels = c("overlap_seed_rich_prop","overlap_rain_rich_prop"))), size=10,
-               color="black",position = position_dodge(0.65))+facet_nested(.~(factor(collect_date,labels = c("Round1","Round2"))))+
-    scale_shape_manual(values = c(25,24),name=NULL)+scale_x_discrete(labels=c("Seed","Rain"))+
-    scale_fill_manual(values = c("#6A3D9A","#1F78B4"),name=NULL)+
-    ylab("Proportion ASV overlap")+theme_classic()+
-    theme(axis.title.x = element_blank(),axis.title.y = element_text(size = 28),axis.text = element_text(size = 30),panel.border =  element_rect(fill = NA,linetype="solid"),
-          legend.position = "none",strip.text = element_text(size = 36),strip.placement = "outside",strip.background = element_rect(linetype="blank"),
-          panel.spacing = unit(0, "lines")))
-
-
-Petri_rich_over_1000_nan_mod=lmer((value)~collect_date*rain_trt*variable+(1|sampleID_bact)+(1|gh_block),data=data.frame(Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Rich_M_nan))
-plot(Petri_rich_over_1000_nan_mod)
-hist(resid(Petri_rich_over_1000_nan_mod))
-qqPlot(resid(Petri_rich_over_1000_nan_mod))
-shapiro.test(resid(Petri_rich_over_1000_nan_mod))
-#p-value = 0.6108
-
-#####Table S3 ASV Overlap####
-anova(Petri_rich_over_1000_nan_mod)
-#nada sig 
-
-
-
-#Abundance overlap
-
-Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Abun_M=melt(Mar_leaf.fung_decon_pr_petr_S.rar_overlap[c("rain_trt","collect_date","sampleID_bact",
-                                                                                                  "overlap_seed_sum_prop","overlap_rain_sum_prop",
-                                                                                                  "gh_block")])
-
-
-#Reads
-
-
-Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Abun_sum=Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Abun_M%>%
-  group_by(rain_trt,collect_date,variable)%>%
-  summarise_at(vars("value"),list(~mean(.),se=~sd(.)/sqrt(n()),~n(),~sd(.)))
-Rain_order=c("Nano","Sterile_rain","Live_Rain")
-
-with(Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Abun_sum,interaction(rain_trt,collect_date))
-rain_trt_over_round=c("Nano.8/14/2018","Nano.9/18/2018","Sterile_rain.8/14/2018","Sterile_rain.9/18/2018","Live_Rain.8/14/2018","Live_Rain.9/18/2018")
-brewer.pal(n = 12, name = "Paired")
-
-
-
-#No nanopure samples 
-Rain_order_nan=c("Sterile_rain","Live_Rain")
-Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Abun_M_nan=subset(Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Abun_M,rain_trt!="Nano")
-Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Abun_sum_nan=subset(Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Abun_sum,rain_trt!="Nano")
-
-
-
-#1200*600
-
-
-(abun_over_petri_nan_p=ggplot(Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Abun_M_nan,
-                              aes(x=factor(variable,levels = c("overlap_seed_sum_prop","overlap_rain_sum_prop")),y=value))+
-    geom_point(aes(shape=factor(rain_trt,levels = Rain_order_nan),fill=factor(rain_trt,levels = Rain_order_nan),
-                   group=factor(rain_trt,levels = Rain_order_nan)), 
-               color="black",size=4,position = position_dodge(0.65),alpha=.15)+
-    geom_errorbar(data=Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Abun_sum_nan, 
-                  aes(x=factor(variable,levels = c("overlap_seed_sum_prop","overlap_rain_sum_prop")),group=factor(rain_trt,levels = Rain_order_nan),
-                      y=mean,ymin=mean-se,ymax=mean+se),width=.5,
-                  color="black",position = position_dodge(0.65))+
-    geom_point(data=Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Abun_sum_nan,
-               aes(y=mean,shape=factor(rain_trt,levels = Rain_order_nan),
-                   group=factor(rain_trt,levels = Rain_order_nan),
-                   fill=factor(rain_trt,levels = Rain_order_nan),x=factor(variable,levels = c("overlap_seed_sum_prop","overlap_rain_sum_prop"))), size=10,
-               color="black",position = position_dodge(0.65))+facet_nested(.~(factor(collect_date,labels = c("Round1","Round2"))))+
-    scale_shape_manual(values = c(25,24),name=NULL)+scale_x_discrete(labels=c("Seed","Rain"))+
-    scale_fill_manual(values = c("#6A3D9A","#1F78B4"),name=NULL)+
-    ylab("Proportion reads overlap")+theme_classic()+
-    theme(axis.title.x = element_blank(),axis.title.y = element_text(size = 28),axis.text = element_text(size = 30),
-          panel.border =  element_rect(fill = NA,linetype="solid"),
-          legend.position = "none",strip.text = element_text(size = 36),strip.placement = "outside",strip.background = element_rect(linetype="blank"),
-          panel.spacing = unit(0, "lines")))
-
-
-Petri_reads_over_1000_nan_mod=lmer((value)~collect_date*rain_trt*variable+(1|sampleID_bact)+(1|gh_block),data=data.frame(Mar_leaf.fung_decon_pr_petr_S.rar_overlap_Abun_M_nan))
-plot(Petri_reads_over_1000_nan_mod)
-hist(resid(Petri_reads_over_1000_nan_mod))
-qqPlot(resid(Petri_reads_over_1000_nan_mod))
-shapiro.test(resid(Petri_reads_over_1000_nan_mod))
-#W = 0.97003, p-value = 0.2539
-
-#####Table S3 Read Overlap####
-anova(Petri_reads_over_1000_nan_mod)
-#rain_trt                       0.112136 0.112136     1 13.180  6.3233 0.025653 * 
-#variable                       0.187000 0.187000     1 20.000 10.5448 0.004036 **   
-
-
-emmeans(Petri_reads_over_1000_nan_mod,pairwise~rain_trt*variable*collect_date,adjust="fdr")
-
-emmeans(Petri_reads_over_1000_nan_mod,pairwise~rain_trt|variable)
-emmeans(Petri_reads_over_1000_nan_mod,pairwise~variable|collect_date)
-emmeans(Petri_reads_over_1000_nan_mod,pairwise~rain_trt|variable|collect_date)
-
-#####POSTHOC TEST: Figure S2d####
-emmeans(Petri_reads_over_1000_nan_mod,pairwise~rain_trt*variable|collect_date,adjust="fdr")
-
 
 
 #####Petri Indicator analyses for importance of seed versus rain####
@@ -3365,7 +2925,7 @@ Rain_order=c("Sterile_rain","Live_Rain")
 round_order=c("Round1","Round2")
 
 rain_trt_date_order=c("Sterile_rain.8/14/2018","Live_Rain.8/14/2018","Sterile_rain.9/18/2018","Live_Rain.9/18/2018")
-brewer.pal(n = 12, name = "Paired")
+
 
 
 (IndVal_petri_nan_p=ggplot(Mar_leaf.fung_decon_pr_petr_S.rar_plants_NS_IndVal_M_prop)+
@@ -3389,8 +2949,7 @@ brewer.pal(n = 12, name = "Paired")
           panel.border =  element_rect(fill = NA,linetype="solid"),
           legend.position = "none",strip.text = element_text(size = 36),strip.placement = "outside",strip.background = element_rect(linetype="blank"),
           panel.spacing = unit(0, "lines")))
-#Petri_IndVal_RS_LFE
-#1200*600
+
 
 
 
@@ -3402,7 +2961,7 @@ qqPlot(resid(Petri_IndVal_SR_mod))
 shapiro.test(resid(Petri_IndVal_SR_mod))
 #p-value =  0.8326
 
-####Table S4 Average Indicator Value####
+####Table S5 Average Indicator Value####
 anova(Petri_IndVal_SR_mod)
 
 #rain_trt                       0.15671 0.15671     1    40  8.1587 0.0067659 ** 
@@ -3521,14 +3080,11 @@ brewer.pal(n = 12, name = "Paired")
     theme(axis.title.x = element_blank(),axis.title.y = element_text(size = 28),axis.text = element_text(size = 30),panel.border =  element_rect(fill = NA,linetype="solid"),
           legend.position = "none",strip.text = element_text(size = 36),strip.placement = "outside",strip.background = element_rect(linetype="blank"),
           panel.spacing = unit(0, "lines")))
-#
-#1200*600
+
 
 
 Mar_leaf.fung_decon_pr_petr_S.rar_IndV_sig_sum_map_sum
-#Round2 increase in rain taxa 
 
-(0.319-0.0287)/0.0287
 
 #Analyses
 
@@ -3540,14 +3096,14 @@ qqPlot(resid(Petri_IndVal_sig_mod))
 shapiro.test(resid(Petri_IndVal_sig_mod))
 #W = 0.98776, p-value = 0.8931
 
-####Table S4 Abundance of sig Indicator Taxa####
+####Table S5 Abundance of sig Indicator Taxa####
 anova(Petri_IndVal_sig_mod)
 
 #rain_trt                      0.199696 0.199696     1 17.972  5.6887 0.028297 * 
 #rain_trt:collect_date         0.118225 0.118225     1 17.972  3.3678 0.083088 . 
 #rain_trt:ind_grp              0.302852 0.302852     1 20.000  8.6272 0.008147 **
 
-#####POSTHOC TEST: Figure S3a####
+#####POSTHOC TEST: Figure S6a####
 emmeans(Petri_IndVal_sig_mod,pairwise~ind_grp*rain_trt|collect_date, adjust="fdr")
 
 
@@ -3687,7 +3243,9 @@ Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_sum_sum=Mar_leaf
   group_by(round,unique_rain_trt,treatment)%>%
   summarise_all(list(~mean(.),se=~sd(.)/sqrt(n()),~n(),~sd(.)))
 
-#Nanopure samples need to be removed
+#Nano samples were excluded
+#Nano samples are an additional control that were not included in the final analyses
+
 Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_sum_nan=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_sum, unique_rain_trt!="Nano")
 Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_sum_sum_nan=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_sum_sum,
                                                                                    unique_rain_trt!="Nano")
@@ -3726,10 +3284,7 @@ anova(Petri_pair_dist_J1000_nan_mod)
 #treatment                       0.134385 0.134385     1 20.000 209.8911 4.56e-12 ***
 
 
-emmeans(Petri_pair_dist_J1000_nan_mod, pairwise~treatment|round)
-emmeans(Petri_pair_dist_J1000_nan_mod, pairwise~treatment|round|unique_rain_trt)
-emmeans(Petri_pair_dist_J1000_nan_mod, pairwise~treatment*round)
-emmeans(Petri_pair_dist_J1000_nan_mod, pairwise~treatment*round*unique_rain_trt,adjust="fdr")
+
 
 #####POSTHOC TEST: Figure 2b####
 emmeans(Petri_pair_dist_J1000_nan_mod, pairwise~treatment*unique_rain_trt|round,adjust="fdr")
@@ -3757,7 +3312,8 @@ round_order=c("Round1","Round2")
 brewer.pal(n = 12, name = "Paired")
 
 
-#Remove Nanopure samples
+#Nano samples were excluded
+#Nano samples are an additional control that were not included in the final analyses
 
 
 Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_nest_sum_nan=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_nest_sum, 
@@ -3798,11 +3354,9 @@ shapiro.test(resid(Petri_pair_dist_nest1000_nan_mod))
 anova(Petri_pair_dist_nest1000_nan_mod)
 #treatment                       0.231011 0.231011     1    20 92.8984 5.856e-09 *** 
 
-#changed
-emmeans(Petri_pair_dist_nest1000_nan_mod, pairwise~treatment*round*unique_rain_trt,adjust="fdr")
-emmeans(Petri_pair_dist_nest1000_nan_mod, pairwise~treatment|round)
 
-#####POSTHOC TEST: Figure S2a####
+
+#####POSTHOC TEST: Figure S7a####
 emmeans(Petri_pair_dist_nest1000_nan_mod, pairwise~treatment*unique_rain_trt|round,adjust="fdr")
 
 
@@ -3830,7 +3384,8 @@ round_order=c("Round1","Round2")
 
 
 
-#Remove Nanopure samples
+#Nano samples were excluded
+#Nano samples are an additional control that were not included in the final analyses
 
 
 Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_turn_sum_nan=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_turn_sum, 
@@ -3855,8 +3410,7 @@ Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_turn_sum_sum_nan
     theme(axis.title.x = element_blank(),axis.title.y = element_text(size = 28),axis.text = element_text(size = 30),panel.border =  element_rect(fill = NA,linetype="solid"),
           legend.position = "none",strip.text = element_text(size = 36),strip.placement = "outside",strip.background = element_rect(linetype="blank"),
           panel.spacing = unit(0, "lines")))
-#Dist_Jacc_petri_dot_error_nan
-#1200*600
+
 
 
 
@@ -3873,19 +3427,14 @@ anova(Petri_pair_dist_turn1000_nan_mod)
 #round:treatment                 0.0193902 0.0193902     1 20.000  4.5767 0.04493 *
 
 
-emmeans(Petri_pair_dist_turn1000_nan_mod,pairwise~treatment|round)
-emmeans(Petri_pair_dist_turn1000_nan_mod,pairwise~treatment|unique_rain_trt)
-emmeans(Petri_pair_dist_turn1000_nan_mod, pairwise~treatment*round*unique_rain_trt,adjust="fdr")
 
-#####POSTHOC TEST: Figure S2c####
-emmeans(Petri_pair_dist_turn1000_nan_mod, pairwise~treatment*unique_rain_trt|round,adjust="fdr")
 
-#####PLOT: Figure S2####
+#####PLOT: Figure S7####
 #####Plot Turnover Nestedness Overlap####
 
-plot_grid(nest1000_petri_nan_p,rich_over_petri_nan_p,turn1000_petri_nan_p,abun_over_petri_nan_p,nrow = 2, align="v")
-#2000*1200
-#Nest_Turn_OverLap_Petri_dot_error_comb_nan_raw
+plot_grid(nest1000_petri_nan_p,turn1000_petri_nan_p,nrow = 2, align="v")
+#2000*600
+
 
 
 #####Petri Ratio of Nestedness to Turnover####
@@ -3914,7 +3463,8 @@ with(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_sum,interac
 brewer.pal(n = 12, name = "Paired")
 
 
-#Remove Nanopure samples
+#Nano samples were excluded
+#Nano samples are an additional control that were not included in the final analyses
 
 
 Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_rat_NT_sum_nan=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_rat_NT_sum, 
@@ -3939,8 +3489,7 @@ Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_rat_NT_sum_sum_n
     theme(axis.title.x = element_blank(),axis.title.y = element_text(size = 28),axis.text = element_text(size = 30),panel.border =  element_rect(fill = NA,linetype="solid"),
           legend.position = "none",strip.text = element_text(size = 36),strip.placement = "outside",strip.background = element_rect(linetype="blank"),
           panel.spacing = unit(0, "lines")))
-#dot_Ratio_Nest_Turn_Petri_dot_error_raw
-#1200*600
+
 
 
 
@@ -4011,7 +3560,7 @@ emmeans(Petri_pair_dist_rat_NT_1000_nan_mod, pairwise~treatment*unique_rain_trt|
             panel.border =  element_rect(fill = NA,linetype="solid"),
           legend.position = "none",strip.text = element_blank(),strip.placement = "none",
           panel.spacing = unit(0, "lines")))
-##900x800
+
 
 
 (rat_NT_1000_petri_nan_p=ggplot(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_petri_pair_sub_rat_NT_sum_nan,aes(x=factor(treatment,levels = c("Seed","Rain")),y=mean))+
@@ -4037,7 +3586,6 @@ emmeans(Petri_pair_dist_rat_NT_1000_nan_mod, pairwise~treatment*unique_rain_trt|
 plot_grid(bray1000_petri_nan_p,jacc1000_petri_nan_p,rat_NT_1000_petri_nan_p,nrow = 3, align="v",rel_heights = c(0.95,0.8,0.9))
 #1100*1300
 
-#Petri_Bray_Jac_Ratio_dot_raw
 
 
 
@@ -4216,101 +3764,7 @@ anova(Betdisp_field_LFE_r1000_mod)
 #plant_type:collect_date 0.0004254 0.0004254     1 18.515  0.0631 0.80448  
 
 
-####Graph Field experiment Bray NMDS####
 
-#Creation of Hulls for the graphing of Bray NMDS
-Mar_leaf_rain.fung_decon_rar_Mar_field_map=sample_data(Mar_leaf_rain.fung_decon_rar_Mar_field)
-Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates=merge(Mar_leaf_rain.fung_decon_rar_Mar_field.ord$points,Mar_leaf_rain.fung_decon_rar_Mar_field_map, by="row.names")
-Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_data_grp=ifelse(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type=="Rain",
-                                                                         "Rain", ifelse(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type=="Seedling",
-                                                                                        ifelse(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$collect_date=="9/5/2018","Sept_Seedling","Jul_Seedling"),
-                                                                                        ifelse(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type=="Adult",
-                                                                                               ifelse(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$collect_date=="9/5/2018","Sept_Adult","Jul_Adult"),"Seed")))
-grp1000.Adult_Jul <- Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type == "Adult"&
-                                                                          Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$collect_date == "7/16/2018", 
-][chull(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[
-  Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
-    plant_type =="Adult"&Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
-    collect_date == "7/16/2018", c("MDS1", "MDS2")]), ] 
-nrow(grp1000.Adult_Jul)
-#3
-grp1000.Adult_Sept <- Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type == "Adult"&
-                                                                           Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$collect_date == "9/5/2018", 
-][chull(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[
-  Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
-    plant_type =="Adult"&Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
-    collect_date == "9/5/2018", c("MDS1", "MDS2")]), ] 
-
-nrow(grp1000.Adult_Sept)
-#3
-
-
-grp1000.Seedling_Jul <- Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type == "Seedling"&
-                                                                             Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$collect_date == "7/16/2018", 
-][chull(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[
-  Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
-    plant_type =="Seedling"&Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
-    collect_date == "7/16/2018", c("MDS1", "MDS2")]), ] 
-nrow(grp1000.Seedling_Jul)
-#3
-grp1000.Seedling_Sept <- Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type == "Seedling"&
-                                                                              Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$collect_date == "9/5/2018", 
-][chull(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[
-  Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
-    plant_type =="Seedling"&Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
-    collect_date == "9/5/2018", c("MDS1", "MDS2")]), ] 
-
-nrow(grp1000.Seedling_Sept)
-#5
-
-grp1000.Rain <- Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type == "Rain", 
-][chull(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[
-  Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
-    plant_type =="Rain", c("MDS1", "MDS2")]), ] 
-
-nrow(grp1000.Rain)
-#9
-
-grp1000.Seed <- Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type == "Seed", 
-][chull(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[
-  Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
-    plant_type =="Seed", c("MDS1", "MDS2")]), ] 
-
-nrow(grp1000.Seed)
-#4
-
-
-hull1000_Field=rbind(grp1000.Adult_Jul,grp1000.Adult_Sept,grp1000.Seedling_Jul,grp1000.Seedling_Sept,grp1000.Rain, grp1000.Seed)
-nrow(hull1000_Field)
-#27
-Mar_leaf_rain.fung_decon_rar_Mar_field_coor_rain=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates, plant_type=="Rain")
-nrow(Mar_leaf_rain.fung_decon_rar_Mar_field_coor_rain)
-#56
-Mar_leaf_rain.fung_decon_rar_Mar_field_coor_plant=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates, plant_type!="Rain"&
-                                                           plant_type!="Seed")
-nrow(Mar_leaf_rain.fung_decon_rar_Mar_field_coor_plant)
-#25
-Mar_leaf_rain.fung_decon_rar_Mar_field_coor_seed=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates,plant_type=="Seed")
-nrow(Mar_leaf_rain.fung_decon_rar_Mar_field_coor_seed)
-#4
-
-
-plant_data_grp_order=c("Seed","Jul_Seedling","Sept_Seedling","Jul_Adult","Sept_Adult","Rain")
-
-
-ggplot(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates,aes(x= MDS1, y=MDS2))+
-  geom_polygon(data=hull1000_Field,aes(x=MDS1,y=MDS2,fill=factor(plant_data_grp,levels = plant_data_grp_order),
-                                       group=factor(plant_data_grp,levels = plant_data_grp_order)), alpha=0.5)+
-  geom_point(size=4,aes(fill=factor(plant_data_grp,levels = plant_data_grp_order),
-                        shape=factor(plant_type,levels = c("Adult","Seed","Seedling","Rain")), color=factor(plant_data_grp,levels = plant_data_grp_order)),stroke=2)+
-  scale_shape_manual(values = c(22,13,24,21),name=NULL)+xlab("NMDS1")+ylab("NMDS2")+
-  scale_color_manual(values = c("#E31A1C","black", "black","black","black","black"),name=NULL)+
-  scale_fill_manual(values = c("#E31A1C","#B2DF8A","#33A02C","#A6CEE3","#1F78B4","black"),name=NULL)+
-  theme_bw()+theme(axis.title = element_text(size = 30),axis.text =  element_text(size = 30),legend.position = "none")
-
-
-#Leaf55 and Leaf25 are outliers
-#900x800
 
 #####Stacked bar graph for the Taxonomy####
 
@@ -4447,7 +3901,7 @@ fill_order=c("Ascomycota.Dothideomycetes","Ascomycota.Eurotiomycetes","Ascomycot
 
 
 
-#####PLOT: Figure S12####
+#####PLOT: Figure S13####
 #####Plot Field Stacked Taxa####
 
 (p_Field_plants_color=ggplot(Mar_leaf_rain.fung_decon_rar_Mar_field_NR_fact.phylum.prop_otu_M,aes(x=variable,y=value,fill=Phylum))+
@@ -4511,7 +3965,7 @@ Mar_rain.fung_decon_rar_Mar_field_fact.phylum.prop_otu=as.data.frame(t(otu_table
 Mar_rain.fung_decon_rar_Mar_field_fact.phylum.prop_otu[,"Phylum"]=Mar_rain.fung_decon_rar_Mar_field_Names
 Mar_rain.fung_decon_rar_Mar_field_fact.phylum.prop_otu_M=melt(Mar_rain.fung_decon_rar_Mar_field_fact.phylum.prop_otu,id="Phylum")
 
-#####PLOT: Figure S14####
+#####PLOT: Figure S2####
 
 (p_Rain_color=ggplot(Mar_rain.fung_decon_rar_Mar_field_fact.phylum.prop_otu_M,aes(x=as.Date(variable,format="%m/%d/%Y"),y=value))+
     geom_area(aes( fill=Phylum))+theme_bw()+
@@ -4652,7 +4106,7 @@ Mar_leaf_rain.fung_decon_rar_Mar_field_div=estimate_richness(Mar_leaf_rain.fung_
 Mar_leaf_rain.fung_decon_rar_Mar_field_div=merge(Mar_leaf_rain.fung_decon_rar_Mar_field_div,Mar_leaf_rain.fung_decon_rar_Mar_field_map, by="row.names")
 head(Mar_leaf_rain.fung_decon_rar_Mar_field_div)
 
-#####PLOT: Figure S11####
+#####PLOT: Figure S4####
 #####Graphing Field Diversity####
 
 Mar_leaf_rain.fung_decon_rar_Mar_field_div_sum=Mar_leaf_rain.fung_decon_rar_Mar_field_div%>%group_by(collect_date,plant_type)%>%
@@ -4785,7 +4239,7 @@ plot(Rich_field_r1000_mod)
 anova(Rich_field_r1000_mod)
 #plant_date  10712  2677.9     4 8.3702  4.9571 0.02445 *
 
-#####POSTHOC TEST: Figure S11a####
+#####POSTHOC TEST: Figure S4a####
 emmeans(Rich_field_r1000_mod,pairwise~plant_date, adjust="fdr")
 
 #invSimpson
@@ -4799,8 +4253,7 @@ plot(invSimp_field_r1000_mod)
 anova(invSimp_field_r1000_mod)
 #plant_date   4.55  1.1375     4    24  0.6162 0.6552
 
-#####POSTHOC TEST: Figure S11c####
-emmeans(invSimp_field_r1000_mod,pairwise~plant_date, adjust="fdr")
+
 
 #No Seeds
 Mar_leaf_rain.fung_decon_rar_Mar_field_div_plant_NS=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_div_plant,plant_type!="Seed")
@@ -4971,7 +4424,7 @@ anova(Betdisp_field_J_LFE_r1000_mod)
 #emmeans(Betdisp_field_J_LFE_r1000_mod,pairwise~plant_type*collect_date, adjust="fdr")
 
 
-#####PLOT: Figure S13####
+#####PLOT: Figure S14####
 #####Plot Betadisp Field Bray and Jaccard####
 
 #Bray betadisp
@@ -5073,6 +4526,86 @@ plot_grid(B_field_betadisp2,B_rain_betadisp2,J_field_betadisp2,J_rain_betadisp2,
           rel_widths = c(1.15,1))
 #Field_betadsp_Bray_Jacc_raw
 
+####Graph Field experiment Bray NMDS####
+
+#Creation of Hulls for the graphing of Bray NMDS
+Mar_leaf_rain.fung_decon_rar_Mar_field_map=sample_data(Mar_leaf_rain.fung_decon_rar_Mar_field)
+Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates=merge(Mar_leaf_rain.fung_decon_rar_Mar_field.ord$points,Mar_leaf_rain.fung_decon_rar_Mar_field_map, by="row.names")
+Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_data_grp=ifelse(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type=="Rain",
+                                                                         "Rain", ifelse(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type=="Seedling",
+                                                                                        ifelse(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$collect_date=="9/5/2018","Sept_Seedling","Jul_Seedling"),
+                                                                                        ifelse(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type=="Adult",
+                                                                                               ifelse(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$collect_date=="9/5/2018","Sept_Adult","Jul_Adult"),"Seed")))
+grp1000.Adult_Jul <- Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type == "Adult"&
+                                                                          Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$collect_date == "7/16/2018", 
+][chull(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[
+  Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
+    plant_type =="Adult"&Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
+    collect_date == "7/16/2018", c("MDS1", "MDS2")]), ] 
+nrow(grp1000.Adult_Jul)
+#3
+grp1000.Adult_Sept <- Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type == "Adult"&
+                                                                           Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$collect_date == "9/5/2018", 
+][chull(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[
+  Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
+    plant_type =="Adult"&Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
+    collect_date == "9/5/2018", c("MDS1", "MDS2")]), ] 
+
+nrow(grp1000.Adult_Sept)
+#3
+
+
+grp1000.Seedling_Jul <- Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type == "Seedling"&
+                                                                             Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$collect_date == "7/16/2018", 
+][chull(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[
+  Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
+    plant_type =="Seedling"&Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
+    collect_date == "7/16/2018", c("MDS1", "MDS2")]), ] 
+nrow(grp1000.Seedling_Jul)
+#3
+grp1000.Seedling_Sept <- Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type == "Seedling"&
+                                                                              Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$collect_date == "9/5/2018", 
+][chull(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[
+  Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
+    plant_type =="Seedling"&Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
+    collect_date == "9/5/2018", c("MDS1", "MDS2")]), ] 
+
+nrow(grp1000.Seedling_Sept)
+#5
+
+grp1000.Rain <- Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type == "Rain", 
+][chull(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[
+  Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
+    plant_type =="Rain", c("MDS1", "MDS2")]), ] 
+
+nrow(grp1000.Rain)
+#9
+
+grp1000.Seed <- Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$plant_type == "Seed", 
+][chull(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates[
+  Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates$
+    plant_type =="Seed", c("MDS1", "MDS2")]), ] 
+
+nrow(grp1000.Seed)
+#4
+
+
+hull1000_Field=rbind(grp1000.Adult_Jul,grp1000.Adult_Sept,grp1000.Seedling_Jul,grp1000.Seedling_Sept,grp1000.Rain, grp1000.Seed)
+nrow(hull1000_Field)
+#27
+Mar_leaf_rain.fung_decon_rar_Mar_field_coor_rain=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates, plant_type=="Rain")
+nrow(Mar_leaf_rain.fung_decon_rar_Mar_field_coor_rain)
+#56
+Mar_leaf_rain.fung_decon_rar_Mar_field_coor_plant=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates, plant_type!="Rain"&
+                                                           plant_type!="Seed")
+nrow(Mar_leaf_rain.fung_decon_rar_Mar_field_coor_plant)
+#25
+Mar_leaf_rain.fung_decon_rar_Mar_field_coor_seed=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates,plant_type=="Seed")
+nrow(Mar_leaf_rain.fung_decon_rar_Mar_field_coor_seed)
+#4
+
+
+
 
 ####Graph Field experiment Jaccard NMDS####
 
@@ -5151,8 +4684,7 @@ nrow(Mar_leaf_rain.fung_decon_rar_Mar_field_J_coor_plant)
 Mar_leaf_rain.fung_decon_rar_Mar_field_J_coor_seed=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_J_coordinates,plant_type=="Seed")
 nrow(Mar_leaf_rain.fung_decon_rar_Mar_field_J_coor_seed)
 #4
-library(RColorBrewer)
-brewer.pal(n = 8, name = "Paired")
+
 with(Mar_leaf_rain.fung_decon_rar_Mar_field_J_coordinates,interaction(collect_date,plant_type))
 
 
@@ -5162,19 +4694,9 @@ plant_data_grp_order=c("Seed","Jul_Seedling","Sept_Seedling","Jul_Adult","Sept_A
 unique(Mar_leaf_rain.fung_decon_rar_Mar_field_J_coordinates$plant_type)
 
 
-ggplot(Mar_leaf_rain.fung_decon_rar_Mar_field_J_coordinates,aes(x= MDS1, y=MDS2))+
-  geom_polygon(data=hull1000_field_J,aes(x=MDS1,y=MDS2,fill=factor(plant_data_grp,levels = plant_data_grp_order),
-                                         group=factor(plant_data_grp,levels = plant_data_grp_order)), alpha=0.5)+
-  geom_point(size=4,aes(fill=factor(plant_data_grp,levels = plant_data_grp_order),
-                        shape=factor(plant_type,levels = c("Adult","Seed","Seedling","Rain")), color=factor(plant_data_grp,levels = plant_data_grp_order)),stroke=2)+
-  scale_shape_manual(values = c(22,13,24,21),name=NULL)+
-  scale_color_manual(values = c("#E31A1C","black", "black","black","black","black"),name=NULL)+
-  scale_fill_manual(values = c("#E31A1C","#B2DF8A","#33A02C","#A6CEE3","#1F78B4","black"),name=NULL)+
-  theme_bw()+theme(axis.title = element_text(size = 30),axis.text =  element_text(size = 30),legend.position = "none")
-
 
 #900x800
-#####PLOT: Figure S9####
+#####PLOT: Figure S11####
 #####Plot field NMDS####
 
 (NMDS_Field_Bray=ggplot(Mar_leaf_rain.fung_decon_rar_Mar_field_coordinates,aes(x= MDS1, y=MDS2))+
@@ -5321,7 +4843,7 @@ Mar_leaf_rain.fung_decon_rar_Mar_field_pub_Endo_names_derup_sum_M_trt2$prop_abun
 unique(Mar_leaf_rain.fung_decon_rar_Mar_field_pub_Endo_names_derup_sum_M_trt2$Group)
 
 
-#Second, let' look at the Interactions
+#Second, let's look at the Interactions
 
 Mar_leaf_rain.fung_decon_rar_Mar_field_pub_Endo_names_derup_int=
   Mar_leaf_rain.fung_decon_rar_Mar_field_pub_Endo_names[!duplicated(Mar_leaf_rain.fung_decon_rar_Mar_field_pub_Endo_names[,c("Row.names","Interaction")]),]
@@ -5415,7 +4937,7 @@ ggplot(subset(Mar_leaf_rain.fung_decon_rar_Mar_field_pub_Endo_comb,
 subset(Mar_leaf_rain.fung_decon_rar_Mar_field_pub_Endo_comb_sum,plant_data_grp=="Rain")
 
 
-#####PLOT: Figure S14####
+#####PLOT: Figure S1####
 #Rain
 
 Mar_leaf_rain.fung_decon_rar_Mar_field_pub_Endo_comb_R=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_pub_Endo_comb,plant_data_grp=="Rain")
@@ -5453,6 +4975,7 @@ plot(Endop_field_r1000_mod)
 anova(Endop_field_r1000_mod)
 #plant_data_grp 754.68  150.94     5    79  9.3723 4.844e-07 ***
 
+#####POSTHOC TEST: Figure 5a####
 emmeans(Endop_field_r1000_mod,pairwise~plant_data_grp, adjust="fdr")
 #Jul_Adult - Sept_Seedling      -8.885 2.56 77.6 -3.472  0.0032
 #Jul_Seedling - Sept_Seedling  -10.286 2.56 77.6 -4.022  0.0007 
@@ -5550,7 +5073,7 @@ plot(Cave_field_r1000_mod)
 anova(Prair_field_r1000_mod)
 #plant_data_grp 636.89  127.38     5 58.679  21.459 3.834e-12 ***
 
-#####POSTHOC TEST: Figure 5f####
+#####POSTHOC TEST: Figure 5e####
 emmeans(Prair_field_r1000_mod,pairwise~plant_data_grp, adjust="fdr")
 #Jul_Adult - Sept_Seedling     -7.5980 1.55 77.0 -4.895  <.0001
 #Jul_Seedling - Sept_Seedling  -8.7397 1.55 77.0 -5.629  <.0001
@@ -5660,8 +5183,7 @@ Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_sept_fd_sum=Mar_leaf_rain.fung_dec
   summarise_at("bray",list(~mean(.),se=~sd(.)/sqrt(n()),~n()))
 
 
-ggplot(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_sept_fd_sum,aes(x=treatment,y=mean,color=life_stage,group=interaction(treatment,life_stage)))+
-  geom_boxplot()
+
 
 Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_sept_fd_sum1=data.frame(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_sept_fd_sum
                                                                       [,c("treatment","life_stage","mean")])
@@ -5672,8 +5194,7 @@ Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_sept_fd_sum_sum=Mar_leaf_rain.fung
   summarise_all(list(~mean(.),se=~sd(.)/sqrt(n()),~n(),~sd(.)))
 life_order=c("Seedling","Adult")
 trt_order=c("Start","Seed","Rain")
-with(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_sept_fd_sum_sum,interaction(treatment,life_stage))
-#brewer.pal(n = 8, name = "Paired")
+
 
 (bray1000_field_p=ggplot(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_sept_fd_sum,aes(x=factor(life_stage,
                                                                                                 levels = life_order),y=mean))+
@@ -5715,267 +5236,6 @@ emmeans(Field_pair_dist_bray1000_mod,pairwise~treatment)
 
 #####POSTHOC TEST: Figure 4a####
 emmeans(Field_pair_dist_bray1000_mod,pairwise~life_stage*treatment, adjust="fdr")
-
-#
-
-
-#
-#####Overlap in Taxa between Field Taxa####
-
-ntaxa(Mar_leaf_rain.fung_decon_rar_Mar_field)
-#2243
-nsamples(Mar_leaf_rain.fung_decon_rar_Mar_field)
-#85
-#what OTUs are in Seeds 
-Mar_leaf_rain.fung_decon_rar_Mar_field_SEED=subset_samples(Mar_leaf_rain.fung_decon_rar_Mar_field, plant_type=="Seed")
-Mar_leaf_rain.fung_decon_rar_Mar_field_SEED=prune_taxa(taxa_sums(Mar_leaf_rain.fung_decon_rar_Mar_field_SEED)>0,Mar_leaf_rain.fung_decon_rar_Mar_field_SEED)
-
-nsamples(Mar_leaf_rain.fung_decon_rar_Mar_field_SEED)
-#4
-ntaxa(Mar_leaf_rain.fung_decon_rar_Mar_field_SEED)
-#152
-
-Mar_field_SEED=taxa_names(Mar_leaf_rain.fung_decon_rar_Mar_field_SEED)
-
-#what OTUs are in Rain  
-Mar_leaf_rain.fung_decon_rar_Mar_field_RAIN=subset_samples(Mar_leaf_rain.fung_decon_rar_Mar_field, plant_type=="Rain")
-Mar_leaf_rain.fung_decon_rar_Mar_field_RAIN=prune_taxa(taxa_sums(Mar_leaf_rain.fung_decon_rar_Mar_field_RAIN)>0,Mar_leaf_rain.fung_decon_rar_Mar_field_RAIN)
-
-nsamples(Mar_leaf_rain.fung_decon_rar_Mar_field_RAIN)
-#56
-ntaxa(Mar_leaf_rain.fung_decon_rar_Mar_field_RAIN)
-#1907
-
-Mar_field_RAIN=taxa_names(Mar_leaf_rain.fung_decon_rar_Mar_field_RAIN)
-
-
-#what OTUs are in Start Seedling
-Mar_leaf_rain.fung_decon_rar_Mar_field_START_SEEDLING=subset_samples(Mar_leaf_rain.fung_decon_rar_Mar_field, plant_type=="Seedling"&collect_date=="7/16/2018")
-Mar_leaf_rain.fung_decon_rar_Mar_field_START_SEEDLING=prune_taxa(taxa_sums(Mar_leaf_rain.fung_decon_rar_Mar_field_START_SEEDLING)>0,Mar_leaf_rain.fung_decon_rar_Mar_field_START_SEEDLING)
-
-nsamples(Mar_leaf_rain.fung_decon_rar_Mar_field_START_SEEDLING)
-#3
-ntaxa(Mar_leaf_rain.fung_decon_rar_Mar_field_START_SEEDLING)
-#93
-
-Mar_field_START_SEEDLING=taxa_names(Mar_leaf_rain.fung_decon_rar_Mar_field_START_SEEDLING)
-
-#what OTUs are in Start Adult
-Mar_leaf_rain.fung_decon_rar_Mar_field_START_ADULT=subset_samples(Mar_leaf_rain.fung_decon_rar_Mar_field, plant_type=="Adult"&collect_date=="7/16/2018")
-Mar_leaf_rain.fung_decon_rar_Mar_field_START_ADULT=prune_taxa(taxa_sums(Mar_leaf_rain.fung_decon_rar_Mar_field_START_ADULT)>0,Mar_leaf_rain.fung_decon_rar_Mar_field_START_ADULT)
-
-nsamples(Mar_leaf_rain.fung_decon_rar_Mar_field_START_ADULT)
-#3
-ntaxa(Mar_leaf_rain.fung_decon_rar_Mar_field_START_ADULT)
-#147
-
-Mar_field_START_ADULT=taxa_names(Mar_leaf_rain.fung_decon_rar_Mar_field_START_ADULT)
-
-#End Seedling
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING=subset_samples(Mar_leaf_rain.fung_decon_rar_Mar_field, plant_type=="Seedling"&collect_date=="9/5/2018")
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING=prune_taxa(taxa_sums(Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING)>0,Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING)
-
-nsamples(Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING)
-#15
-ntaxa(Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING)
-#461
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING_overlap=data.frame(estimate_richness(Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING,measures ="Observed"),
-                                                                       estimate_richness(prune_taxa(Mar_field_START_SEEDLING,Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING),
-                                                                                         measures ="Observed"),
-                                                                       estimate_richness(prune_taxa(Mar_field_SEED,Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING),
-                                                                                         measures ="Observed"),
-                                                                       estimate_richness(prune_taxa(Mar_field_RAIN,Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING),
-                                                                                         measures ="Observed"),
-                                                                       "overlap_start_sum"=sample_sums(prune_taxa(Mar_field_START_SEEDLING,Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING)),
-                                                                       "overlap_seed_sum"=sample_sums(prune_taxa(Mar_field_SEED,Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING)),
-                                                                       "overlap_rain_sum"=sample_sums(prune_taxa(Mar_field_RAIN,Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING)),
-                                                                       sample_data(Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING))
-colnames(Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING_overlap)[1:4]=c("tot_rich","overlap_start_rich","overlap_seed_rich","overlap_rain_rich")
-
-#End Adult
-
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT=subset_samples(Mar_leaf_rain.fung_decon_rar_Mar_field, plant_type=="Adult"&collect_date=="9/5/2018")
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT=prune_taxa(taxa_sums(Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT)>0,Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT)
-
-nsamples(Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT)
-#4
-ntaxa(Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT)
-#180
-
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT_overlap=data.frame(estimate_richness(Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT,measures ="Observed"),
-                                                                    estimate_richness(prune_taxa(Mar_field_START_ADULT,Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT),
-                                                                                      measures ="Observed"),
-                                                                    estimate_richness(prune_taxa(Mar_field_SEED,Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT),
-                                                                                      measures ="Observed"),
-                                                                    estimate_richness(prune_taxa(Mar_field_RAIN,Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT),
-                                                                                      measures ="Observed"),
-                                                                    "overlap_start_sum"=sample_sums(prune_taxa(Mar_field_START_ADULT,Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT)),
-                                                                    "overlap_seed_sum"=sample_sums(prune_taxa(Mar_field_SEED,Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT)),
-                                                                    "overlap_rain_sum"=sample_sums(prune_taxa(Mar_field_RAIN,Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT)),
-                                                                    sample_data(Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT))
-colnames(Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT_overlap)[1:4]=c("tot_rich","overlap_start_rich","overlap_seed_rich","overlap_rain_rich")
-
-
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap=rbind(Mar_leaf_rain.fung_decon_rar_Mar_field_END_ADULT_overlap,Mar_leaf_rain.fung_decon_rar_Mar_field_END_SEEDLING_overlap)
-
-
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$overlap_start_rich_prop=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$overlap_start_rich/
-  Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$tot_rich
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$overlap_seed_rich_prop=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$overlap_seed_rich/
-  Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$tot_rich
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$overlap_rain_rich_prop=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$overlap_rain_rich/
-  Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$tot_rich
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$overlap_start_sum_prop=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$overlap_start_sum/1000
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$overlap_seed_sum_prop=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$overlap_seed_sum/1000
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$overlap_rain_sum_prop=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap$overlap_rain_sum/1000
-
-
-#Richness overlap
-
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M=melt(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap[c("plant_type","sampleID_bact","overlap_rain_rich_prop",
-                                                                                                                    "overlap_start_rich_prop","overlap_seed_rich_prop",
-                                                                                                                    "gh_block")])
-
-
-
-
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M1=data.frame(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M
-                                                                      [,c("plant_type","variable","value")])
-
-
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M_sum=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M1%>%
-  group_by(plant_type,variable)%>%
-  summarise_all(list(~mean(.),se=~sd(.)/sqrt(n()),~n(),~sd(.)))
-life_order=c("Seedling","Adult")
-rich_over_order=c("overlap_start_rich_prop","overlap_seed_rich_prop","overlap_rain_rich_prop")
-with(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M1,interaction(variable,plant_type))
-#brewer.pal(n = 8, name = "Paired")
-
-(overlap_1000_field_p=ggplot(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M,aes(x=factor(plant_type,
-                                                                                                    levels = life_order),y=value))+
-    geom_point(aes(shape=interaction(factor(plant_type,levels = life_order),factor(variable,levels = rich_over_order)),
-                   color=interaction(factor(plant_type,levels = life_order),factor(variable,levels = rich_over_order))), 
-               size=4,position = position_dodge(0.75),alpha=.15)+
-    geom_errorbar(data=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M_sum, 
-                  aes(group=interaction(factor(plant_type,levels = life_order),factor(variable,levels = rich_over_order)),
-                      x=factor(plant_type,levels = life_order),y=mean,ymin=mean-se,ymax=mean+se),width=.5,
-                  position = position_dodge(0.75),color="black")+
-    geom_point(data=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M_sum,
-               aes(shape=interaction(factor(plant_type,levels = life_order),factor(variable,levels = rich_over_order)),
-                   color=interaction(factor(plant_type,levels = life_order),factor(variable,levels = rich_over_order)),
-                   x=factor(plant_type,levels = life_order),y=mean), size=10,
-               position = position_dodge(0.75))+scale_shape_manual(values = c(17,15,13,13,19,19),name=NULL)+
-    scale_color_manual(values = c("#B2DF8A","#A6CEE3","#E31A1C","#E31A1C","black","black"))+ylab("Proportion ASV overlap")+theme_classic()+
-    theme(axis.title.x = element_blank(),axis.title.y = element_text(size = 36),axis.text = element_text(size = 30),legend.position = "none"))
-#900*700
-
-#Differences in overlap with seeds
-subset(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M_sum, variable=="overlap_seed_rich_prop")[c("plant_type","mean")]
-(0.455-0.585)/0.585
-
-
-#Proportion ASV overlap
-
-Field_taxa_overlap1000_mod=lmer((value)^-1~plant_type*variable+(1|sampleID_bact)+(1|gh_block),data=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M)
-#boundary (singular) fit: see ?isSingular
-plot(Field_taxa_overlap1000_mod)
-hist(resid(Field_taxa_overlap1000_mod))
-qqPlot(resid(Field_taxa_overlap1000_mod))
-shapiro.test(resid(Field_taxa_overlap1000_mod))
-#p-value = 0.1163
-
-#####Table S9 ASV Overlap####
-anova(Field_taxa_overlap1000_mod)
-#plant_type          0.6681  0.6681     1    17  15.008 0.0012183 ** 
-#variable            7.4251  3.7125     2    34  83.404 7.725e-14 ***
-#plant_type:variable 1.0835  0.5418     2    34  12.171 0.0001031 ***
-
-emmeans(Field_taxa_overlap1000_mod,pairwise~plant_type|variable)
-
-
-emmeans(Field_taxa_overlap1000_mod,pairwise~variable)
-
-
-emmeans(Field_taxa_overlap1000_mod,pairwise~variable|plant_type)
-
-
-#####POSTHOC TEST: Figure S10b####
-emmeans(Field_taxa_overlap1000_mod,pairwise~plant_type*variable, adjust="fdr")
-
-#Abundance overlap
-
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M=melt(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap[c("plant_type","sampleID_bact","overlap_rain_sum_prop",
-                                                                                                                    "overlap_start_sum_prop","overlap_seed_sum_prop",
-                                                                                                                    "gh_block")])
-
-
-
-
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M1=data.frame(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M
-                                                                      [,c("plant_type","variable","value")])
-
-
-Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M_sum=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M1%>%
-  group_by(plant_type,variable)%>%
-  summarise_all(list(~min(.),~mean(.),se=~sd(.)/sqrt(n()),~n(),~sd(.)))
-life_order=c("Seedling","Adult")
-abun_over_order=c("overlap_start_sum_prop","overlap_seed_sum_prop","overlap_rain_sum_prop")
-with(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M1,interaction(variable,plant_type))
-#brewer.pal(n = 8, name = "Paired")
-
-(abun_overlap_1000_field_p=ggplot(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M,aes(x=factor(plant_type,
-                                                                                                         levels = life_order),y=value))+
-    geom_point(aes(shape=interaction(factor(plant_type,levels = life_order),factor(variable,levels = abun_over_order)),
-                   color=interaction(factor(plant_type,levels = life_order),factor(variable,levels = abun_over_order))), 
-               size=4,position = position_dodge(0.75),alpha=.15)+
-    geom_errorbar(data=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M_sum, 
-                  aes(group=interaction(factor(plant_type,levels = life_order),factor(variable,levels = abun_over_order)),
-                      x=factor(plant_type,levels = life_order),y=mean,ymin=mean-se,ymax=mean+se),width=.5,
-                  position = position_dodge(0.75),color="black")+
-    geom_point(data=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M_sum,
-               aes(shape=interaction(factor(plant_type,levels = life_order),factor(variable,levels = abun_over_order)),
-                   color=interaction(factor(plant_type,levels = life_order),factor(variable,levels = abun_over_order)),
-                   x=factor(plant_type,levels = life_order),y=mean), size=10,
-               position = position_dodge(0.75))+scale_shape_manual(values = c(17,15,13,13,19,19),name=NULL)+
-    scale_color_manual(values = c("#B2DF8A","#A6CEE3","#E31A1C","#E31A1C","black","black"))+ylab("Proportion read overlap")+theme_classic()+
-    theme(axis.title.x = element_blank(),axis.title.y = element_text(size = 36),axis.text = element_text(size = 30),legend.position = "none"))
-#900*700
-
-
-
-
-subset(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M_sum, variable=="overlap_seed_sum_prop")[c("plant_type","mean")]
-(0.521+0.648)/2
-
-Field_abun_overlap1000_mod=lmer((value)~plant_type*variable+(1|sampleID_bact)+(1|gh_block),data=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M)
-#boundary (singular) fit: see ?isSingular
-plot(Field_abun_overlap1000_mod)
-hist(resid(Field_abun_overlap1000_mod))
-qqPlot(resid(Field_abun_overlap1000_mod))
-shapiro.test(resid(Field_abun_overlap1000_mod))
-#p-value = 0.1975
-
-
-#####Table S9 Read Overlap####
-anova(Field_abun_overlap1000_mod)
-#plant_type          0.08463 0.08463     1    17  4.1841 0.0566016 .  
-#variable            0.73778 0.36889     2    34 18.2387 4.152e-06 ***
-#plant_type:variable 0.45768 0.22884     2    34 11.3142 0.0001712 ***
-
-emmeans(Field_abun_overlap1000_mod,pairwise~plant_type|variable)
-
-
-emmeans(Field_abun_overlap1000_mod,pairwise~variable)
-
-#####POSTHOC TEST: Figure S10d####
-emmeans(Field_abun_overlap1000_mod,pairwise~plant_type*variable,adjust="fdr")
-
-
-
-#
-
-
-
 
 
 
@@ -6119,7 +5379,7 @@ Mar_leaf_rain.fung_decon_rar_Mar_field_plants_NS_IndVal_M_prop_sum=Mar_leaf_rain
 with(Mar_leaf_rain.fung_decon_rar_Mar_field_plants_NS_IndVal_M_sum,interaction(collect_date,plant_type))
 
 plant_date_order_1=c("7/16/2018.Seedling","9/5/2018.Seedling","7/16/2018.Adult","9/5/2018.Adult")
-brewer.pal(n = 8, name = "Paired")
+
 
 
 
@@ -6173,9 +5433,6 @@ emmeans(Field_IndVal_SR_mod,pairwise~collect_date*variable*plant_type, adjust="f
 #(9/5/2018 rain_IndV_abun_prop Seedling) - (9/5/2018 seed_IndV_abun_prop Seedling)    0.200792 0.0387 21.0  5.194  0.0011 
 #(7/16/2018 seed_IndV_abun_prop Seedling) - (9/5/2018 seed_IndV_abun_prop Seedling)   0.221042 0.0679 40.3  3.253  0.0164 
 
-emmeans(Field_IndVal_SR_mod,pairwise~collect_date*plant_type|variable, adjust="fdr")
-
-emmeans(Field_IndVal_SR_mod,pairwise~collect_date*variable)
 
 
 #####PLOT: Figure 3####
@@ -6345,12 +5602,12 @@ shapiro.test(resid(Field_Ind_sig_mod))
 anova(Field_Ind_sig_mod)
 #collect_date:ind_grp            0.46912 0.46912     1    42 14.8688 0.0003894 ***
 
-#####POSTHOC TEST: Figure S3b####
+#####POSTHOC TEST: Figure S6b####
 emmeans(Field_Ind_sig_mod,pairwise~collect_date*ind_grp*plant_type, adjust="fdr")
 
 
 
-#####PLOT: Figure S3####
+#####PLOT: Figure S6####
 #####Plot sig IndVal Field and Petri combine#####
 
 (IndVal_sig_petri_nan_p2=ggplot(Mar_leaf.fung_decon_pr_petr_S.rar_IndV_sig_sum_map)+
@@ -6534,20 +5791,16 @@ trt_order=c("Start","Seed","Rain")
     theme(axis.title.x = element_blank(),axis.title.y = element_text(size = 36),axis.text = element_text(size = 30),legend.position = "none"))
 #900*700
 
-#Distance to seed community
-
-subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_sum, treatment=="Seed")[,c("life_stage","mean")]
-(0.816-0.780)/0.780
 
 
-Field_pair_dist_J1000_mod=lmer((mean)^(-1)~life_stage*treatment+(1|leaf_sample)+(1|gh_block_comb),data=Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum)
+Field_pair_dist_J1000_mod=lmer((mean)~life_stage*treatment+(1|leaf_sample)+(1|gh_block_comb),data=Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum)
 plot(Field_pair_dist_J1000_mod)
 hist(resid(Field_pair_dist_J1000_mod))
 qqPlot(resid(Field_pair_dist_J1000_mod))
 shapiro.test(resid(Field_pair_dist_J1000_mod))
 #p-value =  0.003167
 
-#####Table S9 Ratio Jaccard####
+#####Table S9 Jaccard####
 anova(Field_pair_dist_J1000_mod)
 #life_stage           0.010241 0.0102410     1 14.095  9.8526  0.007200 ** 
 #treatment            0.028371 0.0141857     2 34.000 13.6476 4.456e-05 ***
@@ -6555,14 +5808,35 @@ anova(Field_pair_dist_J1000_mod)
 
 #####POSTHOC TEST: Figure 4b####
 emmeans(Field_pair_dist_J1000_mod,pairwise~life_stage*treatment,adjust="fdr")
-emmeans(Field_pair_dist_J1000_mod,pairwise~life_stage|treatment)
-emmeans(Field_pair_dist_J1000_mod,pairwise~treatment|life_stage)
 
 
 
+#How much does the removal of outliers affect his analysis? 
+summary(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum)
+Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_out=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum,
+                                                                        leaf_sample!="Leaf25")
+nrow(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_out)
+#54
 
-emmeans(Field_pair_dist_J1000_mod,pairwise~treatment)
 
+Field_pair_dist_J1000_mod_out=lmer((mean)~life_stage*treatment+(1|leaf_sample)+(1|gh_block_comb),data=Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_out)
+plot(Field_pair_dist_J1000_mod_out)
+hist(resid(Field_pair_dist_J1000_mod_out))
+qqPlot(resid(Field_pair_dist_J1000_mod_out))
+shapiro.test(resid(Field_pair_dist_J1000_mod_out))
+#W = 0.97359, p-value = 0.2552
+
+
+anova(Field_pair_dist_J1000_mod_out)
+#life_stage           0.0018387 0.0018387     1 12.983  7.3147  0.018054 *  
+#treatment            0.0098496 0.0049248     2 32.000 19.5917 2.782e-06 ***
+#life_stage:treatment 0.0044284 0.0022142     2 32.000  8.8085  0.000896 ***
+
+emmeans(Field_pair_dist_J1000_mod_out,pairwise~life_stage*treatment,adjust="fdr")
+emmeans(Field_pair_dist_J1000_mod_out,pairwise~life_stage|treatment)
+emmeans(Field_pair_dist_J1000_mod_out,pairwise~treatment|life_stage)
+
+#does not change results
 
 #Nestedness
 head(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd)
@@ -6598,10 +5872,6 @@ trt_order=c("Start","Seed","Rain")
     theme(axis.title.x = element_blank(),axis.title.y = element_text(size = 36),axis.text = element_text(size = 30),legend.position = "none"))
 #900*700
 
-#Distance to Rain community
-
-subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_nest_sum, treatment=="Rain")[,c("life_stage","mean")]
-(0.108-0.181)/0.181
 
 
 Field_pair_dist_nest1000_mod=lmer(sqrt(mean)~life_stage*treatment+(1|leaf_sample)+(1|gh_block_comb),data=Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_nest)
@@ -6620,13 +5890,38 @@ anova(Field_pair_dist_nest1000_mod)
 #life_stage:treatment 0.085589 0.042795     2 48.102  8.6744 0.0006069 ***
 
 
-#####POSTHOC TEST: Figure S10a####
+#####POSTHOC TEST: Figure S12a####
 emmeans(Field_pair_dist_nest1000_mod,pairwise~life_stage*treatment,adjust="fdr")
 
 emmeans(Field_pair_dist_nest1000_mod,pairwise~life_stage|treatment)
 
 emmeans(Field_pair_dist_nest1000_mod,pairwise~treatment|life_stage)
-emmeans(Field_pair_dist_nest1000_mod,pairwise~treatment)
+
+
+#How much does the outlier affect the results?
+summary(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum)
+Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_nest_out=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_nest,
+                                                                        leaf_sample!="Leaf25")
+nrow(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_nest_out)
+#54
+Field_pair_dist_nest1000_mod_out=lmer((mean)~life_stage*treatment+(1|leaf_sample)+(1|gh_block_comb),data=Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_nest_out)
+rePCA(Field_pair_dist_nest1000_mod_out)
+plot(Field_pair_dist_nest1000_mod_out)
+hist(resid(Field_pair_dist_nest1000_mod_out))
+qqPlot(resid(Field_pair_dist_nest1000_mod_out))
+shapiro.test(resid(Field_pair_dist_nest1000_mod_out))
+#W = 0.9775, p-value = 0.4006
+
+
+
+anova(Field_pair_dist_nest1000_mod_out)
+#life_stage           0.000957 0.0009569     1 45.224  0.5581    0.4589    
+#treatment            0.007600 0.0037999     2 45.115  2.2161    0.1208    
+#life_stage:treatment 0.047323 0.0236615     2 45.115 13.7989 2.109e-05 ***
+
+emmeans(Field_pair_dist_nest1000_mod_out,pairwise~life_stage*treatment,adjust="fdr")
+#does not change results
+
 
 #Turnover
 
@@ -6643,7 +5938,7 @@ Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_turn_sum=Mar_leaf_r
 life_order=c("Seedling","Adult")
 trt_order=c("Start","Seed","Rain")
 
-#brewer.pal(n = 8, name = "Paired")
+
 
 (turnover1000_field_p=ggplot(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_turn,aes(x=factor(life_stage,
                                                                                                             levels = life_order),y=mean))+
@@ -6663,10 +5958,7 @@ trt_order=c("Start","Seed","Rain")
     theme(axis.title.x = element_blank(),axis.title.y = element_text(size = 36),axis.text = element_text(size = 30),legend.position = "none"))
 #900*700
 
-#Distance to Rain community
 
-subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_turn_sum, treatment=="Rain")[,c("life_stage","mean")]
-(0.730-0.634)/0.634
 
 Field_pair_dist_turn1000_mod=lmer((mean)~life_stage*treatment+(1|leaf_sample)+(1|gh_block_comb),data=Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_turn)
 plot(Field_pair_dist_turn1000_mod)
@@ -6682,22 +5974,36 @@ anova(Field_pair_dist_turn1000_mod)
 #treatment            0.0001026 0.0000513     2 34.000  0.0176 0.98260  
 #life_stage:treatment 0.0197438 0.0098719     2 34.000  3.3784 0.04589 *
 
-emmeans(Field_pair_dist_turn1000_mod,pairwise~life_stage|treatment)
 
 
-#####POSTHOC TEST: Figure S10c####
+
 emmeans(Field_pair_dist_turn1000_mod,pairwise~life_stage*treatment,adjust="fdr")
 
-emmeans(Field_pair_dist_turn1000_mod,pairwise~treatment|life_stage)
-#plot_grid(turnover1000_field_p,nested1000_field_p,jacc1000_field_p,ncol = 1)
+#Does the outlier affect these results?
 
-#800x1800
+summary(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_turn)
+
+Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_turn_out=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_turn, 
+                                                                             leaf_sample!="Leaf43")
+
+Field_pair_dist_turn1000_mod_out=lmer((mean)~life_stage*treatment+(1|leaf_sample)+(1|gh_block_comb),data=Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_turn_out)
+plot(Field_pair_dist_turn1000_mod_out)
+hist(resid(Field_pair_dist_turn1000_mod_out))
+qqPlot(resid(Field_pair_dist_turn1000_mod_out))
+shapiro.test(resid(Field_pair_dist_turn1000_mod_out))
+#W = 0.97859, p-value = 0.4423
 
 
-#plot_grid(nested1000_field_p,turnover1000_field_p,nrow = 2, align="v")
-#900*1000
 
-#####PLOT: Figure S10####
+anova(Field_pair_dist_turn1000_mod_out)
+#life_stage           0.0041457 0.0041457     1 13.014  1.7587 0.20759  
+#treatment            0.0004960 0.0002480     2 32.000  0.1052 0.90044  
+#life_stage:treatment 0.0150618 0.0075309     2 32.000  3.1948 0.05432 .
+
+#Does not change results
+
+
+#####PLOT: Figure S12####
 #####Plot Nestedness Turnover and overlap combine####
 
 (nested1000_field_p=ggplot(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_nest,aes(x=factor(life_stage,
@@ -6705,12 +6011,7 @@ emmeans(Field_pair_dist_turn1000_mod,pairwise~treatment|life_stage)
    geom_point(aes(shape=interaction(factor(life_stage,levels = life_order),factor(treatment,levels = trt_order)),
                   color=interaction(factor(life_stage,levels = life_order),factor(treatment,levels = trt_order))), 
               size=4,position = position_dodge(0.75),alpha=.15)+
-   geom_segment(y=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_nest_sum,treatment=="Seed"&life_stage=="Adult")$mean,
-                yend=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_nest_sum,treatment=="Rain"&life_stage=="Adult")$mean,
-                x=2,xend=2.25, color="#1F78B4",size=1)+
-   geom_segment(y=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_nest_sum,treatment=="Seed"&life_stage=="Seedling")$mean,
-                yend=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_nest_sum,treatment=="Rain"&life_stage=="Seedling")$mean,
-                x=1,xend=1.25, color="#33A02C" , size=1)+
+   
    geom_errorbar(data=Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_nest_sum, 
                  aes(group=interaction(factor(life_stage,levels = life_order),factor(treatment,levels = trt_order)),
                      x=factor(life_stage,levels = life_order),y=mean,ymin=mean-se,ymax=mean+se),width=.5,
@@ -6726,43 +6027,11 @@ emmeans(Field_pair_dist_turn1000_mod,pairwise~treatment|life_stage)
          axis.text.x = element_blank(),legend.position = "none"))
 
 
-(overlap_1000_field_p=ggplot(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M,aes(x=factor(plant_type,
-                                                                                                    levels = life_order),y=value))+
-    geom_point(aes(shape=interaction(factor(plant_type,levels = life_order),factor(variable,levels = rich_over_order)),
-                   color=interaction(factor(plant_type,levels = life_order),factor(variable,levels = rich_over_order))), 
-               size=4,position = position_dodge(0.75),alpha=.15)+
-    geom_segment(y=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M_sum,variable=="overlap_seed_rich_prop"&plant_type=="Adult")$mean,
-                 yend=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M_sum,variable=="overlap_rain_rich_prop"&plant_type=="Adult")$mean,
-                 x=2,xend=2.25, color="#1F78B4",size=1)+
-    geom_segment(y=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M_sum,variable=="overlap_seed_rich_prop"&plant_type=="Seedling")$mean,
-                 yend=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M_sum,variable=="overlap_rain_rich_prop"&plant_type=="Seedling")$mean,
-                 x=1,xend=1.25, color="#33A02C" , size=1)+
-    geom_errorbar(data=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M_sum, 
-                  aes(group=interaction(factor(plant_type,levels = life_order),factor(variable,levels = rich_over_order)),
-                      x=factor(plant_type,levels = life_order),y=mean,ymin=mean-se,ymax=mean+se),width=.5,
-                  position = position_dodge(0.75),color="black")+
-    geom_point(data=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Rich_M_sum,
-               aes(shape=interaction(factor(plant_type,levels = life_order),factor(variable,levels = rich_over_order)),
-                   color=interaction(factor(plant_type,levels = life_order),factor(variable,levels = rich_over_order)),
-                   x=factor(plant_type,levels = life_order),y=mean), size=10,
-               position = position_dodge(0.75))+scale_shape_manual(values = c(17,15,13,13,19,19),name=NULL)+
-    scale_color_manual(values = c("#B2DF8A","#A6CEE3","#E31A1C","#E31A1C","black","black"))+
-    scale_y_continuous(name = "Proportion ASV overlap",breaks = c(0.25,0.50,0.75,1),limits = c(0.15,1))+theme_cowplot()+
-    theme(axis.title.x = element_blank(),axis.title.y = element_text(size = 36),axis.text = element_text(size = 30),
-          axis.text.x = element_blank(),legend.position = "none"))
-
-
 (turnover1000_field_p=ggplot(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_turn,aes(x=factor(life_stage,
                                                                                                             levels = life_order),y=mean))+
     geom_point(aes(shape=interaction(factor(life_stage,levels = life_order),factor(treatment,levels = trt_order)),
                    color=interaction(factor(life_stage,levels = life_order),factor(treatment,levels = trt_order))), 
                size=4,position = position_dodge(0.75),alpha=.15)+
-    geom_segment(y=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_turn_sum,treatment=="Seed"&life_stage=="Adult")$mean,
-                 yend=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_turn_sum,treatment=="Rain"&life_stage=="Adult")$mean,
-                 x=2,xend=2.25, color="#1F78B4",size=1)+
-    geom_segment(y=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_turn_sum,treatment=="Seed"&life_stage=="Seedling")$mean,
-                 yend=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_turn_sum,treatment=="Rain"&life_stage=="Seedling")$mean,
-                 x=1,xend=1.25, color="#33A02C" , size=1)+
     geom_errorbar(data=Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_turn_sum, 
                   aes(group=interaction(factor(life_stage,levels = life_order),factor(treatment,levels = trt_order)),
                       x=factor(life_stage,levels = life_order),y=mean,ymin=mean-se,ymax=mean+se),width=.5,
@@ -6778,37 +6047,12 @@ emmeans(Field_pair_dist_turn1000_mod,pairwise~treatment|life_stage)
           axis.text.x = element_text(size = 36),legend.position = "none"))
 
 
-(abun_overlap_1000_field_p=ggplot(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M,aes(x=factor(plant_type,
-                                                                                                         levels = life_order),y=value))+
-    geom_point(aes(shape=interaction(factor(plant_type,levels = life_order),factor(variable,levels = abun_over_order)),
-                   color=interaction(factor(plant_type,levels = life_order),factor(variable,levels = abun_over_order))), 
-               size=4,position = position_dodge(0.75),alpha=.15)+
-    geom_segment(y=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M_sum,variable=="overlap_seed_sum_prop"&plant_type=="Adult")$mean,
-                 yend=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M_sum,variable=="overlap_rain_sum_prop"&plant_type=="Adult")$mean,
-                 x=2,xend=2.25, color="#1F78B4",size=1)+
-    geom_segment(y=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M_sum,variable=="overlap_seed_sum_prop"&plant_type=="Seedling")$mean,
-                 yend=subset(Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M_sum,variable=="overlap_rain_sum_prop"&plant_type=="Seedling")$mean,
-                 x=1,xend=1.25, color="#33A02C" , size=1)+
-    geom_errorbar(data=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M_sum, 
-                  aes(group=interaction(factor(plant_type,levels = life_order),factor(variable,levels = abun_over_order)),
-                      x=factor(plant_type,levels = life_order),y=mean,ymin=mean-se,ymax=mean+se),width=.5,
-                  position = position_dodge(0.75),color="black")+
-    geom_point(data=Mar_leaf_rain.fung_decon_rar_Mar_field_END_overlap_Abun_M_sum,
-               aes(shape=interaction(factor(plant_type,levels = life_order),factor(variable,levels = abun_over_order)),
-                   color=interaction(factor(plant_type,levels = life_order),factor(variable,levels = abun_over_order)),
-                   x=factor(plant_type,levels = life_order),y=mean), size=10,
-               position = position_dodge(0.75))+scale_shape_manual(values = c(17,15,13,13,19,19),name=NULL)+
-    scale_color_manual(values = c("#B2DF8A","#A6CEE3","#E31A1C","#E31A1C","black","black"))+
-    scale_y_continuous(name = "Proportion read overlap",breaks = c(0.25,0.50,0.75,1),limits = c(0.15,1))+theme_cowplot()+
-    theme(axis.title.x = element_blank(),axis.title.y = element_text(size = 36),axis.text.y = element_text(size = 30),
-          axis.text.x = element_text(size = 36),legend.position = "none"))
 
 
-
-plot_grid(nested1000_field_p,overlap_1000_field_p,turnover1000_field_p,abun_overlap_1000_field_p, 
+plot_grid(nested1000_field_p,turnover1000_field_p,ncol = 1,
           rel_heights = c(0.9,1))
-#1500*1200
-#Nest_Turn_OverLap_Field_dot_error_comb_raw
+#1500*600
+
 
 
 
@@ -6830,7 +6074,7 @@ Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_rat_NT_sum=Mar_leaf
 life_order=c("Seedling","Adult")
 trt_order=c("Start","Seed","Rain")
 
-#brewer.pal(n = 8, name = "Paired")
+
 
 (rat_NT_1000_field_p=ggplot(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_rat_NT,aes(x=factor(life_stage,
                                                                                                              levels = life_order),y=mean))+
@@ -6851,6 +6095,61 @@ trt_order=c("Start","Seed","Rain")
 #900*700
 #dot_Ratio_Nest_Turn_Field_dot_error_comb_raw
 
+
+
+
+
+#Ratio Nestedness to Turnover Stats
+
+Field_pair_dist_rat_NT_1000_mod=lmer(sqrt(mean)~life_stage*treatment+(1|leaf_sample)+(1|gh_block_comb),data=Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_rat_NT)
+rePCA(Field_pair_dist_rat_NT_1000_mod)
+plot(Field_pair_dist_rat_NT_1000_mod)
+hist(resid(Field_pair_dist_rat_NT_1000_mod))
+qqPlot(resid(Field_pair_dist_rat_NT_1000_mod))
+shapiro.test(resid(Field_pair_dist_rat_NT_1000_mod))
+#W = 0.97133, p-value = 0.1933
+
+
+#####Table S9 Ratio Nestedness:Turnover####
+anova(Field_pair_dist_rat_NT_1000_mod)
+#life_stage           0.003811 0.003811     1 48.173  0.3432 0.5607328    
+#treatment            0.053334 0.026667     2 48.082  2.4013 0.1013829    
+#life_stage:treatment 0.183267 0.091634     2 48.082  8.2516 0.0008301 ***
+
+#####POSTHOC TEST: Figure 4c####
+emmeans(Field_pair_dist_rat_NT_1000_mod,pairwise~life_stage*treatment,adjust="fdr")
+
+emmeans(Field_pair_dist_rat_NT_1000_mod,pairwise~life_stage|treatment)
+
+emmeans(Field_pair_dist_rat_NT_1000_mod,pairwise~treatment|life_stage)
+
+#Does the outlier affect these results?
+Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_rat_NT_out=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_rat_NT,
+                                                                               leaf_sample!="Leaf43")
+
+
+
+Field_pair_dist_rat_NT_1000_mod_out=lmer(sqrt(mean)~life_stage*treatment+(1|leaf_sample)+(1|gh_block_comb),data=Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_rat_NT_out)
+rePCA(Field_pair_dist_rat_NT_1000_mod_out)
+plot(Field_pair_dist_rat_NT_1000_mod_out)
+hist(resid(Field_pair_dist_rat_NT_1000_mod_out))
+qqPlot(resid(Field_pair_dist_rat_NT_1000_mod_out))
+shapiro.test(resid(Field_pair_dist_rat_NT_1000_mod_out))
+#W = 0.97696, p-value = 0.3812
+
+
+
+anova(Field_pair_dist_rat_NT_1000_mod_out)
+#life_stage           0.002326 0.002326     1 45.114  0.2459 0.622406   
+#treatment            0.071927 0.035964     2 44.980  3.8015 0.029826 * 
+#life_stage:treatment 0.149098 0.074549     2 44.980  7.8802 0.001164 **
+
+
+emmeans(Field_pair_dist_rat_NT_1000_mod,pairwise~life_stage*treatment,adjust="fdr")
+
+#Does not change results
+
+
 #####PLOT: Figure 4####
 #####Plot field Pair Distance and Ratio####
 
@@ -6861,12 +6160,6 @@ trt_order=c("Start","Seed","Rain")
     geom_point(aes(shape=interaction(factor(life_stage,levels = life_order),factor(treatment,levels = trt_order)),
                    color=interaction(factor(life_stage,levels = life_order),factor(treatment,levels = trt_order))), 
                size=4,position = position_dodge(0.75),alpha=.15)+
-   geom_segment(y=subset(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_sept_fd_sum_sum,treatment=="Seed"&life_stage=="Adult")$mean,
-                yend=subset(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_sept_fd_sum_sum,treatment=="Rain"&life_stage=="Adult")$mean,
-                x=2,xend=2.25, color="#1F78B4",size=1)+
-   geom_segment(y=subset(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_sept_fd_sum_sum,treatment=="Seed"&life_stage=="Seedling")$mean,
-                yend=subset(Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_sept_fd_sum_sum,treatment=="Rain"&life_stage=="Seedling")$mean,
-                x=1,xend=1.25, color="#33A02C" , size=1)+
     geom_errorbar(data=Mar_leaf_rain.fung_decon_rar_Mar.betapair_trt_sept_fd_sum_sum, 
                   aes(group=interaction(factor(life_stage,levels = life_order),factor(treatment,levels = trt_order)),
                       x=factor(life_stage,levels = life_order),y=mean,ymin=mean-se,ymax=mean+se),width=.5,
@@ -6889,12 +6182,6 @@ trt_order=c("Start","Seed","Rain")
     geom_point(aes(shape=interaction(factor(life_stage,levels = life_order),factor(treatment,levels = trt_order)),
                    color=interaction(factor(life_stage,levels = life_order),factor(treatment,levels = trt_order))), 
                size=4,position = position_dodge(0.75),alpha=.15)+
-    geom_segment(y=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_sum,treatment=="Seed"&life_stage=="Adult")$mean,
-                 yend=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_sum,treatment=="Rain"&life_stage=="Adult")$mean,
-                 x=2,xend=2.25, color="#1F78B4",size=1)+
-    geom_segment(y=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_sum,treatment=="Seed"&life_stage=="Seedling")$mean,
-                 yend=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_sum,treatment=="Rain"&life_stage=="Seedling")$mean,
-                 x=1,xend=1.25, color="#33A02C" , size=1)+
     geom_errorbar(data=Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_sum, 
                   aes(group=interaction(factor(life_stage,levels = life_order),factor(treatment,levels = trt_order)),
                       x=factor(life_stage,levels = life_order),y=mean,ymin=mean-se,ymax=mean+se),width=.5,
@@ -6916,12 +6203,7 @@ trt_order=c("Start","Seed","Rain")
                                                                               factor(treatment,levels = trt_order)),
                    color=interaction(factor(life_stage,levels = life_order),factor(treatment,levels = trt_order))), 
                size=4,position = position_dodge(0.75),alpha=.15)+
-    geom_segment(y=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_rat_NT_sum,treatment=="Seed"&life_stage=="Adult")$mean,
-                 yend=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_rat_NT_sum,treatment=="Rain"&life_stage=="Adult")$mean,
-                 x=2,xend=2.25, color="#1F78B4",size=1)+
-    geom_segment(y=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_rat_NT_sum,treatment=="Seed"&life_stage=="Seedling")$mean,
-                 yend=subset(Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_rat_NT_sum,treatment=="Rain"&life_stage=="Seedling")$mean,
-                 x=1,xend=1.25, color="#33A02C" , size=1)+
+    
     geom_errorbar(data=Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_rat_NT_sum, 
                   aes(group=interaction(factor(life_stage,levels = life_order),factor(treatment,levels = trt_order)),
                       x=factor(life_stage,levels = life_order),y=mean,ymin=mean-se,ymax=mean+se),width=.5,
@@ -6945,31 +6227,4 @@ plot_grid(bray1000_field_p2,jacc1000_field_p2,rat_NT_1000_field_p,nrow = 3, alig
 
 
 
-
-
-
-#Ratio Nestedness to Turnover Stats
-
-Field_pair_dist_rat_NT_1000_mod=lmer(sqrt(mean)~life_stage*treatment+(1|leaf_sample)+(1|gh_block_comb),data=Mar_leaf_rain.fung_decon_rar_Mar_PA.betapair_trt_sept_fd_sum_rat_NT)
-rePCA(Field_pair_dist_rat_NT_1000_mod)
-plot(Field_pair_dist_rat_NT_1000_mod)
-hist(resid(Field_pair_dist_rat_NT_1000_mod))
-qqPlot(resid(Field_pair_dist_rat_NT_1000_mod))
-shapiro.test(resid(Field_pair_dist_rat_NT_1000_mod))
-#p-value = 0.2216
-
-
-#####Table S9 Ratio Nestedness:Turnover####
-anova(Field_pair_dist_rat_NT_1000_mod)
-#life_stage           0.003811 0.003811     1 48.173  0.3432 0.5607328    
-#treatment            0.053334 0.026667     2 48.082  2.4013 0.1013829    
-#life_stage:treatment 0.183267 0.091634     2 48.082  8.2516 0.0008301 ***
-
-#####POSTHOC TEST: Figure 4c####
-emmeans(Field_pair_dist_rat_NT_1000_mod,pairwise~life_stage*treatment,adjust="fdr")
-
-emmeans(Field_pair_dist_rat_NT_1000_mod,pairwise~life_stage|treatment)
-
-emmeans(Field_pair_dist_rat_NT_1000_mod,pairwise~treatment|life_stage)
-emmeans(Field_pair_dist_rat_NT_1000_mod,pairwise~treatment)
 
